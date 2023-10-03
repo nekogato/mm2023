@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/controls/TrackballControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="script/lib/jquery-1.11.1.min.js"></script>
+    <script src="script/lib/gsap.min.js"></script>
+    <script src="script/lib/jquery.scrambler.js"></script>
+    <script src="script/lib/perfect-scrollbar.js"></script>
+    <script src="script/lib/jquery.history.js"></script>
+    <link href="script/lib/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/module.css" />
+
+    <script src="script/lib/jquery.ba-hashchange.min.js"></script>
+    <script src="script/script.js"></script>
+</head>
+<body>
+    <div id="blocker"></div>
+    <div class="header1">
+        <div class="g_wrapper">
+            <img src="images/header1.png" class="header1_g"/>
+        </div>
+    </div>
+    <div class="header2">
+        <div class="g_wrapper">
+            <img src="images/header2.png" class="header2_g"/>
+        </div>
+    </div>
+    <img src="images/top_menu.png" class="top_menu dropdown_btn"/>
+
+    <div class="dropdown">
+        <div class="dropdown_content text6">
+            <ul>
+                <li><a href="?id=Home" data-target="Home"><div class="text"><div class="text1">Home</div><div class="text5 chi_text">主頁</div></div></a></li>
+                <li><a href="?id=CuratorialStatement"  data-target="CuratorialStatement"><div class="text"><div class="text1">Curatorial Statement</div><div class="text5 chi_text">策展論</div></div></a></li>
+                <li><a href="?id=MainExhibition"  data-target="MainExhibition"><div class="text"><div class="text1">Main Exhibition</div><div class="text5 chi_text">主題展覽</div></div></a></li>
+                <li><a href="?id=FestivalGrandOpening"  data-target="FestivalGrandOpening"><div class="text"><div class="text1">Festival Grand Opening</div><div class="text5 chi_text">藝術節開幕禮</div></div></a></li>
+                <!-- <li><a href="ProjectRoom.html" ><div class="text"><div class="text1">Project Room</div><div class="text5 chi_text">實驗M場</div></div></a></li>
+                <li><a href="Unconference.html" ><div class="text"><div class="text1">Unconference</div><div class="text5 chi_text">反轉研討會</div></div></a></li>
+                <li><a href="ArtistVideo.html" ><div class="text"><div class="text1">Artist Video</div><div class="text5 chi_text">藝術家錄像分享</div></div></a></li>
+                <li><a href="Screening.html" ><div class="text"><div class="text1">Screening</div><div class="text5 chi_text">放映會</div></div></a></li>
+                <li><a href="ProgrammeSchedule.html" ><div class="text"><div class="text1">Programme Schedule</div><div class="text5 chi_text">節目時間表</div></div></a></li>
+                <li><a href="Crew.html" ><div class="text"><div class="text1">Crew</div><div class="text5 chi_text">策劃團隊</div></div></a></li>
+                <li><a href="SponsorsAndPartners.html" ><div class="text"><div class="text1">Sponsors and Partners</div><div class="text5 chi_text">贊助機構及合作伙伴</div></div></a></li>
+                <li><a href="Press.html" ><div class="text"><div class="text1">Press</div><div class="text5 chi_text">傳媒</div></div></a></li>
+                <li><a href="ContactUs.html" ><div class="text"><div class="text1">Contact Us</div><div class="text5 chi_text">聯絡</div></div></a></li>
+                <li><a href="AboutMicrowave.html" ><div class="text"><div class="text1">About Microwave</div><div class="text5 chi_text">微波簡介</div></div></a></li>
+                <li><a href="FestivalArchive.html" ><div class="text"><div class="text1">Festival Archive</div><div class="text5 chi_text">歷屆藝術節</div></div></a></li> -->
+            </ul>
+        </div>
+    </div>
+
+    <div class="home_status"></div>
+    <div class="overlay"></div>
+    <div class="over_btn_wrapper">
+        <div class="over_btn user_guide_btn">
+            <div>
+                <div>User Guide</div>
+                <div>展覽說明</div>
+                <div class="text3">↑</div>
+            </div>
+        </div>
+        <div class="over_btn test_humanity_btn">
+            <div>
+                <div class="text3">↓</div>
+                <div>Test Your Humanity</div>
+                <div>人鬼獸測試</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat_wrapper">
+        <div class="chat_answer_wrapper">
+            <div class="chat_answer">
+                <div class="chat_answer_input_wrapper">
+                    <input type="text" placeholder="" class="chat_answer_input"/>
+                </div>
+                <div class="chat_answer_submit chat_answer_submit_btn"></div>
+            </div>
+        </div>
+        <div class="top_arrow_btn leave_chat_btn text3">↑</div>
+    </div>
+
+    <div class="chat_result_loading">
+        <div>loading</div>
+    </div>
+
+    <div class="chat_result_wrapper">
+        <div class="bg "></div>
+        <div class="chat_result_inwrapper">
+            <div class="chat_result">
+                <div class="chat_result_content">
+                    <div class="chat_result_content_scroll_wrapper">
+                        <div class="chat_result_content_scroll scroll_area">
+                            <div class="spacing">
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+
+                                <p>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                                    
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation </p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+                                
+                                <p>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                                    
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation </p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+                                
+                                <p>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                                    
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation </p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+                                
+                                <p>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                                    
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation </p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+                                
+                                <p>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                                    
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="share_result_btn">
+            <div>Share your result →</div>
+        </div>
+        <div class="top_arrow_btn leave_chat_result_btn text3">↑</div>
+    </div>
+
+    <div class="blur_bg"></div>
+    <div class="load_content">
+        <div class="book_wrapper active " data-id="CuratorialStatement" data-next="MainExhibition">
+            <div class="book book_style1">
+                <div class="book_page_scroll_wrapper">
+                    <div class="book_page_scroll scroll_area">
+                        <div class="book_page_wrapper">
+                            <div class="book_page book_page_head">M.I.N.M.A.F </div>
+                            <div class="book_page book_page_head">Curatorial Statement 策展論</div>
+                            <div class="book_page book_page_body">
+                                <h5>
+                                N.h Intelligence<br>
+                                Curatorial Statement<br>
+                                Joel Kwong</h5>
+
+                                <p>Here, “half-and-half” may refer to equal halves of a larger entity or an unknown equilibrium. If we calibrate the relationship between humans and machines on a scale of zero to one hundred, every single point at which we may achieve equilibrium is a variation. How do we build a balance that is symbotic? With a main exhibition and a curated series of programs, this year’s festival leads visitors to “dream,” a dream in which we assimilate, think, rehearse, and learn about future life. We see our imminent possibilities when navigating between reality and imagination. In Art of War, Sun Tzu writes that the best course of attack is to understand: If one knows the enemy and oneself, one need not fear a hundred battles. This is not to say that technology and artificial intelligence (AI) are the antagonists of humankind, but it is wise, surely, to also learn more about the capabilities of a friend, ally, partner. We also need to know ourselves before we know others. In The Storytelling Animal: How Stories make us Human, Jonathan Gottschall stipulates that man are creatures of storytelling. Even for a singular text, with people’s imagination, a tale can unfold in infinite ways that entertain and also teach people to face difficulties and live bravely. Through stories, people learn to self-heal, destress, and relieve their emotions. Using the language of escape rooms, artist duo Laia Cabrera and Isabelle Duverger explore reality and fantasy in Dream-e-scape, bringing visitors into an immersive lucid dream. Contrary to the idea that dreams are just dreams, the line between the real world and the imaginary world is often blurry. If an immersive installation is a form of lucid dreaming, a VR device is the start of a personal journey into the virtual realm. Jakob Kudsk Steensen’s RE-ANIMATED is a reconstructed environment in the form of a paradisal garden, a habitat for the extinct Kaua’i ʻōʻō bird. The landscape is made from realistic geographic and ecological data as it examines the interstices between extinction, conservation, and immortality through artistic experience.</p>
+
+                                <p>Having learned more about ourselves, we move on to learning more about others. Discussions about art and technology tend to involve a lot of technical discourse, but what exactly are their implications? Rather than focusing on the rapidity of scientific development and the changes its interventions introduce to the world, we are more interested in how we should face our imminent future. Last year, the festival presented a video work about human-machine interaction, which ends with the phrase “Co-AI-existence”—AI being the acronym for artificial intelligence but also the transliteration for love from Mandarin. We continue this line of inquiry in this year’s edition; if humans and machines are to co-exist, we might as well get to know each other well. Design studio Ultravioletto believes that AI is capable of replicating human thought to grow and respond to their environments by understanding and inference. If AIs can read us like a book, how do we in turn comprehend them? In Neural Mirror, the viewer looks at their reflection in a mirror but sees themselves as moving data points, a perspective more attributed to AIs, who observe the world as masses of data, than humans, who rely primarily on sight. How do we reconcile these differences? Some may consider technology insentient and AI to be mere machines, but they already assume distinct personas in our lives in the forms of Alexa, Siri, and the virtual assistant from the movie Her, a woman who eludes touch and captivates by voice alone. Everyone gets a virtual assistant MOA in Charles Ayats’s My Own Assistant, which brings us to an interactive augmented reality set in a future world. Your story with your MOA quickly unfolds, just between the two of you… If sound isn’t enough, might adding video hit the spot? Futurist Ray Kurzweil predicts technological singularity—that is, when AI surpasses humans—to occur by 2045. By then, not all forms of AI will survive, and some will be inevitably eliminated. Greek artist Kyriaki Goni’s video work Not allowed for algorithmic audiences compiles research on AI development and voice interfaces to create a fictional narrative. In a monologue, an AI assistant who is about to disappear teaches humans how to avoid being heard by algorithms. In these universes, is the relationship between humans and machines for better or for worse? Do we fight with or against each other?</p>
+                            </div>
+                            <div class="book_page book_page_body">
+                                <h5>
+                                人鬼獸<br>
+                                策展論<br>
+                                鄺佳玲著
+                                </h5>
+
+                                <p>神話說人類曾經是完整一體的，那時的人類擁有很強的力量，因為驕傲而去挑戰宙斯，宙斯是古希臘神話中統領宇宙至高無上的天神﹐祂一怒之下讓雷神把這些人劈成兩半，然後說：去找你的另一半 (Go find your other half)，神仙把這些被劈開的人們放在世界各地，使他們分離、讓他們忘卻另一半的容貌，生世找尋，期望有天能在合一時變得強大。這是神話，在許久以前就口耳文本流傳下來，然而除了神話我們也有古希臘語：τέχνη + -λογία，意為「技巧學說」，也就是科技 (Technology) 的始源字，這兩者之間似是毫無關聯，然而如果以錄像藝術之父白南準其中一段預視名言來解讀就能看見箇中連結。他說：</p>
+
+                                <p>「我們的生活一半是自然一半是科技，一半半是好的，你不能否認高科技是一種進步，我們需要它來創造就業機會，然而如果你只製造高科技，你就會製造戰爭，因此我們必須保留強大的人性關聯，以保持謙虛和自然的生活。」</p>
+                                
+                                <p>這裡談的「一半半」可以是對半也可以是一個未知的平衡 (Equilibrium)，怎麼加起來都是一百，但左推右佔下呈現的是變數，在拿捏平衡點的過程中，人與機的互惠共生是如何被建立的呢？今年藝術節期望通過精選的展品及節目與觀眾「造夢」，在「夢」中吸收、思考與推演、學習未來生活，嘗試遊走在虛實之間，然後看看近未來的可能性。語本《孫子‧謀攻》言道：知彼知己者，百戰不殆；雖不是要視科技/人工智能是對手，但了解自己、隊友、伙伴的實力其實也是萬應之策吧。知彼之前先知己，讀哥德夏的《故事如何改變你的大腦》 (The Storytelling Animal: How Stories make us Human) ，他告訴我們人類是善長故事的生物，即便文本是死的，但透過人的想像力活化就可成無限，透過故事的曲折離奇人們學習如何面對困境如何勇敢生存、獲得樂趣外，還可以訓練自我療癒的能力、釋放壓力和紓解情緒。藝術組合萊亞‧卡布蕾拉及伊莎貝拉‧杜維格 (Laia Cabrera & Isabelle Duverger) 在《夢景觀》中運用了逃生室的語言去探索虛實，讓觀者醒著入夢，實戰現場。然而談到虛</p>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="book_wrapper" data-id="MainExhibition" data-prev="CuratorialStatement" data-next="FestivalGrandOpening">
+            <div class="book book_style2">
+                <div class="book_page_scroll_wrapper">
+                    <div class="book_page_scroll scroll_area">
+                        <div class="book_page_wrapper">
+                            <div class="book_page book_page_head">M.I.N.M.A.F </div>
+                            <div class="book_page book_page_head">Main Exhibition 主題展覽</div>
+                            <div class="book_page book_page_body main_book_page_body">
+                                <div class="col_wrapper">
+                                    <div class="row">
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" >
+                                                    <h5>
+                                                        Main Exhibition<br>
+                                                        主題展覽
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="book_page book_page_body main_book_page_body">
+                                <div class="col_wrapper">
+                                    <div class="row">
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book_page book_page_body main_book_page_body">
+                                <div class="col_wrapper">
+                                    <div class="row">
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book_page book_page_body main_book_page_body">
+                                <div class="col_wrapper">
+                                    <div class="row">
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book_page book_page_body main_book_page_body">
+                                <div class="col_wrapper">
+                                    <div class="row">
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book_page book_page_body main_book_page_body">
+                                <div class="col_wrapper">
+                                    <div class="row">
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book_page book_page_body main_book_page_body">
+                                <div class="col_wrapper">
+                                    <div class="row">
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book_page book_page_body main_book_page_body">
+                                <div class="col_wrapper">
+                                    <div class="row">
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book_page book_page_body main_book_page_body">
+                                <div class="col_wrapper">
+                                    <div class="row">
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book_page book_page_body main_book_page_body">
+                                <div class="col_wrapper">
+                                    <div class="row">
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col col6">
+                                            <div class="col_spacing">
+                                                <div class="main_ex_text" data-target="MainExhibition1">
+                                                    Apes as Family<br>猩猩一家親
+                                                    <div class="img"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="book_wrapper" data-id="MainExhibition1" data-prev="MainExhibition" data-next="MainExhibition" >
+            <div class="book book_style4">
+                <div class="book_page_scroll_wrapper">
+                    <div class="book_page_scroll scroll_area">
+                        <div class="book_page_wrapper">
+                            <div class="book_page book_page_head">M.I.N.M.A.F </div>
+                            <div class="book_page book_page_head">Main Exhibition 主題展覽</div>
+                            <div class="book_page book_page_body sticky_book_page">
+                                <h5>Apes as Family<br>猩猩一家親</h5>
+                            </div>
+                            <div class="book_page book_page_body ">
+                                <p>Here, “half-and-half” may refer to equal halves of a larger entity or an unknown equilibrium. If we calibrate the relationship between humans and machines on a scale of zero to one hundred, every single point at which we may achieve equilibrium is a variation. How do we build a balance that is symbotic? With a main exhibition and a curated series of programs, this year’s festival leads visitors to “dream,” a dream in which we assimilate, think, rehearse, and learn about future life. We see our imminent possibilities when navigating between reality and imagination. In Art of War, Sun Tzu writes that the best course of attack is to understand: If one knows the enemy and oneself, one need not fear a hundred battles. This is not to say that technology and artificial intelligence (AI) are the antagonists of humankind, but it is wise, surely, to also learn more about the capabilities of a friend, ally, partner. We also need to know ourselves before we know others. In The Storytelling Animal: How Stories make us Human, Jonathan Gottschall stipulates that man are creatures of storytelling. Even for a singular text, with people’s imagination, a tale can unfold in infinite ways that entertain and also teach people to face difficulties and live bravely. Through stories, people learn to self-heal, destress, and relieve their emotions. Using the language of escape rooms, artist duo Laia Cabrera and Isabelle Duverger explore reality and fantasy in Dream-e-scape, bringing visitors into an immersive lucid dream. Contrary to the idea that dreams are just dreams, the line between the real world and the imaginary world is often blurry. If an immersive installation is a form of lucid dreaming, a VR device is the start of a personal journey into the virtual realm. Jakob Kudsk Steensen’s RE-ANIMATED is a reconstructed environment in the form of a paradisal garden, a habitat for the extinct Kaua’i ʻōʻō bird. The landscape is made from realistic geographic and ecological data as it examines the interstices between extinction, conservation, and immortality through artistic experience.</p>
+
+                                <p>Having learned more about ourselves, we move on to learning more about others. Discussions about art and technology tend to involve a lot of technical discourse, but what exactly are their implications? Rather than focusing on the rapidity of scientific development and the changes its interventions introduce to the world, we are more interested in how we should face our imminent future. Last year, the festival presented a video work about human-machine interaction, which ends with the phrase “Co-AI-existence”—AI being the acronym for artificial intelligence but also the transliteration for love from Mandarin. We continue this line of inquiry in this year’s edition; if humans and machines are to co-exist, we might as well get to know each other well. Design studio Ultravioletto believes that AI is capable of replicating human thought to grow and respond to their environments by understanding and inference. If AIs can read us like a book, how do we in turn comprehend them? In Neural Mirror, the viewer looks at their reflection in a mirror but sees themselves as moving data points, a perspective more attributed to AIs, who observe the world as masses of data, than humans, who rely primarily on sight. How do we reconcile these differences? Some may consider technology insentient and AI to be mere machines, but they already assume distinct personas in our lives in the forms of Alexa, Siri, and the virtual assistant from the movie Her, a woman who eludes touch and captivates by voice alone. Everyone gets a virtual assistant MOA in Charles Ayats’s My Own Assistant, which brings us to an interactive augmented reality set in a future world. Your story with your MOA quickly unfolds, just between the two of you… If sound isn’t enough, might adding video hit the spot? Futurist Ray Kurzweil predicts technological singularity—that is, when AI surpasses humans—to occur by 2045. By then, not all forms of AI will survive, and some will be inevitably eliminated. Greek artist Kyriaki Goni’s video work Not allowed for algorithmic audiences compiles research on AI development and voice interfaces to create a fictional narrative. In a monologue, an AI assistant who is about to disappear teaches humans how to avoid being heard by algorithms. In these universes, is the relationship between humans and machines for better or for worse? Do we fight with or against each other?</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="book_wrapper" data-id="FestivalGrandOpening" data-prev="MainExhibition">
+            <div class="book book_style3">
+                <div class="book_page_scroll_wrapper">
+                    <div class="book_page_scroll scroll_area">
+                        <div class="book_page_wrapper">
+                            <div class="book_page book_page_head">M.I.N.M.A.F </div>
+                            <div class="book_page book_page_head">Festival Grand Opening 藝術節開幕禮</div>
+                            <div class="book_page book_page_body sticky_book_page">
+                                <h5>
+                                Festival Grand Opening<br>
+                                藝術節開幕禮
+                                </h5>
+
+                            </div>
+                            <div class="book_page book_page_body">
+                                <p>Here, “half-and-half” may refer to equal halves of a larger entity or an unknown equilibrium. If we calibrate the relationship between humans and machines on a scale of zero to one hundred, every single point at which we may achieve equilibrium is a variation. How do we build a balance that is symbotic? With a main exhibition and a curated series of programs, this year’s festival leads visitors to “dream,” a dream in which we assimilate, think, rehearse, and learn about future life. We see our imminent possibilities when navigating between reality and imagination. In Art of War, Sun Tzu writes that the best course of attack is to understand: If one knows the enemy and oneself, one need not fear a hundred battles. This is not to say that technology and artificial intelligence (AI) are the antagonists of humankind, but it is wise, surely, to also learn more about the capabilities of a friend, ally, partner. We also need to know ourselves before we know others. In The Storytelling Animal: How Stories make us Human, Jonathan Gottschall stipulates that man are creatures of storytelling. Even for a singular text, with people’s imagination, a tale can unfold in infinite ways that entertain and also teach people to face difficulties and live bravely. Through stories, people learn to self-heal, destress, and relieve their emotions. Using the language of escape rooms, artist duo Laia Cabrera and Isabelle Duverger explore reality and fantasy in Dream-e-scape, bringing visitors into an immersive lucid dream. Contrary to the idea that dreams are just dreams, the line between the real world and the imaginary world is often blurry. If an immersive installation is a form of lucid dreaming, a VR device is the start of a personal journey into the virtual realm. Jakob Kudsk Steensen’s RE-ANIMATED is a reconstructed environment in the form of a paradisal garden, a habitat for the extinct Kaua’i ʻōʻō bird. The landscape is made from realistic geographic and ecological data as it examines the interstices between extinction, conservation, and immortality through artistic experience.</p>
+
+                                <p>Having learned more about ourselves, we move on to learning more about others. Discussions about art and technology tend to involve a lot of technical discourse, but what exactly are their implications? Rather than focusing on the rapidity of scientific development and the changes its interventions introduce to the world, we are more interested in how we should face our imminent future. Last year, the festival presented a video work about human-machine interaction, which ends with the phrase “Co-AI-existence”—AI being the acronym for artificial intelligence but also the transliteration for love from Mandarin. We continue this line of inquiry in this year’s edition; if humans and machines are to co-exist, we might as well get to know each other well. Design studio Ultravioletto believes that AI is capable of replicating human thought to grow and respond to their environments by understanding and inference. If AIs can read us like a book, how do we in turn comprehend them? In Neural Mirror, the viewer looks at their reflection in a mirror but sees themselves as moving data points, a perspective more attributed to AIs, who observe the world as masses of data, than humans, who rely primarily on sight. How do we reconcile these differences? Some may consider technology insentient and AI to be mere machines, but they already assume distinct personas in our lives in the forms of Alexa, Siri, and the virtual assistant from the movie Her, a woman who eludes touch and captivates by voice alone. Everyone gets a virtual assistant MOA in Charles Ayats’s My Own Assistant, which brings us to an interactive augmented reality set in a future world. Your story with your MOA quickly unfolds, just between the two of you… If sound isn’t enough, might adding video hit the spot? Futurist Ray Kurzweil predicts technological singularity—that is, when AI surpasses humans—to occur by 2045. By then, not all forms of AI will survive, and some will be inevitably eliminated. Greek artist Kyriaki Goni’s video work Not allowed for algorithmic audiences compiles research on AI development and voice interfaces to create a fictional narrative. In a monologue, an AI assistant who is about to disappear teaches humans how to avoid being heard by algorithms. In these universes, is the relationship between humans and machines for better or for worse? Do we fight with or against each other?</p>
+                                
+                                <p>神話說人類曾經是完整一體的，那時的人類擁有很強的力量，因為驕傲而去挑戰宙斯，宙斯是古希臘神話中統領宇宙至高無上的天神﹐祂一怒之下讓雷神把這些人劈成兩半，然後說：去找你的另一半 (Go find your other half)，神仙把這些被劈開的人們放在世界各地，使他們分離、讓他們忘卻另一半的容貌，生世找尋，期望有天能在合一時變得強大。這是神話，在許久以前就口耳文本流傳下來，然而除了神話我們也有古希臘語：τέχνη + -λογία，意為「技巧學說」，也就是科技 (Technology) 的始源字，這兩者之間似是毫無關聯，然而如果以錄像藝術之父白南準其中一段預視名言來解讀就能看見箇中連結。他說：</p>
+
+                                <p>「我們的生活一半是自然一半是科技，一半半是好的，你不能否認高科技是一種進步，我們需要它來創造就業機會，然而如果你只製造高科技，你就會製造戰爭，因此我們必須保留強大的人性關聯，以保持謙虛和自然的生活。」</p>
+                                
+                                <p>這裡談的「一半半」可以是對半也可以是一個未知的平衡 (Equilibrium)，怎麼加起來都是一百，但左推右佔下呈現的是變數，在拿捏平衡點的過程中，人與機的互惠共生是如何被建立的呢？今年藝術節期望通過精選的展品及節目與觀眾「造夢」，在「夢」中吸收、思考與推演、學習未來生活，嘗試遊走在虛實之間，然後看看近未來的可能性。語本《孫子‧謀攻》言道：知彼知己者，百戰不殆；雖不是要視科技/人工智能是對手，但了解自己、隊友、伙伴的實力其實也是萬應之策吧。知彼之前先知己，讀哥德夏的《故事如何改變你的大腦》 (The Storytelling Animal: How Stories make us Human) ，他告訴我們人類是善長故事的生物，即便文本是死的，但透過人的想像力活化就可成無限，透過故事的曲折離奇人們學習如何面對困境如何勇敢生存、獲得樂趣外，還可以訓練自我療癒的能力、釋放壓力和紓解情緒。藝術組合萊亞‧卡布蕾拉及伊莎貝拉‧杜維格 (Laia Cabrera & Isabelle Duverger) 在《夢景觀》中運用了逃生室的語言去探索虛實，讓觀者醒著入夢，實戰現場。然而談到虛</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom_arrow_btn leave_user_guide_btn text3">↓</div>
+    </div>
+
+    <script src="script/index.js"></script>
+</body>
+</html>
