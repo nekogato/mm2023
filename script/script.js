@@ -235,9 +235,11 @@ function dosize(){
 
 
 	if($(".mobile_show").is(":hidden")){
+		// desktop
 		updateScroll();
 		
 	}else{
+		//mobile
 	}
 }
 
@@ -272,7 +274,7 @@ $(window).on('resize', function() {
 		dosize();
 		doscroll();
 	}, 300, "some unique string");
-	
+
 });
 
 
