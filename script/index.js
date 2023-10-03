@@ -601,10 +601,16 @@ function animate() {
     if($("body").hasClass("body_test_humanity") || $("body").hasClass("body_user_guide")){
         letter1.position.y += ( 0 - letter1.position.y ) * .05;
         letter1.rotation.y +=0.02;
+        // if(letter1.rotation.y > 2){
+        //     letter1.rotation.y -= 2;
+        // }
+        letter1.rotation.y %= Math.PI*2;
         letter2.position.y += ( 0 - letter2.position.y ) * .05;
         letter2.rotation.y +=0.02;
+        letter2.rotation.y %= Math.PI*2;
         letter3.position.y += ( 0 - letter3.position.y ) * .05;
         letter3.rotation.y +=0.02;
+        letter3.rotation.y %= Math.PI*2;
     }else{
         letter1.position.y += ( -1 - letter1.position.y ) * .05;
         letter1.rotation.y += ( 2 * Math.PI * (30 / 360) - letter1.rotation.y ) * .05;

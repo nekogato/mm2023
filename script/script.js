@@ -37,263 +37,10 @@ function getQueryParams(name) {
 
 
 function doscroll(){
-	
-	
-	var scrolltop = $(window).scrollTop();
-	var hh = $(window).height();
-	
-	if(scrolltop>100){
-		$(".header").addClass("nottop")
-		$(".header_bg").addClass("nottop")
-	}else{
-		$(".header").removeClass("nottop")
-		$(".header_bg").removeClass("nottop")
-	}
-
-
-	var home_section1_h = $(".home_section1").outerHeight();
-	var header_h = $(".header_bg").outerHeight();
-	/*
-	if(scrolltop> home_section1_h + header_h - hh){
-		$(".cover_table_wrapper").addClass("abs")
-		if(home_section1_h+header_h>hh){
-			$(".cover_table_wrapper").css({
-				height:home_section1_h - (home_section1_h-hh)+"px",
-				top: home_section1_h - hh +"px"
-			})
-		}else{
-			$(".cover_table_wrapper").css({
-				height:"100%",
-				top: "0px"
-			})
-		}
-		
-	}else{
-		$(".cover_table_wrapper").removeClass("abs")
-		$(".cover_table_wrapper").css({
-			height:"100%",
-			top: "0px"
-		})
-	}
-	*/
-	
-	$(".doscroll").each(function(){
-		var $this = $(this);
-		var mytop = $this.offset().top;
-		var myh = $this.height();
-		
-		
-		var dis = (scrolltop+hh)-mytop;
-		
-		
-		if(dis>0 && dis<hh+myh){
-			
-			
-			$this.addClass("onscreen");
-		
-			//console.log( Math.round((scrolltop/(mytop+myh))*100)/100);
-			$this.find(".offset").each(function(){
-				var childheight = parseInt($(this).css("height"));
-				var range = Math.round($(this).attr("data-offset")*(hh/2)*10000)/10000;
-				var factor = Math.round(((mytop-scrolltop+myh)/(hh+myh)-0.5)*10000)/10000;
-				var ratio = Math.round((childheight/hh)*10000)/10000;
-				
-				if($(".mobile_show").is(":visible")){
-				//range = range/2;
-				}
-				
-				var scalefactor = 1
-				
-				//$(this).attr("data-range",range)
-				//$(this).attr("data-height",range/2+myh)
-				//$(this).attr("data-childheight",childheight)
-				
-				if($(this).hasClass("center_image")){
-					if(range/2+myh>childheight){
-						//$(this).attr("data-problem","yes")
-						scalefactor=Math.round(((range/2+myh)/childheight)*100)/100;
-					}else{
-						//$(this).attr("data-problem","no")
-						
-					}
-				}
-				
-				$(this).css({
-					"transform": "translateY(" + parseInt(-1*range*factor) + "px) scale("+scalefactor+")",
-				})
-				
-				
-				$(this).parent().css({
-					"opacity": 1
-				})
-				
-				
-			});
-			
-		}else{
-			
-			$this.removeClass("onscreen");
-		}
-		
-		
-	});
-	
-	
-	if(scrolltop>hh/2){
-		$(".fix_right").addClass("mhide");
-	}else{
-		$(".fix_right").removeClass("mhide");
-	}
-	
-	$(".scrollin").not($(".scrollin_p .scrollin")).each(function(i){
-		var $this = $(this);
-		var mytop = $this.offset().top;
-		var myh = $this.height();
-		
-		var dis = (scrolltop+hh)-mytop;
-
-		
-		if(dis>0 ){
-			$this.removeClass("leavescreen");
-			$this.addClass("onscreen");
-			/*
-			if(dis<hh+myh){
-				$this.find(".scrollin").removeClass("stop");
-			}else{
-				$this.find(".scrollin").addClass("stop");
-			}
-			*/
-		}else{
-			$this.removeClass("onscreen");
-			$this.addClass("leavescreen");
-		}
-	});
-
-	
-	
-	$(".scrollin_p").each(function(i){
-		var $this = $(this);
-		var mytop = $this.offset().top;
-		var myh = $this.height();
-		
-		var dis = (scrolltop+hh)-mytop;
-		//$(this).attr("data-dis",scrolltop+","+hh+","+mytop+","+dis)
-		if(dis>0){
-			
-			$this.find(".scrollin").removeClass("leavescreen");
-			$this.find(".scrollin").addClass("onscreen");
-			/*
-			if(dis<hh+myh){
-				$this.find(".scrollin").removeClass("stop");
-			}else{
-				$this.find(".scrollin").addClass("stop");
-			}
-			*/
-		}else{
-			$this.find(".scrollin").removeClass("onscreen");
-			$this.find(".scrollin").addClass("leavescreen");
-			//$this.find(".scrollin").removeClass("stop");
-		}
-	});
-	
-	/*
-	$(".scrollin_p").each(function(i){
-	
-		$(this).find(".scrollin.onscreen").not($(".scrollin.onscreen.stop")).each(function(i){
-			$(this).css({
-				"-webkit-transition-delay": i*150+500+"ms",
-				"transition-delay": i*150+500+"ms",
-			})
-			
-			$(this).addClass("startani");
-		});
-	
-	});
-	*/
-	$(".scrollin.onscreen").not($(".scrollin_p .scrollin")).not($(".scrollin.onscreen.stop")).not($(".startani")).each(function(i){
-		$(this).css({
-			"-webkit-transition-delay": i*100+100+"ms",
-			"transition-delay": i*100+100+"ms",
-		})
-		
-		if($(this).hasClass("moredelay")){
-			$(this).css({
-				"-webkit-transition-delay": i*100+600+"ms",
-				"transition-delay": i*100+600+"ms",
-			})
-		}
-		
-		if($(this).hasClass("nodelay")){
-			$(this).css({
-			"-webkit-transition-delay": 0+"ms",
-			"transition-delay": 0+"ms",
-			})
-		}
-		
-		$(this).addClass("startani");
-	});
-
-	$(".scrollin_p").each(function(){
-		$(this).find(".scrollin.onscreen").not($(".scrollin.onscreen.stop")).not($(".startani")).each(function(i){
-			$(this).css({
-				"-webkit-transition-delay": i*100+100+"ms",
-				"transition-delay": i*100+100+"ms",
-			})
-			
-			if($(this).hasClass("moredelay")){
-				$(this).css({
-					"-webkit-transition-delay": i*100+600+"ms",
-					"transition-delay": i*100+600+"ms",
-				})
-			}
-			
-			if($(this).hasClass("nodelay")){
-				$(this).css({
-				"-webkit-transition-delay": 0+"ms",
-				"transition-delay": 0+"ms",
-				})
-			}
-			
-			$(this).addClass("startani");
-		});
-	})
-	
-	
-	$(".scrollin.leavescreen").each(function(i){
-		$(this).css({
-			"-webkit-transition-delay": 0+"ms",
-    		"transition-delay": 0+"ms",
-		})
-		$(this).removeClass("startani");
-	});
-	
-	$(".scrollin.stop").each(function(i){
-		$(this).css({
-			"-webkit-transition-delay": 0+"ms",
-    		"transition-delay": 0+"ms",
-		})
-		$(this).addClass("startani");
-	});
-
-	$(".bottom_logo_section.leavescreen").each(function(i){
-		$(this).removeClass("played");
-	});
-	
-	$(".bottom_logo_section.onscreen").each(function(){
-		if(!$(this).hasClass("played")){
-			logo_animate();
-			$(this).addClass("played")
-		}
-	})
 }
 
 
 function loading_finish(){
-	$(".loading").stop().fadeOut(function(){
-		
-		$("body").addClass("loadfinish");
-		doscroll();
-	});
 }
 
 
@@ -313,6 +60,7 @@ function init_event(){
 		return false;
 	})
 
+	// click to open book
 	$(".main_ex_text").click(function(){
 		var mytarget = $(this).attr("data-target");
 		var $mytarget = $("[data-id='"+mytarget+"']");
@@ -337,6 +85,8 @@ function init_event(){
 
 			$mytarget.stop().fadeIn();
 			$mytarget.find(".scroll_area").scrollTop(0);
+			
+			// find book index and hide / show
 			var myindex = $mytarget.index();
 
 			$(".book_wrapper").each(function(){
@@ -485,25 +235,12 @@ function dosize(){
 
 
 	if($(".mobile_show").is(":hidden")){
+		updateScroll();
 		
 	}else{
 	}
 }
 
-function dohash(){
-	
-
-	var hash = window.location.hash;
-	
-	if(hash){
-		hash= hash.replace("#","");
-		
-		
-		
-	}
-	
-	$(".dropdown_btn.close").removeClass("close")
-}
 
 
 $(function(){
@@ -515,20 +252,6 @@ $(function(){
 });
 
 
-
-$.fn.scrollEnd = function(callback, timeout) {          
-  $(this).scroll(function(){
-    var $this = $(this);
-    if ($this.data('scrollTimeout')) {
-      clearTimeout($this.data('scrollTimeout'));
-    }
-    $this.data('scrollTimeout', setTimeout(callback,timeout));
-  });
-};
-
-$(window).scrollEnd(function(){
-    $("body").removeClass("doingscroll")
-}, 300);
 
 $(window).on('load', function() {
 	dosize();
@@ -544,10 +267,12 @@ $(window).on('load', function() {
 
 $(window).on('resize', function() {
 	dosize();
+
 	waitForFinalEvent(function(){
 		dosize();
 		doscroll();
 	}, 300, "some unique string");
+	
 });
 
 
