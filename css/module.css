@@ -203,6 +203,40 @@ body{
 	top: -100%;
 }
 
+.chat_question_wrapper{
+	position: absolute;
+	left: 50px;
+	top: 50px;
+	bottom: 50px;
+	right: 50px;
+	margin: auto;
+}
+
+.chat_question{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.chat_question_item{
+	position: relative;
+	border-radius: 5px;
+	padding: 10px 20px;
+}
+
+.chat_question_item_left{
+	background-color: #17e397;
+}
+
+.chat_question_item + .chat_question_item{
+	margin-top: 20px;
+}
+
+.chat_question_item_right{
+	background-color: #cacaca;  
+	align-self: flex-end;
+}
+
 .chat_answer_wrapper{
 	position: absolute;
 	left: 50px;
