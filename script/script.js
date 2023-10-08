@@ -266,10 +266,6 @@ $(window).on('load', function() {
 	doscroll();
 	loading_finish();
 	
-	// dohash();
-	// $(window).hashchange( function(){
-	// 	dohash();
-	// })
 	
 });
 
