@@ -7,10 +7,14 @@ var hoverLetter = "";
 var activeLetter = "";
 var startletter1_animation, startletter2_animation, startletter3_animation;
 var changecolor = false;
+const GLTFLoader = new THREE.GLTFLoader();
+const dracoLoader = new THREE.DRACOLoader();
+dracoLoader.setDecoderPath( 'script/lib/draco/' );
+GLTFLoader.setDRACOLoader( dracoLoader );
 var addElement2 = function ( myid,groupid,group, src, x, y, z,cubeTexture, roughnessTexture ) {
 
 
-    const GLTFLoader = new THREE.GLTFLoader();
+    // const GLTFLoader = new THREE.GLTFLoader();
     GLTFLoader.load(src, function ( gltf ) {
         gltf.scene.scale.set( 10, 10, 10 );
         gltf.scene.position.set( x, y, z );
@@ -55,7 +59,7 @@ var addElement2 = function ( myid,groupid,group, src, x, y, z,cubeTexture, rough
 var addElement = function ( myid,groupid,group, src, x, y, z,cubeTexture, roughnessTexture ) {
 
 
-    const GLTFLoader = new THREE.GLTFLoader();
+    // const GLTFLoader = new THREE.GLTFLoader();
     GLTFLoader.load(src, function ( gltf ) {
         gltf.scene.scale.set( 10, 10, 10 );
         gltf.scene.position.set( x, y, z );
@@ -621,7 +625,7 @@ function animate() {
         
     }
 
-	requestAnimationFrame( animate );
+	// requestAnimationFrame( animate );
 	controls.update();
 	renderer.render( scene, camera );
 
