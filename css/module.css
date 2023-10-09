@@ -748,6 +748,10 @@ body{
 	letter-spacing: 0.1em;
 }
 
+.book_page a:hover{
+	opacity: 0.5;
+}
+
 .book{
 	pointer-events: none;
 }
@@ -842,6 +846,7 @@ body{
 	min-width: 900px;
 }
 
+
 .book_style1 .book_page_scroll_wrapper {
 	width: 100%;
 	padding-bottom: 50%;
@@ -898,6 +903,83 @@ body{
 
 .book_style1 .ps__rail-y {
 	z-index: 2;
+}
+
+.book_style1_2{
+	left: 0%;
+	right: 0%;
+	top:0%;
+	bottom: 0%;
+}
+
+.book_style1_2 .book_page_scroll_wrapper{
+	background-color: #e6ea7a;
+}
+
+.book_style1_2 .book_page_head{
+	background-color: #e6ea7a;
+}
+
+.book_style1_3{
+	left: 0%;
+	right: 5%;
+	top:5%;
+	bottom: 5%;
+	}
+
+
+.book_style1_4{
+	left: 5%;
+	right: 0%;
+	top:5%;
+	bottom: 0%;
+}
+
+.book_style1_4 .book_page_scroll_wrapper{
+	background-color: #ff0000;
+}
+
+.book_style1_4 .book_page_head{
+	background-color: #ff0000;
+}
+	
+.line_ul{
+	border-top:1px solid #9fa1a4;
+	border-bottom:1px solid #9fa1a4;
+}
+
+.line_ul li{
+	padding: 5px 0px;
+	}
+
+.line_ul li+li{
+	border-top:1px solid #9fa1a4;
+}
+
+.line_ul a{
+	display: block;
+	position: relative;
+}
+
+.line_ul li a::after {
+	margin: auto;
+    content: "→";
+    position: absolute;
+    color: #9fa1a4;
+    width: 10px;
+    height: 10px;
+    top: 0px;
+    bottom: 0px;
+    right: 10px;
+	line-height: 10px;
+}
+.line_ul li a:hover{
+	color:#000;
+}
+
+
+.line_ul li a:hover::after{
+	color:#000;
 }
 
 .book_artist_bio {
@@ -1520,6 +1602,17 @@ body{
 	z-index: 2;
 }
 
+.book_style9_2{
+	left: 15%;
+	right: 0%;
+	top:0%;
+	bottom: 10%;
+}
+
+.book_style9 a{
+	color: #9fa1a4;
+}
+
 
 @media screen and (max-width: 1440px) { 
 
@@ -1585,7 +1678,7 @@ body{
 	}
 
 	.book_style0{
-		top:90px !important;
+		top:70px !important;
 	}
 
 	.book .book_page_head{

@@ -296,6 +296,15 @@ a{
 	overflow: hidden;
 	}
 
+.dropdown .book_wrapper{
+	display: block;
+}
+
+.dropdown .book_wrapper .book{
+	transform: translateY(0px) rotateX(0deg);
+	opacity: 1;
+}
+
 .openmenu .dropdown{
 	-webkit-transition: all 1.2s ease;
     transition: all 1.2s ease;
@@ -657,12 +666,12 @@ body{
 	}	
 	
 .text5, h5{
-	font-size: calc(12px + 0.8vw);
+	font-size: calc(12px + 0.6vw);
 	line-height:1.5em;
 	}	
 	
 .text6, h6{
-	font-size: calc(12px + 0.4vw);
+	font-size: calc(12px + 0.3vw);
 	line-height:1.5em;
 	}		
 	
@@ -684,85 +693,7 @@ h1:first-child,h2:first-child,h3:first-child,h4:first-child,h5:first-child,h6:fi
 	margin-top: auto;
 }
 
-
-.free_text{
-	line-height: 1.7em;
-}
-
-.free_text h1,
-.free_text h2,
-.free_text h3,
-.free_text h4,
-.free_text h5,
-.free_text h6{
-    font-weight: 300;
-}
-
-.free_text h1 + p,
-.free_text h2 + p,
-.free_text h3 + p,
-.free_text h4 + p,
-.free_text h5 + p,
-.free_text h6 + p{
-    margin-top: 20px;
-}
-
-.free_text h1 + table,
-.free_text h2 + table,
-.free_text h3 + table,
-.free_text h4 + table,
-.free_text h5 + table,
-.free_text h6 + table{
-    margin-top: 20px;
-}
-
-.free_text p + table{
-    margin-top: 30px;
-}
-
-
-.free_text strong{
-    font-weight: 700;
-}
-
-.free_text a{
-    opacity: 0.5;
-}
-
-.free_text a:hover{
-    opacity: 1;
-}
-
-.free_text img{
-    max-width: 100%;
-}
-
-.free_text ol li{
-	list-style:decimal;
-	margin-left:1em;
-	}	
-	
-.free_text ol li+li{
-	}
-	
-	
-.free_text ul li{
-	list-style:none;
-	margin-left:1em;
-	}	
-
-.free_text ul li::before{
-	content:"•";
-	position: absolute;
-	margin-left: -1em;
-
-}	
-	
-.free_text ul li+li{
-	}
-	
-	
-.free_text hr{
+ hr{
 	background:none;
 	border:none;
 	border-top:1px solid #F0F0F0;
@@ -770,15 +701,15 @@ h1:first-child,h2:first-child,h3:first-child,h4:first-child,h5:first-child,h6:fi
 	margin-bottom:30px;
 	}
 
-.free_text .table-responsive{
-	min-height: .01%;
-	overflow-x: auto;
-	margin-top:30px;}	
-	
-.free_text .table-responsive:first-child{
-	margin-top:auto;
-	}	
-	
+.book_style1 hr{
+	border-top:1px solid #9fa1a4;
+}	
+
+.book_style1 a{
+	color:#9fa1a4;
+}
+
+
 .center_text{
 	text-align:center;
 	}	
