@@ -94,11 +94,13 @@ function init_event(){
 					if($(this).attr("data-prev") !== $(this).attr("data-next")){
 						$(this).stop().fadeIn();
 						$(this).find(".scroll_area").scrollTop($(this).find(".scroll_area > *").outerHeight());
+						// $(this).parents(".book_wrapper").addClass('reach-end');
 					}
 				}
 
 				if($(this).index()>myindex){
 					$(this).stop().fadeOut();
+					// $(this).parents(".book_wrapper").removeClass('reach-end');
 				}
 			})
 
@@ -158,7 +160,7 @@ function init_function(){
 		scrollArr.push(ps)
 
 		$(this)[0].addEventListener('ps-y-reach-end', function(){
-			$p.addClass("reach-end")
+			// $p.addClass("reach-end")
 			
 			// if(mynexttarget){
 			// 	console.log("next")
@@ -170,7 +172,7 @@ function init_function(){
 		});
 
 		$(this)[0].addEventListener('ps-y-reach-start', function(){
-			$p.addClass("reach-start")
+			// $p.addClass("reach-start")
 			// if(myprevtarget){
 			// 	console.log("prev")
 			// 	$this.stop().fadeOut();
@@ -194,8 +196,10 @@ function init_function(){
 		});
 
 		// Add a wheel event listener to the scrollable container
-		$(this)[0].addEventListener('wheel', (event) => {
-			if(($this.scrollTop() + $this.height() >= $this.find(">*").height()) && event.deltaY > 0) {
+		// $(this)[0].addEventListener('wheel', (event) => {
+		["wheel", "touchmove"].forEach( (eventType) => $(this)[0].addEventListener(eventType, (event) => {
+			if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 ) && (event.deltaY == undefined || event.deltaY > 0) && (true || !$p.hasClass('reach-end'))) {
+				$p.addClass("reach-end")
 				if(mynexttarget){
 					console.log("next")
 					console.log(mynexttarget)
@@ -211,7 +215,8 @@ function init_function(){
 					}
 				}
 			}
-			if (($this.scrollTop() <=0) && event.deltaY < 0) {
+			if (($this.scrollTop() <=0) && (event.deltaY == undefined || event.deltaY < 0)) {
+				$p.addClass("reach-start")
 				if(myprevtarget){
 					do_pushstate("?id="+myprevtarget);
 					console.log("prev")
@@ -222,7 +227,8 @@ function init_function(){
 					updateScroll();
 				}
 			}
-		});
+		})
+		);
 		
 		$(this).scrollTop(0);
 		updateScroll();

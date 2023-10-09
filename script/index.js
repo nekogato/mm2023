@@ -7,6 +7,10 @@ var hoverLetter = "";
 var activeLetter = "";
 var startletter1_animation, startletter2_animation, startletter3_animation;
 var changecolor = false;
+const GLTFLoader = new THREE.GLTFLoader();
+const dracoLoader = new THREE.DRACOLoader();
+dracoLoader.setDecoderPath( 'script/lib/draco/' );
+GLTFLoader.setDRACOLoader( dracoLoader );
 var addElement2 = function ( myid,groupid,group, src, x, y, z,cubeTexture, roughnessTexture ) {
 
 
