@@ -145,6 +145,7 @@ function updateScroll(){
 		$(this).find(".book").attr("data-top",40+i*30)
 	})
 
+	console.log($(".mobile_show").is(":hidden"))
 	if($(".mobile_show").is(":hidden")){
 		// desktop
 
@@ -234,12 +235,10 @@ function init_function(){
 
 		$(this)[0].addEventListener('ps-scroll-up', function(){
 			$p.removeClass("reach-end")
-			console.log("up")
 		});
 
 		$(this)[0].addEventListener('ps-scroll-down', function(){
 			$p.removeClass("reach-start")
-			console.log("down")
 		});
 
 		$(this)[0].addEventListener('ps-scroll-y', function(e){
@@ -251,8 +250,6 @@ function init_function(){
 			if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 ) && (event.deltaY == undefined || event.deltaY > 0) && (true || !$p.hasClass('reach-end'))) {
 				$p.addClass("reach-end")
 				if(mynexttarget){
-					console.log("next")
-					console.log(mynexttarget)
 					$mynexttarget.stop().fadeIn().addClass("show");
 					$(window).resize();
 					do_pushstate("?id="+mynexttarget);
@@ -270,7 +267,6 @@ function init_function(){
 				$p.addClass("reach-start")
 				if(myprevtarget){
 					do_pushstate("?id="+myprevtarget);
-					console.log("prev")
 					$p.addClass("noscroll").stop().fadeOut(function(){
 						$p.removeClass("noscroll");
 					}).removeClass("show")

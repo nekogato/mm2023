@@ -966,7 +966,9 @@ body{
 .book_artist_name p{
 	margin-top: 10px;
 }
-
+.book_artist_mobile_info{
+	display: none;
+}
 .book_style2{
 	position: absolute;
 	width: 70%;
@@ -1642,11 +1644,20 @@ body{
 		flex-basis: 33%;
 		padding-bottom: 44%;
 	}
-	.book_artist_name {
+
+	.book_artist_mobile_info{
 		flex-basis: 67%;
+		display: flex ;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.book_artist_mobile_info_top{
+		margin-left: 25px;
+	}
+	.book_artist_name {
 		margin-left: 25px;
 		box-sizing: border-box;
-		align-self: flex-end;
 	}
 	.book_artist_desc {
 		flex-basis: 100%;
@@ -1670,7 +1681,7 @@ body{
 
 	.book_style4 .book_project_info {
 		padding-top: 25px;
-		padding-bottom: 25px;
+		padding-bottom: 50px;
 	}
 	.book_style8 .sticky_book_page {
 		/* padding-bottom: 50px;
@@ -1721,6 +1732,10 @@ body{
 		position: relative;
 		top: auto;
 	  }
+
+	.book_project_info{
+		height: auto !important;
+	}
 }
 
 @media screen and (max-width: 600px) { 
