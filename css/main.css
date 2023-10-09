@@ -178,6 +178,7 @@ a{
 	top:50px;
 	z-index: 999;
 	width: 80px;
+	cursor: pointer;
 }
 
 .top_menu img{
@@ -185,9 +186,79 @@ a{
 }
 
 .top_menu::after{
+	-webkit-transition: all 0.3s ease 0s; 
+    transition: all 0.3s ease 0s; 
 	content:"";
 	position: absolute;
+	top:0px;
+	bottom:0px;
+	right: 2px;
+	margin: auto;
+	width: 20px;
+	height: 20px;
+	border-radius: 999px;
+	background-color: #fff;
+	transform: scale(1);
 }
+
+.top_menu:hover::after{
+	transform: scale(1.2);
+}
+
+.openmenu .top_menu::after, .openmenu .top_menu:hover::after{
+	transform: scale(0,0);
+}
+
+.top_menu .cross{
+	-webkit-transition: all 0.3s ease 0s; 
+    transition: all 0.3s ease 0s; 
+	content:"";
+	position: absolute;
+	top:0px;
+	bottom:0px;
+	right: 2px;
+	margin: auto;
+	width: 20px;
+	height: 20px;
+	transform: scale(0);
+}
+
+.top_menu .cross::before{
+	content:"";
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	background-color: #fff;;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	left: 0px;
+	margin: auto;
+	transform: rotate(-45deg);
+}
+
+.top_menu .cross::after{
+	content:"";
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	background-color: #fff;;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	left: 0px;
+	margin: auto;
+	transform: rotate(45deg);
+}
+
+.openmenu .top_menu .cross{
+	transform: scale(1);
+}
+
+.openmenu .top_menu:hover .cross{
+	transform: scale(1.2);
+}
+
 
 .body_test_humanity .header1{
 	top:-100%;
