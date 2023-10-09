@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/controls/TrackballControls.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r128/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="script/lib/three/three.min.js"></script>
+    <script src="script/lib/three/OrbitControls.js"></script>
+    <script src="script/lib/three/TrackballControls.js"></script>
+    <script src="script/lib/three/GLTFLoader.js"></script>
+    <script src="script/lib/three/DRACOLoader.js"></script>
     <script src="script/lib/jquery-1.11.1.min.js"></script>
     <script src="script/lib/gsap.min.js"></script>
     <script src="script/lib/jquery.scrambler.js"></script>
@@ -75,20 +76,26 @@
     </div>
 
     <div class="chat_wrapper">
-        <div class="chat_question_wrapper">
-            <div class="chat_question">
-                <div class="chat_question_item chat_question_item_left">
-                    <div class="text5">Hello!</div>
-                    <div class="">你好！</div>
+        <div class="chat_question_wrapper scroll_area">
+            <div class="chat_question_inwrapper">
+                <div class="chat_question">
+                    <div class="chat_question_item chat_question_item_system">
+                        <div class="text5">接下來我們將會進行一個測試，以檢測你的身份，預備好請按「START」。</div>
+                    </div>
+
+                    <!-- <div class="chat_question_item chat_question_item_left">
+                        <div class="text5">Hello!</div>
+                        <div class="">你好！</div>
+                    </div>
+                    <div class="chat_question_item chat_question_item_left">
+                        <div class="text5">Can you answer a few questions for me?</div>
+                        <div class="">可以回答我幾條問題嗎？</div>
+                    </div> -->
+                    
                 </div>
-                <div class="chat_question_item chat_question_item_left">
-                    <div class="text5">Can you answer a few questions for me?</div>
-                    <div class="">可以回答我幾條問題嗎？</div>
-                </div>
-                
             </div>
         </div>
-        <div class="chat_answer_wrapper">
+        <div class="chat_answer_wrapper notstartfirstchat">
             <div class="chat_answer">
                 <div class="chat_answer_input_wrapper">
                     <input type="text" placeholder="" class="chat_answer_input" id="message"/>
@@ -107,40 +114,56 @@
         <div class="bg "></div>
         <div class="chat_result_inwrapper">
             <div class="chat_result">
+                <div class="chat_result_top_bg"></div>
                 <div class="chat_result_content">
+                    <img src="images/share_logo.png" class="chat_result_logo">
                     <div class="chat_result_content_scroll_wrapper">
-                        <div class="chat_result_content_scroll scroll_area">
-                            <div class="spacing">
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-
-                                <p>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                                    
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation </p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                                
-                                <p>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                                    
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation </p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                                
-                                <p>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                                    
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation </p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                                
-                                <p>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                                    
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation </p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                                
-                                <p>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                                    
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation </p>
+                        <div class="chat_result_content_scroll ">
+                            <div class="chat_result_box_wrapper">
+                                <div class="chat_result_box">
+                                    <div class="chat_result_box_scroll scroll_area">
+                                        <div class="chat_result_box_content">
+                                            <div class="top text7">Result 檢測結果 →</div>
+                                            <div class="middle chat_result_identity_icon chat_result_identity_icon_human"></div>
+                                            <div class="bottom identity_guess text4">
+                                                人類
+                                            </div></div>
+                                        </div>
+                                    </div>
+                                    <div class="icon_cover_wrapper">
+                                        <div class="icon_cover icon_cover1" style="background-image: url(images/icon_human.png);"></div>
+                                    </div>
+                                </div>
+                                <div class="chat_result_box">
+                                    <div class="chat_result_box_scroll scroll_area">
+                                        <div class="chat_result_box_content">
+                                            <div class="top text7">Analysis 分析 →</div>
+                                            <div class="bottom identity_reason"></div>
+                                        </div>
+                                    </div>
+                                    <div class="icon_cover_wrapper">
+                                        <div class="icon_cover icon_cover2" style="background-image: url(images/icon_ghost.png);"></div>
+                                    </div>
+                                </div>
+                                <div class="chat_result_box">
+                                    <div class="chat_result_box_scroll scroll_area">
+                                        <div class="chat_result_box_content">
+                                            <div class="top">
+                                                <div class="text7">Animal Type 獸類型 →</div>
+                                                <div class="psychological_types_guess"></div>
+                                            </div>
+                                            <div class="bottom psychological_types_reason"></div>
+                                        </div>
+                                    </div>
+                                    <div class="icon_cover_wrapper">
+                                        <div class="icon_cover icon_cover3" style="background-image: url(images/icon_animal.png);"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
+                <div class="chat_result_bottom_bg"></div>
             </div>
         </div>
         <div class="share_result_btn">

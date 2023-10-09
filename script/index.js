@@ -11,6 +11,12 @@ var addElement2 = function ( myid,groupid,group, src, x, y, z,cubeTexture, rough
 
 
     const GLTFLoader = new THREE.GLTFLoader();
+    const dracoLoader = new THREE.DRACOLoader();
+    dracoLoader.setDecoderPath( './script/draco/' );
+    GLTFLoader.setDRACOLoader( dracoLoader );
+
+    
+
     GLTFLoader.load(src, function ( gltf ) {
         gltf.scene.scale.set( 10, 10, 10 );
         gltf.scene.position.set( x, y, z );
@@ -54,8 +60,11 @@ var addElement2 = function ( myid,groupid,group, src, x, y, z,cubeTexture, rough
 };
 var addElement = function ( myid,groupid,group, src, x, y, z,cubeTexture, roughnessTexture ) {
 
-
     const GLTFLoader = new THREE.GLTFLoader();
+    const dracoLoader = new THREE.DRACOLoader();
+    dracoLoader.setDecoderPath( './script/draco/' );
+    GLTFLoader.setDRACOLoader( dracoLoader );
+
     GLTFLoader.load(src, function ( gltf ) {
         gltf.scene.scale.set( 10, 10, 10 );
         gltf.scene.position.set( x, y, z );
@@ -122,8 +131,18 @@ function init() {
 
     // Add directional light for more realistic shading
     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    directionalLight.position.set(1, 1, 1); // Adjust light direction
+    directionalLight.position.set(-0.2, 0.1, 0.5); // Adjust light direction
     scene.add(directionalLight);
+
+    // Add directional light for more realistic shading
+    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.6);
+    directionalLight2.position.set(1, 0.1, 1); // Adjust light direction
+    scene.add(directionalLight2);
+
+    // Add directional light for more realistic shading
+    const directionalLight3 = new THREE.DirectionalLight(0xffffff, 0.6);
+    directionalLight3.position.set(0, 1, -1); // Adjust light direction
+    scene.add(directionalLight3);
 
 
 	window.addEventListener( 'resize', onWindowResize, false );
@@ -350,20 +369,7 @@ function init() {
         $("body").addClass("body_user_guide")
     });
 
-    $(".chat_answer_submit_btn").on( "click", function() {
-        checkCheck();
-        // $("body").addClass("body_test_humanity_result_loading")
-        // setTimeout(function(){
-        //     for ( var i = 0; i < objArr.length; i++ ) { 
-        //         gsap.to(objArr[i].material, {opacity: 1, duration: 3});
-        //         gsap.to(objArr2[i].material, {opacity: 0, duration: 3});
-        //     }
-        // },3000)
-        // setTimeout(function(){
-        //     $("body").removeClass("body_test_humanity_result_loading")
-        //     $("body").addClass("body_test_humanity_result_done")
-        // },9000)
-    });
+    
 
     $(".leave_chat_btn").on( "click", function() {
         $("body").removeClass("body_test_humanity")

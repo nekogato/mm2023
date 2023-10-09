@@ -134,6 +134,13 @@ function updateScroll(){
 
 function init_function(){
 
+	$(".chat_result_box").each(function(i){
+		$(this).find(".icon_cover").css({
+			"-webkit-transition-delay": i*150+1200+"ms",
+			"transition-delay": i*150+1200+"ms",
+		})
+	})
+
 	$(".scroll_area").each(function () {
 		var $this = $(this);
 

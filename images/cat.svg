@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <!-- 猫的身体 -->
+  <ellipse cx="150" cy="150" rx="80" ry="100" fill="#FF9900">
+    <!-- 添加身體的擺動動畫 -->
+    <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0 150 150"
+      to="10 150 150"
+      dur="1s"
+      repeatCount="indefinite"
+      direction="alternate"
+    />
+  </ellipse>
+
+  <!-- 鳥的翅膀 -->
+  <path d="M150 70 Q110 30 150 10 Q190 30 150 70" fill="#0099CC">
+    <!-- 添加翅膀的飄動動畫 -->
+    <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      type="translate"
+      from="0 0"
+      to="0 -10"
+      dur="0.5s"
+      repeatCount="indefinite"
+      direction="alternate"
+    />
+  </path>
+
+  <!-- 狐狸的尾巴 -->
+  <path d="M150 250 Q180 280 200 260 Q220 240 190 230 Q160 220 150 250" fill="#FF9900">
+    <!-- 添加尾巴的擺動動畫 -->
+    <animateTransform
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0 150 250"
+      to="20 150 250"
+      dur="1s"
+      repeatCount="indefinite"
+      direction="alternate"
+    />
+  </path>
+</svg>
