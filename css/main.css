@@ -222,9 +222,19 @@ a{
 	height:100%;
 	width:100%;
 	overflow: auto;
-}	
+}
 
-.dropdown ul{
+.menu_text {
+	font-size: calc(12px + 0.25vw);
+}
+.dropdown .book_page_body li {
+	border-bottom: 1px solid;
+}
+.dropdown .book_page_body li:first-child {
+	border-top: 1px solid;
+}
+
+/* .dropdown ul{
 	margin: 75px 50px;
 	overflow: hidden;
 }
@@ -262,7 +272,7 @@ a{
 	border:1px solid #fff;
 	border-radius: 100% 100%;
 	margin-top: 10px;
-}	
+}	 */
 
 
 /* footer */
