@@ -64,7 +64,7 @@ function init_event(){
 	$(".main_ex_text").click(function(){
 		var mytarget = $(this).attr("data-target");
 		var $mytarget = $("[data-id='"+mytarget+"']");
-		$mytarget.stop().fadeIn();
+		$mytarget.stop().fadeIn().addClass("show");
 		$mytarget.find(".scroll_area").scrollTop(0);
 	})
 
@@ -83,7 +83,7 @@ function init_event(){
 			$("body").addClass("body_user_guide")
 			$("body").removeClass("body_test_humanity")
 
-			$mytarget.stop().fadeIn();
+			$mytarget.stop().fadeIn().addClass("show");;
 			$mytarget.find(".scroll_area").scrollTop(0);
 			
 			// find book index and hide / show
@@ -92,14 +92,14 @@ function init_event(){
 			$(".book_wrapper").each(function(){
 				if($(this).index()<myindex){
 					if($(this).attr("data-prev") !== $(this).attr("data-next")){
-						$(this).stop().fadeIn();
+						$(this).stop().fadeIn().addClass("show");
 						$(this).find(".scroll_area").scrollTop($(this).find(".scroll_area > *").outerHeight());
 						// $(this).parents(".book_wrapper").addClass('reach-end');
 					}
 				}
 
 				if($(this).index()>myindex){
-					$(this).stop().fadeOut();
+					$(this).stop().fadeOut().removeClass("show");
 					// $(this).parents(".book_wrapper").removeClass('reach-end');
 				}
 			})
@@ -130,6 +130,27 @@ function do_pushstate(link){
 function updateScroll(){
 	for ( var i = 0; i < scrollArr.length; i++ ) { 
 		scrollArr[i].update();
+	}
+	$(".book_wrapper.show").each(function(i){
+		$(this).find(".book").attr("data-top",40+i*30)
+	})
+
+	if($(".mobile_show").is(":hidden")){
+		// desktop
+
+		$(".book_wrapper.show .book").each(function(){
+			$(this).removeAttr("style")
+		})
+		
+	}else{
+		//mobile
+
+		$(".book_wrapper.show .book").each(function(){
+			var mytop = $(this).attr("data-top");
+			$(this).css({
+				"top":mytop+"px"
+			})
+		})
 	}
 }
 
@@ -203,12 +224,12 @@ function init_function(){
 				if(mynexttarget){
 					console.log("next")
 					console.log(mynexttarget)
-					$mynexttarget.stop().fadeIn();
+					$mynexttarget.stop().fadeIn().addClass("show");
 					do_pushstate("?id="+mynexttarget);
 					if(mynexttarget==myprevtarget){
 						$p.addClass("noscroll").stop().fadeOut(function(){
 							$p.removeClass("noscroll");
-						});
+						}).removeClass("show")
 					}else{
 						$mynexttarget.find(".scroll_area").scrollTop(0);
 						updateScroll();
@@ -222,8 +243,8 @@ function init_function(){
 					console.log("prev")
 					$p.addClass("noscroll").stop().fadeOut(function(){
 						$p.removeClass("noscroll");
-					});
-					$myprevtarget.stop().fadeIn();
+					}).removeClass("show")
+					$myprevtarget.stop().fadeIn().addClass("show");
 					updateScroll();
 				}
 			}
@@ -246,6 +267,7 @@ function init_function(){
 
 function dosize(){
 
+	
 
 	if($(".mobile_show").is(":hidden")){
 		// desktop
@@ -253,6 +275,7 @@ function dosize(){
 		
 	}else{
 		//mobile
+		updateScroll();
 	}
 }
 

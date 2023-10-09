@@ -36,9 +36,10 @@
   opacity: 1;
   transition: background-color 0.2s linear, opacity 0.2s linear;
   -webkit-transition: background-color 0.2s linear, opacity 0.2s linear;
-  width: 6px;
+  width: 1px;
   /* there must be 'right' or 'left' for ps__rail-y */
-  right: 0;
+  right: 0px;
+  left: 0px;
   top:10px;
   bottom:10px;
   margin: auto;
@@ -56,14 +57,14 @@
 .ps:hover > .ps__rail-x,
 .ps--focus > .ps__rail-x,
 .ps--scrolling-x > .ps__rail-x{
-  background-color: #c4c4c4;
+  background-color: #9fa1a4;
 }
 
 
 .ps:hover > .ps__rail-y:before,
 .ps--focus > .ps__rail-y:before,
 .ps--scrolling-y > .ps__rail-y:before {
-  background-color: #c4c4c4;
+  background-color: #9fa1a4;
 }
 
 .ps .ps__rail-x:hover,
@@ -99,8 +100,8 @@
 
 .ps__thumb-y::before {
   content:"";
-  background-color: #23afff;
-  border-radius: 6px;
+  background-color: #9fa1a4;
+  border-radius: 0px;
   transition: background-color 0.2s linear, width 0.2s ease-in-out;
   -webkit-transition: background-color 0.2s linear, width 0.2s ease-in-out;
   width: 6px;
