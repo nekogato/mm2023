@@ -142,7 +142,7 @@ function updateScroll(){
 		scrollArr[i].update();
 	}
 	$(".book_wrapper.show").each(function(i){
-		$(this).find(".book").attr("data-top",40+i*30)
+		$(this).find(".book").attr("data-top",70+i*30)
 	})
 
 	console.log($(".mobile_show").is(":hidden"))

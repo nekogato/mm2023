@@ -155,10 +155,11 @@ body{
 	left: 0px;
 	width: 100%;
 	height: 100%;
-	z-index: 1;
+	z-index: 99;
 	display: flex;
 	flex-direction: column;
 	justify-content: end;
+	cursor: pointer;
 }
 
 .body_test_humanity .over_btn_wrapper{
@@ -720,6 +721,11 @@ body{
 	height: 100%;
 	display: none;
 	perspective: 500px;
+	pointer-events: none;
+}
+
+.body_user_guide .book_wrapper{
+	pointer-events: auto;
 }
 
 .book_wrapper.active{
@@ -1260,11 +1266,17 @@ body{
 	position: relative;
 }
 
+.project_image_gallery .swiper-slide{
+
+}
+
 .project_image_gallery .bg{
 	padding-bottom: 50%;
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	overflow: hidden;
+	border-radius: 5px;
 }
 
 .project_image_gallery .num{
