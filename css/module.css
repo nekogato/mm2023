@@ -1198,31 +1198,6 @@ body{
 	z-index: 2;
   }
 
-
-
-@media screen and (max-width: 1440px) { 
-
-	.chat_result{
-		padding-bottom: 45%;
-	}
-	
-
-	.chat_result_logo{
-		height: 35px;
-	}
-	
-	.chat_result_content_scroll_wrapper{
-		top:85px;
-	}
-
-}
-
-
-@media screen and (max-width: 1280px) { 
-
-
-}
-
 .book_style4 .book_page_body.headless_book_page {
 	padding-top: 50px;
 }
@@ -1474,6 +1449,30 @@ body{
 }
 .book_style9 .ps__rail-y {
 	z-index: 2;
+}
+
+
+@media screen and (max-width: 1440px) { 
+
+	.chat_result{
+		padding-bottom: 45%;
+	}
+	
+
+	.chat_result_logo{
+		height: 35px;
+	}
+	
+	.chat_result_content_scroll_wrapper{
+		top:85px;
+	}
+
+}
+
+
+@media screen and (max-width: 1280px) { 
+
+
 }
 
 @media screen and (max-width: 1023px) { 
