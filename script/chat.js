@@ -43,16 +43,16 @@ $(document).ready(function() {
 });
 
 function checkChat(){
-    loadresult();
-    // $(".chat_question_wrapper").stop().animate({scrollTop:$(".chat_question_inwrapper").outerHeight()-$(".chat_question_wrapper").height()}, 500, 'swing', function() { 
-    // });
+    //loadresult();
+    $(".chat_question_wrapper").stop().animate({scrollTop:$(".chat_question_inwrapper").outerHeight()-$(".chat_question_wrapper").height()}, 500, 'swing', function() { 
+    });
 
-    // loadmessage();
-    // if($(".chat_answer_wrapper").hasClass("endchat")){
-    //     loadresult();
-    // }else{
-    //     $("#message").focus(); 
-    // }
+    loadmessage();
+    if($(".chat_answer_wrapper").hasClass("endchat")){
+        loadresult();
+    }else{
+        $("#message").focus(); 
+    }
 }
 
 function extractTextWithinBraces(str) {
@@ -87,7 +87,7 @@ const form = document.getElementById('chat-form');
 const mytextInput = document.getElementById('mytext');
 const responseTextarea = document.getElementById('response');
 
-const API_KEY = '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';
+const API_KEY = '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';
 
 var obj = {};
 
@@ -180,6 +180,10 @@ async function loadmessage(){
         if (es.ok) {
             let data = JSON.parse(es.choices[0].message.arguments);
             console.log(data)
+            $(".identity_guess").text(data.identity_guess)
+            $(".identity_reason").text(data.identity_reason)
+            $(".psychological_types_guess").text(data.psychological_types_animal)
+            $(".psychological_types_reason").text(data.psychological_types_reason)
             // data.identity_guess
             // data.identity_reason
             // data.psychological_types_guess
