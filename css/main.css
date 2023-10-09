@@ -180,6 +180,15 @@ a{
 	width: 80px;
 }
 
+.top_menu img{
+	width: 100%;
+}
+
+.top_menu::after{
+	content:"";
+	position: absolute;
+}
+
 .body_test_humanity .header1{
 	top:-100%;
 }
@@ -553,7 +562,7 @@ a{
 	
 body{
 	font-size: calc(12px + 0.25vw);
-	line-height:1.7em;
+	line-height:1.5em;
 	}
 	
 .text1, h1{
@@ -563,27 +572,27 @@ body{
 	
 .text2, h2{
 	font-size: calc(12px + 1.8vw);
-	line-height:1.5em;
+	line-height:1.3em;
 	}	
 	
 .text3, h3{
 	font-size: calc(12px + 1.4vw);
-	line-height:1.5em;
+	line-height:1.4em;
 	}	
 	
 .text4, h4{
 	font-size: calc(12px + 1.0vw);
-	line-height:1.5em;
+	line-height:1.4em;
 	}	
 	
 .text5, h5{
 	font-size: calc(12px + 0.8vw);
-	line-height:1.7em;
+	line-height:1.5em;
 	}	
 	
 .text6, h6{
-	font-size: calc(12px + 0.6vw);
-	line-height:1.7em;
+	font-size: calc(12px + 0.4vw);
+	line-height:1.5em;
 	}		
 	
 .text7{
@@ -702,6 +711,10 @@ h1:first-child,h2:first-child,h3:first-child,h4:first-child,h5:first-child,h6:fi
 .center_text{
 	text-align:center;
 	}	
+
+.left_text{
+	text-align:left;
+}
 
 .right_text{
 	text-align:right;

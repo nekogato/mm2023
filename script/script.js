@@ -1,4 +1,5 @@
 var scrollArr = [];
+var swiperArr = [];
 
 if (!("ontouchstart" in document.documentElement)) {
 document.documentElement.className += " no-touch";
@@ -65,8 +66,15 @@ function init_event(){
 		var mytarget = $(this).attr("data-target");
 		var $mytarget = $("[data-id='"+mytarget+"']");
 		$mytarget.stop().fadeIn().addClass("show");
+		$(window).resize();
 		$mytarget.find(".scroll_area").scrollTop(0);
 	})
+
+	$(".book_leave_btn").click(function(){
+		var $mytarget = $(this).parents(".book_wrapper");
+		$mytarget.stop().fadeOut().removeClass("show");
+	})
+	
 
 	$(".dropdown_content a").click(function(){
 		var myhref = $(this).attr("href");
@@ -84,6 +92,7 @@ function init_event(){
 			$("body").removeClass("body_test_humanity")
 
 			$mytarget.stop().fadeIn().addClass("show");;
+			$(window).resize();
 			$mytarget.find(".scroll_area").scrollTop(0);
 			
 			// find book index and hide / show
@@ -93,6 +102,7 @@ function init_event(){
 				if($(this).index()<myindex){
 					if($(this).attr("data-prev") !== $(this).attr("data-next")){
 						$(this).stop().fadeIn().addClass("show");
+						$(window).resize();
 						$(this).find(".scroll_area").scrollTop($(this).find(".scroll_area > *").outerHeight());
 						// $(this).parents(".book_wrapper").addClass('reach-end');
 					}
@@ -156,6 +166,25 @@ function updateScroll(){
 
 
 function init_function(){
+
+	
+
+	$(".project_image_gallery").each(function(i){
+		var swiper = new Swiper($(this).find(".swiper-container"), {
+            speed: 900,
+            loop: true,
+            slidesPerView: 1,
+            autoplay: {
+                delay: 20000,
+                disableOnInteraction: false
+            },
+			pagination: {
+				el: $(this).find(".num"),
+				clickable: true,
+			}
+        });
+		swiperArr.push(swiper)
+	})
 
 	$(".chat_result_box").each(function(i){
 		$(this).find(".icon_cover").css({
@@ -225,6 +254,7 @@ function init_function(){
 					console.log("next")
 					console.log(mynexttarget)
 					$mynexttarget.stop().fadeIn().addClass("show");
+					$(window).resize();
 					do_pushstate("?id="+mynexttarget);
 					if(mynexttarget==myprevtarget){
 						$p.addClass("noscroll").stop().fadeOut(function(){
@@ -245,6 +275,7 @@ function init_function(){
 						$p.removeClass("noscroll");
 					}).removeClass("show")
 					$myprevtarget.stop().fadeIn().addClass("show");
+					$(window).resize();
 					updateScroll();
 				}
 			}
@@ -267,7 +298,6 @@ function init_function(){
 
 function dosize(){
 
-	
 
 	if($(".mobile_show").is(":hidden")){
 		// desktop
@@ -276,6 +306,13 @@ function dosize(){
 	}else{
 		//mobile
 		updateScroll();
+	}
+	$(".book_project_info").each(function(){
+		$(this).height($(this).parents(".book_page_scroll_wrapper").outerHeight()-100);
+	})
+	
+	for ( var i = 0; i < swiperArr.length; i++ ) { 
+		swiperArr[i].update();
 	}
 }
 
