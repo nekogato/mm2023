@@ -1004,7 +1004,6 @@ body{
 .book_style0 .boxed_2023 {
 	border-color: #000;
 }
-
 .book_style1 .boxed_2023 {
 	border-color: #9fa1a4;
 }
@@ -1025,6 +1024,9 @@ body{
 	padding: 25px 0 10px 0;
 	border-bottom: 1px solid #9fa1a4;
 	flex-basis: 100%;
+}
+.book_style4 .book_section_head {
+	border-color: #000;
 }
 .book_profile {
 	width: 33%;
