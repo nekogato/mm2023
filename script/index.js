@@ -355,18 +355,17 @@ function init() {
     });
 
     $(".chat_answer_submit_btn").on( "click", function() {
-        checkCheck();
-        // $("body").addClass("body_test_humanity_result_loading")
-        // setTimeout(function(){
-        //     for ( var i = 0; i < objArr.length; i++ ) { 
-        //         gsap.to(objArr[i].material, {opacity: 1, duration: 3});
-        //         gsap.to(objArr2[i].material, {opacity: 0, duration: 3});
-        //     }
-        // },3000)
-        // setTimeout(function(){
-        //     $("body").removeClass("body_test_humanity_result_loading")
-        //     $("body").addClass("body_test_humanity_result_done")
-        // },9000)
+        $("body").addClass("body_test_humanity_result_loading")
+        setTimeout(function(){
+            for ( var i = 0; i < objArr.length; i++ ) { 
+                gsap.to(objArr[i].material, {opacity: 1, duration: 3});
+                gsap.to(objArr2[i].material, {opacity: 0, duration: 3});
+            }
+        },3000)
+        setTimeout(function(){
+            $("body").removeClass("body_test_humanity_result_loading")
+            $("body").addClass("body_test_humanity_result_done")
+        },9000)
     });
 
     $(".leave_chat_btn").on( "click", function() {
@@ -626,7 +625,7 @@ function animate() {
         
     }
 
-	// requestAnimationFrame( animate );
+	requestAnimationFrame( animate );
 	controls.update();
 	renderer.render( scene, camera );
 
