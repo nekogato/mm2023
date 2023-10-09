@@ -1,3 +1,5 @@
+var API_KEY;
+
 function loadresult(){
     $("body").addClass("body_test_humanity_result_loading")
     setTimeout(function(){
@@ -13,6 +15,14 @@ function loadresult(){
 }
 
 $(document).ready(function() {
+
+    $.ajax({
+        type: "GET",
+        url: "secret.php",
+        success: function(response) {
+            API_KEY = response;
+        }
+    });
 
     // Handle form submission using AJAX
     $("#submitForm").submit(function(e) {
@@ -87,7 +97,6 @@ const form = document.getElementById('chat-form');
 const mytextInput = document.getElementById('mytext');
 const responseTextarea = document.getElementById('response');
 
-const API_KEY = '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';
 
 var obj = {};
 
@@ -178,8 +187,18 @@ async function loadmessage(){
         );
         
         if (es.ok) {
-            let data = JSON.parse(es.choices[0].message.arguments);
+            const myjson = await es.json();
+            var str = myjson.choices[0].message.function_call.arguments;
+            str=str.replace(',\n}', '}');
+            str=str.replace('\n', '');
+
+            console.log(str)
+            var extractedText = "{"+extractTextWithinBraces(str)+"}";
+            console.log(extractedText)
+            var data = JSON.parse(extractedText)
             console.log(data)
+
+
             $(".identity_guess").text(data.identity_guess)
             $(".identity_reason").text(data.identity_reason)
             $(".psychological_types_guess").text(data.psychological_types_animal)
