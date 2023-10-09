@@ -1045,7 +1045,7 @@ body{
 .book_artist_desc {
 	width: 67%;
 	flex-basis: 67%;
-    padding-left: 50px;
+    padding-left: 25px;
     box-sizing: border-box;
 	/* overflow: hidden; */
     margin-top: 25px;
@@ -1127,6 +1127,9 @@ body{
 	padding-top: 0px;
 	padding-bottom: 10px;
 }
+.book_style2 .book_page_body:last-child {
+	padding-bottom: 25px;
+}
 
 .book_style2 .ps__rail-y {
 	z-index: 2;
@@ -1148,12 +1151,12 @@ body{
 	cursor: pointer;
 }
 
-.main_ex_text:hover .img {
-	opacity: 0.5;
+.main_ex_text[data-target]:hover .img {
+	/* opacity: 0.5; */
 	transform: translate(-50%, -50%) scale(1.1);
 }
-.main_ex_text:hover .cover_title_top,
-.main_ex_text:hover .cover_title_bottom {
+.main_ex_text[data-target]:hover .cover_title_top,
+.main_ex_text[data-target]:hover .cover_title_bottom {
 	color: #FFFFFF;
 	transition: color 250ms ease-out;
 }
@@ -1764,7 +1767,6 @@ body{
 	.book_profile {
 		display: flex;
 		flex-basis: 100%;
-		margin-bottom: 25px;
 	}
 	.book_section_head {
 		position: absolute;
@@ -1785,13 +1787,10 @@ body{
 		flex-direction: column;
 		justify-content: space-between;
 	}
-
-	.book_artist_mobile_info_top{
-		margin-left: 25px;
-	}
 	.book_artist_name {
 		margin-left: 25px;
 		box-sizing: border-box;
+		margin-top: auto;
 	}
 	.book_artist_desc {
 		flex-basis: 100%;
@@ -1881,6 +1880,21 @@ body{
 		width: 81%;
 		padding-bottom: 54%;
 	}
+
+	h4 {
+		font-size: 5vw;
+	}
+
+	.text6.chi_text {
+		font-size: 3vw;
+	}
+
+	.book_style2 .text6 {
+		font-size: 2.5vw;
+	}
+	.book_style2 .text7 {
+		font-size: 2vw;
+	}
 }
 
 @media screen and (max-width: 600px) { 
@@ -1893,7 +1907,7 @@ body{
 	.book_page_body.main_book_page_body {
 		padding: 0 20px;
 	}
-	
+
 	.book_style2 .main_ex_text.left_text {
 		padding: 20px 0 40px 0;
 		margin-top: 25px;
@@ -1906,6 +1920,19 @@ body{
 	}
 	.cover_title_bottom{
 		bottom: 20px;
+	}
+
+	h4 {
+		font-size: calc(12px + 1.0vw);
+	}
+	.text6.chi_text {
+		font-size: calc(12px + 0.3vw);
+	}
+	.book_style2 .text6 {
+		font-size: calc(12px + 0.3vw);
+	}
+	.book_style2 .text7 {
+		font-size: calc(12px);
 	}
 
 	/* .book_style2 .col6 + .col6{
