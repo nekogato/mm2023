@@ -650,18 +650,18 @@ function animate() {
         letter3.rotation.y %= Math.PI*2;
 
         letter1.position.x += ( 0 - letter1.position.x ) * .05;
-        letter1.position.y += ( 3.7 - letter1.position.y ) * .05;
+        letter1.position.y += ( 4.1 - letter1.position.y ) * .05;
         letter2.position.x += ( 0 - letter2.position.x ) * .05;
         letter2.position.y += ( 0 - letter2.position.y ) * .05;
         letter3.position.x += ( 0 - letter3.position.x ) * .05;
-        letter3.position.y += ( -3.7 - letter3.position.y ) * .05;
+        letter3.position.y += ( -4.2 - letter3.position.y ) * .05;
 
-        letter1.scale.x += ( 0.7 - letter1.scale.x ) * .05;
-        letter1.scale.y += ( 0.7 - letter1.scale.y ) * .05;
-        letter2.scale.x += ( 0.7 - letter2.scale.x ) * .05;
-        letter2.scale.y += ( 0.7 - letter2.scale.y ) * .05;
-        letter3.scale.x += ( 0.7 - letter3.scale.x ) * .05;
-        letter3.scale.y += ( 0.7 - letter3.scale.y ) * .05;
+        letter1.scale.x += ( 0.8 - letter1.scale.x ) * .05;
+        letter1.scale.y += ( 0.8 - letter1.scale.y ) * .05;
+        letter2.scale.x += ( 0.8 - letter2.scale.x ) * .05;
+        letter2.scale.y += ( 0.8 - letter2.scale.y ) * .05;
+        letter3.scale.x += ( 0.8 - letter3.scale.x ) * .05;
+        letter3.scale.y += ( 0.8 - letter3.scale.y ) * .05;
 
 	}
    
