@@ -15,8 +15,6 @@ var addElement2 = function ( myid,groupid,group, src, x, y, z,cubeTexture, rough
 
 
     const GLTFLoader = new THREE.GLTFLoader();
-    const dracoLoader = new THREE.DRACOLoader();
-    dracoLoader.setDecoderPath( './script/draco/' );
     GLTFLoader.setDRACOLoader( dracoLoader );
 
     
@@ -65,8 +63,6 @@ var addElement2 = function ( myid,groupid,group, src, x, y, z,cubeTexture, rough
 var addElement = function ( myid,groupid,group, src, x, y, z,cubeTexture, roughnessTexture ) {
 
     const GLTFLoader = new THREE.GLTFLoader();
-    const dracoLoader = new THREE.DRACOLoader();
-    dracoLoader.setDecoderPath( './script/draco/' );
     GLTFLoader.setDRACOLoader( dracoLoader );
 
     GLTFLoader.load(src, function ( gltf ) {
@@ -608,29 +604,68 @@ function doletter3animation(){
 function animate() {
     camera.position.y += ( - mouseY/10 - camera.position.y ) * .05;
     //camera.lookAt( scene.position );
-   
-    if($("body").hasClass("body_test_humanity") || $("body").hasClass("body_user_guide")){
-        letter1.position.y += ( 0 - letter1.position.y ) * .05;
+
+    if($(".mobile_show").is(":hidden")){
+		// desktop
+        if($("body").hasClass("body_test_humanity") || $("body").hasClass("body_user_guide")){
+            letter1.position.y += ( 0 - letter1.position.y ) * .05;
+            letter1.rotation.y +=0.02;
+            // if(letter1.rotation.y > 2){
+            //     letter1.rotation.y -= 2;
+            // }
+            letter1.rotation.y %= Math.PI*2;
+            letter2.position.y += ( 0 - letter2.position.y ) * .05;
+            letter2.rotation.y +=0.02;
+            letter2.rotation.y %= Math.PI*2;
+            letter3.position.y += ( 0 - letter3.position.y ) * .05;
+            letter3.rotation.y +=0.02;
+            letter3.rotation.y %= Math.PI*2;
+        }else{
+            letter1.position.y += ( -1 - letter1.position.y ) * .05;
+            letter1.rotation.y += ( 2 * Math.PI * (30 / 360) - letter1.rotation.y ) * .05;
+            letter2.position.y += ( -1 - letter2.position.y ) * .05;
+            letter2.rotation.y += ( 2 * Math.PI * (30 / 360) - letter2.rotation.y ) * .05;
+            letter3.position.y += ( -1 - letter3.position.y ) * .05;
+            letter3.rotation.y += ( 2 * Math.PI * (30 / 360) - letter3.rotation.y ) * .05;
+            
+        }
+		
+        letter1.position.x += ( -6 - letter1.position.x ) * .05;
+        letter2.position.x += ( 0 - letter2.position.x ) * .05;
+        letter3.position.x += ( 6 - letter3.position.x ) * .05;
+
+        letter1.scale.x += ( 1 - letter1.scale.x ) * .05;
+        letter1.scale.y += ( 1 - letter1.scale.y ) * .05;
+        letter2.scale.x += ( 1 - letter2.scale.x ) * .05;
+        letter2.scale.y += ( 1 - letter2.scale.y ) * .05;
+        letter3.scale.x += ( 1 - letter3.scale.x ) * .05;
+        letter3.scale.y += ( 1 - letter3.scale.y ) * .05;
+	}else{
+		//mobile
         letter1.rotation.y +=0.02;
-        // if(letter1.rotation.y > 2){
-        //     letter1.rotation.y -= 2;
-        // }
         letter1.rotation.y %= Math.PI*2;
-        letter2.position.y += ( 0 - letter2.position.y ) * .05;
         letter2.rotation.y +=0.02;
         letter2.rotation.y %= Math.PI*2;
-        letter3.position.y += ( 0 - letter3.position.y ) * .05;
         letter3.rotation.y +=0.02;
         letter3.rotation.y %= Math.PI*2;
-    }else{
-        letter1.position.y += ( -1 - letter1.position.y ) * .05;
-        letter1.rotation.y += ( 2 * Math.PI * (30 / 360) - letter1.rotation.y ) * .05;
-        letter2.position.y += ( -1 - letter2.position.y ) * .05;
-        letter2.rotation.y += ( 2 * Math.PI * (30 / 360) - letter2.rotation.y ) * .05;
-        letter3.position.y += ( -1 - letter3.position.y ) * .05;
-        letter3.rotation.y += ( 2 * Math.PI * (30 / 360) - letter3.rotation.y ) * .05;
-        
-    }
+
+        letter1.position.x += ( 0 - letter1.position.x ) * .05;
+        letter1.position.y += ( 4.1 - letter1.position.y ) * .05;
+        letter2.position.x += ( 0 - letter2.position.x ) * .05;
+        letter2.position.y += ( 0 - letter2.position.y ) * .05;
+        letter3.position.x += ( 0 - letter3.position.x ) * .05;
+        letter3.position.y += ( -4.2 - letter3.position.y ) * .05;
+
+        letter1.scale.x += ( 0.8 - letter1.scale.x ) * .05;
+        letter1.scale.y += ( 0.8 - letter1.scale.y ) * .05;
+        letter2.scale.x += ( 0.8 - letter2.scale.x ) * .05;
+        letter2.scale.y += ( 0.8 - letter2.scale.y ) * .05;
+        letter3.scale.x += ( 0.8 - letter3.scale.x ) * .05;
+        letter3.scale.y += ( 0.8 - letter3.scale.y ) * .05;
+
+	}
+   
+    
 
 	requestAnimationFrame( animate );
 	controls.update();

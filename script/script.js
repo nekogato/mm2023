@@ -76,7 +76,7 @@ function init_event(){
 	})
 	
 
-	$(".dropdown_content a").click(function(){
+	$(".dropdown_content a, .mobile_logo").click(function(){
 		var myhref = $(this).attr("href");
 		$(".dropdown_btn").removeClass("close");
 		$("body").removeClass("openmenu");
@@ -145,7 +145,6 @@ function updateScroll(){
 		$(this).find(".book").attr("data-top",70+i*30)
 	})
 
-	console.log($(".mobile_show").is(":hidden"))
 	if($(".mobile_show").is(":hidden")){
 		// desktop
 
@@ -247,7 +246,7 @@ function init_function(){
 		// Add a wheel event listener to the scrollable container
 		// $(this)[0].addEventListener('wheel', (event) => {
 		["wheel", "touchmove"].forEach( (eventType) => $(this)[0].addEventListener(eventType, (event) => {
-			if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 ) && (event.deltaY == undefined || event.deltaY > 0) && (true || !$p.hasClass('reach-end'))) {
+			if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 || $this.find(">*").height() - $this.height() < 30) && (event.deltaY == undefined || event.deltaY > 0) && (true || !$p.hasClass('reach-end'))) {
 				$p.addClass("reach-end")
 				if(mynexttarget){
 					$mynexttarget.stop().fadeIn().addClass("show");
