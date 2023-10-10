@@ -280,6 +280,10 @@ a{
 	z-index: 999;
 }
 
+.mobile_logo img{
+	height: 100%;
+}
+
 
 .dropdown{
 	-webkit-transition: all 1.2s ease;

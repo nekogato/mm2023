@@ -76,7 +76,7 @@ function init_event(){
 	})
 	
 
-	$(".dropdown_content a").click(function(){
+	$(".dropdown_content a, .mobile_logo").click(function(){
 		var myhref = $(this).attr("href");
 		$(".dropdown_btn").removeClass("close");
 		$("body").removeClass("openmenu");

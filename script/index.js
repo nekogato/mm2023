@@ -642,6 +642,12 @@ function animate() {
         letter3.scale.y += ( 1 - letter3.scale.y ) * .05;
 	}else{
 		//mobile
+        letter1.rotation.y +=0.02;
+        letter1.rotation.y %= Math.PI*2;
+        letter2.rotation.y +=0.02;
+        letter2.rotation.y %= Math.PI*2;
+        letter3.rotation.y +=0.02;
+        letter3.rotation.y %= Math.PI*2;
 
         letter1.position.x += ( 0 - letter1.position.x ) * .05;
         letter1.position.y += ( 3.7 - letter1.position.y ) * .05;
