@@ -1,3 +1,3 @@
 <?php
-echo "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";
+echo "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";
 ?>
