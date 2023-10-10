@@ -655,16 +655,33 @@ body{
 }
 
 .bottom_arrow_btn{
-	position: absolute;
-	bottom:50px;
+	position: fixed;
+	bottom:20px;
 	left: 0px;
 	right: 0px;
 	margin: auto;
 	text-align: center;
 	z-index: 1;
 	mix-blend-mode: difference;
-	color:#fff;
+	color:#000;
 	cursor: pointer;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	background-color: #fff;
+	border-radius: 999px;
+}
+
+.leave_user_guide_btn{
+	-webkit-transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0s; 
+    transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0s; 
+	opacity: 0;
+	pointer-events: none;
+}
+
+.body_user_guide .leave_user_guide_btn{
+	opacity: 1;
+	pointer-events: auto;
 }
 
 .blur_bg{
@@ -1390,6 +1407,7 @@ body{
 	background-size: cover;
 	overflow: hidden;
 	border-radius: 15px;
+	display: block;
 }
 
 .project_image_gallery .num{
@@ -1894,6 +1912,11 @@ body{
 	}
 	.book_style2 .text7 {
 		font-size: 2vw;
+	}
+
+	.bottom_arrow_btn{
+		bottom:-25px;
+		line-height: 28px;
 	}
 }
 

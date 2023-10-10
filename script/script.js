@@ -145,7 +145,6 @@ function updateScroll(){
 		$(this).find(".book").attr("data-top",70+i*30)
 	})
 
-	console.log($(".mobile_show").is(":hidden"))
 	if($(".mobile_show").is(":hidden")){
 		// desktop
 
