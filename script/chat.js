@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     $.ajax({
         type: "GET",
-        url: "secret.php",
+        url: "key.php",
         success: function(response) {
             API_KEY = response;
         }
