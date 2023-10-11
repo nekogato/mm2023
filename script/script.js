@@ -141,19 +141,33 @@ function updateScroll(){
 	for ( var i = 0; i < scrollArr.length; i++ ) { 
 		scrollArr[i].update();
 	}
-	$(".book_wrapper.show").each(function(i){
-		$(this).find(".book").attr("data-top",70+i*30)
+
+	$(".book_wrapper.show .book").each(function(){
+		$(this).removeAttr("style")
 	})
 
 	if($(".mobile_show").is(":hidden")){
 		// desktop
 
+		const rELength = $(".book_wrapper.show").length;
+		$(".book_wrapper.show").each(function(i){
+			$(this).find(".book").attr("data-bottom", 0 + (rELength - i) * 50)
+		})
+
 		$(".book_wrapper.show .book").each(function(){
-			$(this).removeAttr("style")
+			var mybottom = $(this).attr("data-bottom");
+			$(this).css({
+				"bottom": mybottom+"px",
+				// "right": mybottom+"px"
+			})
 		})
 		
 	}else{
 		//mobile
+
+		$(".book_wrapper.show").each(function(i){
+			$(this).find(".book").attr("data-top",70+i*30)
+		})
 
 		$(".book_wrapper.show .book").each(function(){
 			var mytop = $(this).attr("data-top");
@@ -246,8 +260,8 @@ function init_function(){
 		// Add a wheel event listener to the scrollable container
 		// $(this)[0].addEventListener('wheel', (event) => {
 		["wheel", "touchmove"].forEach( (eventType) => $(this)[0].addEventListener(eventType, (event) => {
-			if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 || $this.find(">*").height() - $this.height() < 30) && (event.deltaY == undefined || event.deltaY > 0) && (true || !$p.hasClass('reach-end'))) {
-				$p.addClass("reach-end")
+			if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 || $this.find(">*").height() - $this.height() < 30) && (event.deltaY == undefined || event.deltaY > 0) ) {
+				// $p.addClass("reach-end")
 				if(mynexttarget){
 					$mynexttarget.stop().fadeIn().addClass("show");
 					$(window).resize();
@@ -263,7 +277,7 @@ function init_function(){
 				}
 			}
 			if (($this.scrollTop() <=0) && (event.deltaY == undefined || event.deltaY < 0)) {
-				$p.addClass("reach-start")
+				// $p.addClass("reach-start")
 				if(myprevtarget){
 					do_pushstate("?id="+myprevtarget);
 					$p.addClass("noscroll").stop().fadeOut(function(){
