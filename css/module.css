@@ -1054,6 +1054,7 @@ body{
 	width: 100%;
 	padding-bottom: 133%;
 	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0.25);
 	background-size: cover;
 	background-position-x: center;
 	background-position-y: center;
@@ -1294,7 +1295,7 @@ body{
 
 .book_style4{
 	position: absolute;
-	width: 75%;
+	width: 65%;
 	margin: auto;
 	display: flex;
 	align-items: center;  
@@ -1303,13 +1304,13 @@ body{
 	top:10%;
 	bottom: 0%;
 	color:#000;
-	min-width: 800px;
+	min-width: 860px;
 	filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
 }
 
 .book_style4 .book_page_scroll_wrapper {
 	width: 100%;
-	padding-bottom: 55%;
+	padding-bottom: 50%;
 	position: relative;
 	background-color: #ef5a24;
 	border-radius: 15px;
@@ -1663,6 +1664,30 @@ body{
 	color: #9fa1a4;
 }
 
+.book_style0,
+.book_style1,
+.book_style2,
+.book_style3,
+.book_style4,
+.book_style5,
+.book_style6,
+.book_style7,
+.book_style8,
+.book_style9 {
+	/* width: auto; */
+	/* max-width: none; */
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.book_wrapper.reach-end .book {
+	-webkit-transition: bottom 0.3s ease-out, right 0.3 ease-out;
+	transition: bottom 0.3s ease-out, right 0.3 ease-out;
+	/* -webkit-transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1) 0s;  */
+    /* transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1) 0s;  */
+}
 
 @media screen and (max-width: 1440px) { 
 
@@ -1910,7 +1935,7 @@ body{
 	.book_style2 .text6 {
 		font-size: 2.5vw;
 	}
-	.book_style2 .text7 {
+	.book_style2 .main_ex_text .text7 {
 		font-size: 2vw;
 	}
 
