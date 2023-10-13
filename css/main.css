@@ -133,6 +133,7 @@ a{
 	left: 0px;
 	width: 50%;
 	z-index: 10;
+	max-width: 900px;
 }
 
 .header1 .g_wrapper{
@@ -155,6 +156,7 @@ a{
 	right: 0px;
 	width: 50%;
 	z-index: 10;
+	max-width: 900px;
 }
 
 .header2 .g_wrapper{
@@ -197,7 +199,7 @@ a{
 	width: 20px;
 	height: 20px;
 	border-radius: 999px;
-	background-color: #fff;
+	background-color: #9fa1a4;
 	transform: scale(1);
 }
 
@@ -228,7 +230,7 @@ a{
 	position: absolute;
 	width: 100%;
 	height: 1px;
-	background-color: #fff;;
+	background-color: #9fa1a4;;
 	top:0px;
 	right:0px;
 	bottom:0px;
@@ -242,7 +244,7 @@ a{
 	position: absolute;
 	width: 100%;
 	height: 1px;
-	background-color: #fff;;
+	background-color: #9fa1a4;;
 	top:0px;
 	right:0px;
 	bottom:0px;

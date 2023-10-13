@@ -749,7 +749,7 @@ body{
 	pointer-events: none;
 	overflow: hidden;
 	z-index: 3;
-	display: none;
+	filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.5));
 }
 
 .scrolltonext.show{
@@ -779,10 +779,15 @@ body{
 }
 
 .scrolltonext .text::before{
-	content:"next page 下一頁"
+	content:"Next Page 下一頁"
 }
 
-.scrolltonext.ok .text::before{
+.book_style4 .scrolltonext .text::before{
+	content:"Close Page 關閉"
+}
+
+
+.scrolltonext.ok .text::before, .book_style4 .scrolltonext.ok .text::before{
 	content:"OK"
 }
 
