@@ -572,6 +572,34 @@ body{
 }
 
 
+
+
+.chat_result_box .chat_hover_text{
+	position: absolute;
+	left: 30px;
+	right: 30px;
+	top:0px;
+	bottom: 0px;
+	margin: auto;
+	overflow: hidden;
+	opacity: 0;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+}
+
+.chat_result_box .chat_hover_text div{
+	text-align: center;
+	width:80%;
+	margin: auto;
+}
+
+.chat_result_box:hover .chat_hover_text{
+	opacity: 1;
+}
+
+
+
 .chat_result_box .icon_cover_wrapper{
 	position: absolute;
 	left: 30px;
@@ -615,6 +643,14 @@ body{
 
 .chat_result_identity_icon_human{
 	background-image: url(../images/icon_human.png);
+}
+
+.chat_result_identity_icon_robot{
+	background-image: url(../images/icon_ghost.png);
+}
+
+.chat_result_identity_icon_animal{
+	background-image: url(../images/icon_animal.png);
 }
 
 .identity_guess{
