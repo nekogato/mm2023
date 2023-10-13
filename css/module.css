@@ -2067,6 +2067,10 @@ a:hover .boxed_registration {
 		bottom:-25px;
 		line-height: 28px;
 	}
+
+	.scrolltonext{
+		display: none;
+	}
 }
 
 @media screen and (max-width: 600px) { 
@@ -2110,4 +2114,5 @@ a:hover .boxed_registration {
 	/* .book_style2 .col6 + .col6{
 		margin-top: 40px;
 	} */
+
 }
