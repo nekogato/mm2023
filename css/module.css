@@ -2068,9 +2068,14 @@ a:hover .boxed_registration {
 		line-height: 28px;
 	}
 
-	.scrolltonext{
-		display: none;
+	.reach-end .scrolltonext{
+		opacity: 1;
+		pointer-events: all;
 	}
+
+	.book_page_wrapper {
+		padding-bottom: 50px;
+	  }
 }
 
 @media screen and (max-width: 600px) { 
