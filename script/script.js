@@ -178,6 +178,7 @@ function updateScroll(){
 	}
 }
 
+var scrolltimer;
 
 function init_function(){
 
@@ -261,8 +262,38 @@ function init_function(){
 		// $(this)[0].addEventListener('wheel', (event) => {
 		["wheel", "touchmove"].forEach( (eventType) => $(this)[0].addEventListener(eventType, (event) => {
 			if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 || $this.find(">*").height() - $this.height() < 30) && (event.deltaY == undefined || event.deltaY > 0) ) {
+				clearTimeout(scrolltimer);
 				// $p.addClass("reach-end")
 				if(mynexttarget){
+					// $p.find(".scrolltonext").addClass("show")
+					// var progress = parseInt($p.find(".progress").attr("data-progress"));
+					// progress+=event.deltaY/5;
+					// $p.find(".progress").attr("data-progress",progress)
+					// scrolltimer = setTimeout(function(){
+					// 	$p.find(".scrolltonext").removeClass("show")
+					// },300)
+					
+					// if(parseInt($p.find(".scrolltonext .progress").attr("data-progress"))>=parseInt($p.find(".scrolltonext").width())){
+					// 	$p.find(".scrolltonext").addClass("ok")
+					
+					// 	$mynexttarget.stop().fadeIn(function(){
+					// 		$p.find(".scrolltonext").removeClass("show")
+					// 		$p.find(".progress").attr("data-progress",0)
+					// 		$p.find(".progress").css("width","0px")
+					// 		$p.find(".scrolltonext").removeClass("ok")
+					// 	}).addClass("show");
+					// 	$(window).resize();
+					// 	do_pushstate("?id="+mynexttarget);
+					// 	if(mynexttarget==myprevtarget){
+					// 		$p.addClass("noscroll").stop().fadeOut(function(){
+					// 			$p.removeClass("noscroll");
+					// 		}).removeClass("show")
+					// 	}else{
+					// 		$mynexttarget.find(".scroll_area").scrollTop(0);
+					// 		updateScroll();
+					// 	}
+					// }
+
 					$mynexttarget.stop().fadeIn().addClass("show");
 					$(window).resize();
 					do_pushstate("?id="+mynexttarget);
