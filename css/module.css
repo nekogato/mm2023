@@ -1575,6 +1575,42 @@ body{
 	font-size: calc(8px + 0.25vw);
 	line-height: 1.5;
 }
+a .boxed_registration {
+	color: rgb(159, 161, 164);
+}
+
+a:hover .boxed_registration {
+	color: rgb(0, 0, 0);
+	opacity: 1;
+}
+.boxed_registration {
+	margin-top: 5px;
+    border: 1px solid;
+    padding: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.registration_note {
+	padding-bottom: 10px;
+	font-size: calc(8px + 0.1vw);
+    line-height: 1.5;
+}
+
+.registration_cta {
+	width: 100%;
+    border-top: 1px solid;
+    padding-top: 10px;
+    position: relative;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+.registration_cta::after {
+	content: "→";
+    position: absolute;
+	right: 0;
+}
 
 .book_style8 .ps__rail-y {
 	z-index: 2;
