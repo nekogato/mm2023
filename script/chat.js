@@ -8,10 +8,6 @@ function loadresult(){
             gsap.to(objArr2[i].material, {opacity: 0, duration: 3});
         }
     },0)
-    setTimeout(function(){
-        $("body").removeClass("body_test_humanity_result_loading")
-        $("body").addClass("body_test_humanity_result_done")
-    },1000)
 }
 
 $(document).ready(function() {
@@ -26,6 +22,7 @@ $(document).ready(function() {
 
     // Handle form submission using AJAX
     $("#submitForm").submit(function(e) {
+        console.log(e)
         e.preventDefault(); // Prevent the default form submission
 
         $.ajax({
@@ -33,8 +30,9 @@ $(document).ready(function() {
             url: "submit.php",
             data: $(this).serialize(), // Serialize form data
             success: function(response) {
+                console.log(response)
                 // Display the result in the "result" div
-                $("#result").html(response);
+                $(".share_result_btn").attr("href",response);
             }
         });
     });
@@ -113,7 +111,7 @@ async function loadmessage(){
         $(".chat_answer_wrapper").addClass("startchat")
         message="開始";
     }else if($(".chat_answer_wrapper").hasClass("endchat")){
-        message = "請再次顯示更詳細的「結果」";
+        message = "請把「結果」用更詳細的文字寫出來，包括1)你認為我是人類還是機器，2)我是人類或機器的理由，3)你認為我是哪一種心理類型，4)請用一種動物來代表這種心理類型，5)你認為我是這種心理類型的理由。";
     }else{
         message = $('#message').val();
     };
@@ -201,8 +199,20 @@ async function loadmessage(){
 
             $(".identity_guess").text(data.identity_guess)
             $(".identity_reason").text(data.identity_reason)
-            $(".psychological_types_guess").text(data.psychological_types_animal)
+            $(".psychological_types_guess").text(data.psychological_types_guess)
+            $(".psychological_types_animal").text(data.psychological_types_animal)
             $(".psychological_types_reason").text(data.psychological_types_reason)
+
+            $("#data_identity_guess").val(data.identity_guess)
+            $("#data_identity_reason").val(data.identity_reason)
+            $("#data_psychological_types_guess").val(data.psychological_types_guess)
+            $("#data_psychological_types_animal").val(data.psychological_types_animal)
+            $("#data_psychological_types_reason").val(data.psychological_types_reason)
+            $("#submitForm").submit();
+
+            $("body").removeClass("body_test_humanity_result_loading")
+            $("body").addClass("body_test_humanity_result_done")
+            
             // data.identity_guess
             // data.identity_reason
             // data.psychological_types_guess
@@ -234,17 +244,20 @@ async function loadmessage(){
         while (true) {
             const res = await reader?.read();
             if (res?.done) {
-            let text = $(".chat_question_item_left:last").text();
-            $(".chat_question_item_left:last").removeClass("typing_text");
-            messagesArr.push({ role: "assistant", content: text });
-            //sessionStorage.setItem("bot-message",JSON.stringify(messages));
-            $("body").removeClass("loading_message");
-            console.log(text, text.includes("遊戲結束"))
-            if(text.includes("遊戲結束")){
-                $(".chat_answer_wrapper").removeClass("startchat")
-                $(".chat_answer_wrapper").addClass("endchat")
-            }
-            break;
+                let text = $(".chat_question_item_left:last").text();
+                $(".chat_question_item_left:last").removeClass("typing_text");
+                messagesArr.push({ role: "assistant", content: text });
+                //sessionStorage.setItem("bot-message",JSON.stringify(messages));
+                $("body").removeClass("loading_message");
+                if(text.includes("遊戲結束")){
+                    $(".chat_answer_wrapper").removeClass("startchat")
+                    $(".chat_answer_wrapper").addClass("endchat")
+                }
+                if(messagesArr.length >20){
+                    $(".chat_answer_wrapper").removeClass("startchat")
+                    $(".chat_answer_wrapper").addClass("endchat")
+                }
+                break;
             }
             const jsonStrings = res?.value.match(/data: (.*)\n\n/g);
 

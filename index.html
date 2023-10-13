@@ -189,6 +189,7 @@
                                             <div class="top">
                                                 <div class="text7">Animal Type 獸類型 →</div>
                                                 <div class="psychological_types_guess"></div>
+                                                <div class="psychological_types_animal"></div>
                                             </div>
                                             <div class="bottom psychological_types_reason"></div>
                                         </div>
@@ -204,9 +205,9 @@
                 <div class="chat_result_bottom_bg"></div>
             </div>
         </div>
-        <div class="share_result_btn">
+        <a class="share_result_btn"  href="#">
             <div>Share your result →</div>
-        </div>
+        </a>
         <div class="top_arrow_btn leave_chat_result_btn text3">↑</div>
     </div>
 
@@ -1465,6 +1466,16 @@
 
         <div class="bottom_arrow_btn leave_user_guide_btn text3">↓</div>
     </div>
+    <form id="submitForm" method="POST" style="display:none">
+        <!-- Your form fields here -->
+        <input type="text" name="data_identity_guess" id="data_identity_guess" >
+        <input type="text" name="data_identity_reason" id="data_identity_reason" >
+        <input type="text" name="data_psychological_types_guess" id="data_psychological_types_guess" >
+        <input type="text" name="data_psychological_types_animal" id="data_psychological_types_animal" >
+        <input type="text" name="data_psychological_types_reason" id="data_psychological_types_reason" >
+        <input type="submit" value="Submit">
+    </form>
+
     <div class="mobile_show"></div>
     <script src="script/index.js"></script>
     <script src="script/chat.js"></script>
