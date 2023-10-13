@@ -732,6 +732,65 @@ body{
 	position: absolute;
 }
 
+.scrolltonext{
+	-webkit-transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1) 0s; 
+    transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1) 0s; 
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	margin: auto;
+	bottom: 20px;
+	width: 200px;
+	background-color: #fff;
+	color: #000;
+	text-align:center;
+	border-radius: 999px;
+	opacity: 0;
+	pointer-events: none;
+	overflow: hidden;
+	z-index: 3;
+	filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.5));
+}
+
+.scrolltonext.show{
+	opacity: 1;
+}
+
+
+.scrolltonext .progress{
+	position: absolute;
+	left: 0px;
+	top:0px;
+	width: 0%;
+	height: 100%;
+	background-color: #ef5a24;
+	border-radius: 999px;
+}
+
+.scrolltonext.ok .progress{
+	-webkit-transition: width 0.3s cubic-bezier(0.77, 0, 0.175, 1) 0s; 
+    transition: width 0.3s cubic-bezier(0.77, 0, 0.175, 1) 0s; 
+	width: 100% !important;
+}
+
+.scrolltonext .text{
+	position: relative;
+	z-index: 1;
+}
+
+.scrolltonext .text::before{
+	content:"Next Page 下一頁"
+}
+
+.book_style4 .scrolltonext .text::before{
+	content:"Close Page 關閉"
+}
+
+
+.scrolltonext.ok .text::before, .book_style4 .scrolltonext.ok .text::before{
+	content:"OK"
+}
+
 .book_wrapper{
 	position: absolute;
 	width: 100%;
@@ -775,6 +834,10 @@ body{
 
 .book .book_page_scroll_wrapper{
 	pointer-events: auto;
+}
+
+.book .book_page_scroll_wrapper::after{
+	pointer-events: none;
 }
 
 .book_style0 {
@@ -1068,6 +1131,12 @@ body{
 	/* overflow: hidden; */
     margin-top: 25px;
 }
+
+.book_logo{
+	width: 50%;
+	max-width: 100px;
+}
+
 .book_artist_name {
 	margin-top: 10px;
 }
@@ -1442,6 +1511,10 @@ body{
 	margin-bottom: 10px;
 }
 
+.subhead-p {
+	margin-bottom: -15px;
+}
+
 .book_style8{
 	position: absolute;
 	width: 70%;
@@ -1570,6 +1643,57 @@ body{
 	width: 100%;
 	font-size: calc(8px + 0.25vw);
 	line-height: 1.5;
+}
+
+.boxed_registration_btn{
+	-webkit-transition: all 0.3s cubic-bezier(0.77, 0, 0.175, 1) 0s; 
+    transition: all 0.3s cubic-bezier(0.77, 0, 0.175, 1) 0s; 
+	opacity: 1;
+	display: block;
+}
+
+a.boxed_registration_btn:hover{
+	opacity: 1;
+}
+
+a .boxed_registration {
+	-webkit-transition: all 0.3s cubic-bezier(0.77, 0, 0.175, 1) 0s; 
+    transition: all 0.3s cubic-bezier(0.77, 0, 0.175, 1) 0s; 
+	color: rgb(159, 161, 164);
+}
+
+a:hover .boxed_registration {
+	background-color: rgb(159, 161, 164);
+	color: rgb(255, 255, 255);
+	opacity: 1;
+}
+.boxed_registration {
+	margin-top: 5px;
+    border: 1px solid;
+    padding: 10px;
+    display: block;
+    box-sizing: border-box;
+}
+
+.registration_note {
+	padding-bottom: 10px;
+	font-size: calc(8px + 0.1vw);
+    line-height: 1.5;
+}
+
+.registration_cta {
+	width: 100%;
+    border-top: 1px solid;
+    padding-top: 10px;
+    position: relative;
+    padding-right: 20px;
+    box-sizing: border-box;
+}
+
+.registration_cta::after {
+	content: "→";
+    position: absolute;
+	right: 0;
 }
 
 .book_style8 .ps__rail-y {
@@ -1943,6 +2067,15 @@ body{
 		bottom:-25px;
 		line-height: 28px;
 	}
+
+	.reach-end .scrolltonext{
+		opacity: 1;
+		pointer-events: all;
+	}
+
+	.book_page_wrapper {
+		padding-bottom: 50px;
+	  }
 }
 
 @media screen and (max-width: 600px) { 
@@ -1986,4 +2119,5 @@ body{
 	/* .book_style2 .col6 + .col6{
 		margin-top: 40px;
 	} */
+
 }

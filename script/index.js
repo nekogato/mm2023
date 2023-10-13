@@ -664,7 +664,28 @@ function animate() {
         letter3.scale.y += ( 0.8 - letter3.scale.y ) * .05;
 
 	}
-   
+    
+
+    $(".scrolltonext").each(function(){
+        var $p_scroll = $(this).parents(".book_page_scroll_wrapper").find(".book_page_scroll");
+        var mywidth = parseInt($(this).find(".progress").width());
+        var progress = parseInt($(this).find(".progress").attr("data-progress"));
+        if($(this).hasClass("show")){
+            mywidth += ( progress - mywidth ) * .05;
+            $(this).find(".progress").css("width",mywidth+"px")
+        }else{
+            if(!$(this).hasClass("ok")){
+                if(mywidth>1){
+                    mywidth -=2;
+                    $(this).find(".progress").css("width",mywidth+"px")
+                    $(this).find(".progress").attr("data-progress",mywidth)
+                }else{
+                    $(this).find(".progress").css("width","0px")
+                    $(this).find(".progress").attr("data-progress",0)
+                }
+            }
+        }
+    })
     
 
 	requestAnimationFrame( animate );

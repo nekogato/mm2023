@@ -68,11 +68,30 @@ function init_event(){
 		$mytarget.stop().fadeIn().addClass("show");
 		$(window).resize();
 		$mytarget.find(".scroll_area").scrollTop(0);
+		setbookposition();
+	})
+
+	$(".scrolltonext").click(function(){
+		var $p = $(this).parents(".book_wrapper");
+		var mynexttarget = $p.attr("data-next");
+		var myprevtarget = $p.attr("data-prev");
+		if(mynexttarget == myprevtarget){
+			$p.addClass("noscroll").stop().fadeOut(function(){
+				$p.removeClass("noscroll");
+			}).removeClass("show")
+		}else{
+			var $mynexttarget = $("[data-id='"+mynexttarget+"']");
+			$mynexttarget.stop().fadeIn().addClass("show");
+		}
+		$(window).resize();
+		$mynexttarget.find(".scroll_area").scrollTop(0);
+		setbookposition();
 	})
 
 	$(".book_leave_btn").click(function(){
 		var $mytarget = $(this).parents(".book_wrapper");
 		$mytarget.stop().fadeOut().removeClass("show");
+		setbookposition()
 	})
 	
 
@@ -117,6 +136,7 @@ function init_event(){
 			updateScroll();
 		}
 
+		setbookposition();
 		do_pushstate(myhref);
 
 		return false;
@@ -137,33 +157,47 @@ function do_pushstate(link){
 	}
 }
 
-function updateScroll(){
-	for ( var i = 0; i < scrollArr.length; i++ ) { 
-		scrollArr[i].update();
-	}
-
-	$(".book_wrapper.show .book").each(function(){
-		$(this).removeAttr("style")
-	})
-
+function setbookposition(){
 	if($(".mobile_show").is(":hidden")){
-		// desktop
-
-		const rELength = $(".book_wrapper.show").length;
-		$(".book_wrapper.show").each(function(i){
+		const rELength = $(".book_wrapper:visible").length;
+		$(".book_wrapper:visible").each(function(i){
 			$(this).find(".book").attr("data-bottom", 0 + (rELength - i) * 50)
 		})
 
-		$(".book_wrapper.show .book").each(function(){
+		$(".book_wrapper:visible .book").each(function(){
 			var mybottom = $(this).attr("data-bottom");
 			$(this).css({
 				"bottom": mybottom+"px",
 				// "right": mybottom+"px"
 			})
 		})
+	}
+}
+
+function updateScroll(){
+	for ( var i = 0; i < scrollArr.length; i++ ) { 
+		scrollArr[i].update();
+	}
+
+
+	if($(".mobile_show").is(":hidden")){
+		// desktop
+
+		$(".book_wrapper.show .book").each(function(){
+			$(this).css({
+				"top":"0px"
+			})
+		})
+
+		
 		
 	}else{
 		//mobile
+		$(".book_wrapper.show .book").each(function(){
+			$(this).css({
+				"bottom":"20px"
+			})
+		})
 
 		$(".book_wrapper.show").each(function(i){
 			$(this).find(".book").attr("data-top",70+i*30)
@@ -178,6 +212,7 @@ function updateScroll(){
 	}
 }
 
+var scrolltimer;
 
 function init_function(){
 
@@ -259,29 +294,156 @@ function init_function(){
 
 		// Add a wheel event listener to the scrollable container
 		// $(this)[0].addEventListener('wheel', (event) => {
-		["wheel", "touchmove"].forEach( (eventType) => $(this)[0].addEventListener(eventType, (event) => {
-			if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 || $this.find(">*").height() - $this.height() < 30) && (event.deltaY == undefined || event.deltaY > 0) ) {
-				// $p.addClass("reach-end")
+
+		var mc = new Hammer($(this)[0]);
+
+		
+		mc.on("panup pandown", function(event) {
+
+
+			if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 || $this.find(">*").height() - $this.height() < 30) && (event.type == "panup") ) {
+				clearTimeout(scrolltimer);
+				$p.addClass("reach-end")
 				if(mynexttarget){
-					$mynexttarget.stop().fadeIn().addClass("show");
-					$(window).resize();
-					do_pushstate("?id="+mynexttarget);
-					if(mynexttarget==myprevtarget){
-						$p.addClass("noscroll").stop().fadeOut(function(){
-							$p.removeClass("noscroll");
-						}).removeClass("show")
-					}else{
-						$mynexttarget.find(".scroll_area").scrollTop(0);
-						updateScroll();
+					$p.find(".scrolltonext").addClass("show")
+					var progress = parseInt($p.find(".progress").attr("data-progress"));
+					progress+=event.distance/20;
+					console.log(event.distance/20)
+					$p.find(".progress").attr("data-progress",progress)
+
+					scrolltimer = setTimeout(function(){
+						$p.find(".scrolltonext").removeClass("show")
+						$p.find(".scrolltonext").addClass("okgonext")
+					},300)
+					
+					if(parseInt($p.find(".scrolltonext .progress").attr("data-progress"))>=parseInt($p.find(".scrolltonext").width())){
+						$p.find(".scrolltonext").addClass("ok")
+					
+						$mynexttarget.stop().fadeIn(function(){
+							if(mynexttarget!==myprevtarget){
+								$p.find(".scrolltonext").removeClass("show")
+								$p.find(".progress").attr("data-progress",0)
+								$p.find(".progress").css("width","0px")
+								$p.find(".scrolltonext").removeClass("ok")
+								$p.find(".scrolltonext").removeClass("okgonext")
+								setbookposition();
+							}
+						}).addClass("show");
+						$(window).resize();
+						do_pushstate("?id="+mynexttarget);
+						if(mynexttarget==myprevtarget){
+							$p.addClass("noscroll").stop().fadeOut(function(){
+								$p.removeClass("noscroll");
+								$p.find(".scrolltonext").removeClass("show")
+								$p.find(".progress").attr("data-progress",0)
+								$p.find(".progress").css("width","0px")
+								$p.find(".scrolltonext").removeClass("ok")
+								$p.find(".scrolltonext").removeClass("okgonext")
+								setbookposition();
+							}).removeClass("show")
+						}else{
+							$mynexttarget.find(".scroll_area").scrollTop(0);
+							updateScroll();
+						}
 					}
+					
+					// $mynexttarget.stop().fadeIn().addClass("show");
+					// $(window).resize();
+					// do_pushstate("?id="+mynexttarget);
+					// if(mynexttarget==myprevtarget){
+					// 	$p.addClass("noscroll").stop().fadeOut(function(){
+					// 		$p.removeClass("noscroll");
+					// 	}).removeClass("show")
+					// }else{
+					// 	$mynexttarget.find(".scroll_area").scrollTop(0);
+					// 	updateScroll();
+					// }
 				}
 			}
-			if (($this.scrollTop() <=0) && (event.deltaY == undefined || event.deltaY < 0)) {
-				// $p.addClass("reach-start")
+			if (($this.scrollTop() <=0) && (event.type == "pandown")) {
+				$p.addClass("reach-start")
 				if(myprevtarget){
 					do_pushstate("?id="+myprevtarget);
 					$p.addClass("noscroll").stop().fadeOut(function(){
 						$p.removeClass("noscroll");
+						setbookposition();
+					}).removeClass("show")
+					$myprevtarget.stop().fadeIn().addClass("show");
+					$(window).resize();
+					updateScroll();
+				}
+			}
+			
+		});
+
+
+		["wheel"].forEach( (eventType) => $(this)[0].addEventListener(eventType, (event) => {
+			if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 || $this.find(">*").height() - $this.height() < 30) && (event.deltaY == undefined || event.deltaY > 0) ) {
+				clearTimeout(scrolltimer);
+				$p.addClass("reach-end")
+				if(mynexttarget){
+					$p.find(".scrolltonext").addClass("show")
+					var progress = parseInt($p.find(".progress").attr("data-progress"));
+					progress+=event.deltaY/5;
+					$p.find(".progress").attr("data-progress",progress)
+
+
+					scrolltimer = setTimeout(function(){
+						$p.find(".scrolltonext").removeClass("show")
+						$p.find(".scrolltonext").addClass("okgonext")
+					},300)
+					
+					if(parseInt($p.find(".scrolltonext .progress").attr("data-progress"))>=parseInt($p.find(".scrolltonext").width())){
+						$p.find(".scrolltonext").addClass("ok")
+					
+						$mynexttarget.stop().fadeIn(function(){
+							if(mynexttarget!==myprevtarget){
+								$p.find(".scrolltonext").removeClass("show")
+								$p.find(".progress").attr("data-progress",0)
+								$p.find(".progress").css("width","0px")
+								$p.find(".scrolltonext").removeClass("ok")
+								$p.find(".scrolltonext").removeClass("okgonext")
+								setbookposition();
+							}
+						}).addClass("show");
+						$(window).resize();
+						do_pushstate("?id="+mynexttarget);
+						if(mynexttarget==myprevtarget){
+							$p.addClass("noscroll").stop().fadeOut(function(){
+								$p.removeClass("noscroll");
+								$p.find(".scrolltonext").removeClass("show")
+								$p.find(".progress").attr("data-progress",0)
+								$p.find(".progress").css("width","0px")
+								$p.find(".scrolltonext").removeClass("ok")
+								$p.find(".scrolltonext").removeClass("okgonext")
+								setbookposition();
+							}).removeClass("show")
+						}else{
+							$mynexttarget.find(".scroll_area").scrollTop(0);
+							updateScroll();
+						}
+					}
+
+					// $mynexttarget.stop().fadeIn().addClass("show");
+					// $(window).resize();
+					// do_pushstate("?id="+mynexttarget);
+					// if(mynexttarget==myprevtarget){
+					// 	$p.addClass("noscroll").stop().fadeOut(function(){
+					// 		$p.removeClass("noscroll");
+					// 	}).removeClass("show")
+					// }else{
+					// 	$mynexttarget.find(".scroll_area").scrollTop(0);
+					// 	updateScroll();
+					// }
+				}
+			}
+			if (($this.scrollTop() <=0) && (event.deltaY == undefined || event.deltaY < 0)) {
+				$p.addClass("reach-start")
+				if(myprevtarget){
+					do_pushstate("?id="+myprevtarget);
+					$p.addClass("noscroll").stop().fadeOut(function(){
+						$p.removeClass("noscroll");
+						setbookposition();
 					}).removeClass("show")
 					$myprevtarget.stop().fadeIn().addClass("show");
 					$(window).resize();
@@ -307,6 +469,7 @@ function init_function(){
 
 function dosize(){
 
+	setbookposition();
 
 	if($(".mobile_show").is(":hidden")){
 		// desktop
