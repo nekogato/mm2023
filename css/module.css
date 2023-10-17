@@ -732,7 +732,7 @@ body{
 	position: absolute;
 }
 
-.scrolltonext{
+.scrolltonext, .scrolltoprev{
 	-webkit-transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1) 0s; 
     transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1) 0s; 
 	position: absolute;
@@ -752,12 +752,12 @@ body{
 	filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.5));
 }
 
-.scrolltonext.show{
+.scrolltonext.show, .scrolltoprev.show{
 	opacity: 1;
 }
 
 
-.scrolltonext .progress{
+.scrolltonext .progress, .scrolltoprev .progress{
 	position: absolute;
 	left: 0px;
 	top:0px;
@@ -773,7 +773,7 @@ body{
 	width: 100% !important;
 }
 
-.scrolltonext .text{
+.scrolltonext .text, scrolltoprev .text{
 	position: relative;
 	z-index: 1;
 }
@@ -782,12 +782,25 @@ body{
 	content:"Next Page 下一頁"
 }
 
+.scrolltonext.reversed {
+	bottom: auto;
+	top: 20px;
+}
+.scrolltonext.reversed .text::before{
+	content:"Previous Page 上一頁";
+}
+
+/* .scrolltonext.reversed .progress {
+	right: 0;
+	margin-left: auto;
+} */
+
 .book_style4 .scrolltonext .text::before{
 	content:"Close Page 關閉"
 }
 
 
-.scrolltonext.ok .text::before, .book_style4 .scrolltonext.ok .text::before{
+.scrolltonext.ok .text::before, .scrolltoprev.ok .text::before, .book_style4 .scrolltonext.ok .text::before{
 	content:"OK"
 }
 
