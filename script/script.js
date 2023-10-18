@@ -347,7 +347,7 @@ function init_function(){
 		// Add a wheel event listener to the scrollable container
 		// $(this)[0].addEventListener('wheel', (event) => {
 
-		var mc = new Hammer($(this)[0]);
+		// var mc = new Hammer($(this)[0]);
 
 		/*
 		mc.on("panup pandown", function(event) {
@@ -441,7 +441,6 @@ function init_function(){
 						touchObject.update(event.touches[0].pageX, event.touches[0].pageY);
 						progress += -touchObject.distance/2;
 					} else {
-						console.log(event.deltaY/5)
 						progress+=event.deltaY/5;
 					}
 					$p.find(".progress").attr("data-progress",progress)
@@ -589,6 +588,22 @@ function dosize(){
 	}
 	$(".book_project_info").each(function(){
 		$(this).height($(this).parents(".book_page_scroll_wrapper").outerHeight()-100);
+	})
+
+	$(".book_style5 .sticky_book_page").each(function(){
+		console.log(window.innerWidth)
+		if (window.innerWidth > 1023) {
+			$(this).height($(this).parents(".book_page_scroll_wrapper").outerHeight()-150);
+		} else {
+			$(this).height("");
+		}
+	})
+	$(".book_style5 .book_page_head_bg_img").each(function(){
+		if (window.innerWidth > 1023) {
+			$(this).height($(this).parents(".book_page_scroll_wrapper").outerHeight());
+		} else {
+			$(this).height("");
+		}
 	})
 	
 	for ( var i = 0; i < swiperArr.length; i++ ) { 
