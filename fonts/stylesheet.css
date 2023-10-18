@@ -1,26 +1,17 @@
 @font-face {
-    font-family: 'Everett';
-    src: url('Everett-Light.woff2') format('woff2'),
-        url('Everett-Light.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Everett Jana';
-    src: url('EverettJana-Regular.woff2') format('woff2'),
-        url('EverettJana-Regular.woff') format('woff');
+    font-family: 'Neue Montreal';
+    src: url('NeueMontreal-Regular.woff2') format('woff2'),
+        url('NeueMontreal-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'GT Sectra Display';
-    src: url('GTSectraDisplay-Light.woff2') format('woff2'),
-        url('GTSectraDisplay-Light.woff') format('woff');
-    font-weight: 300;
+    font-family: 'Supply';
+    src: url('Supply-UltraLight.woff2') format('woff2'),
+        url('Supply-UltraLight.woff') format('woff');
+    font-weight: 200;
     font-style: normal;
     font-display: swap;
 }

@@ -7,6 +7,7 @@
 
 ;(function($) {
 
+    
     $.scrambler = function(element, options) {
 
         var plugin = this;
@@ -23,13 +24,15 @@
             final_text: $element.text(),
             reveal: 1000, // number of milliseconds
             total_iterations : 0,
-            interval : -1
+            interval : -1,
+            onFinish: null,
         }
 
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
             var el = $element;
             var str = plugin.settings.final_text;
+            var onFinish = plugin.settings.onFinish;
 
             if (plugin.settings.effect == "charbychar" || plugin.settings.effect == "typing"){
               var pos_limit = 0;                                             // randomize text from this position to the end
@@ -57,10 +60,44 @@
                       plugin.settings.total_iterations = 0;
                       plugin.settings.interval = -1;
                       el.text(str);
+
+                      if(isFunction( onFinish )){
+                        onFinish.call(this);
+                      }
                   }
               }, plugin.settings.speed );
             }
         }
+
+        /**
+        * Determines whether the passed item is of function type.
+        */
+        function isFunction(item) {
+          if (typeof item === 'function') {
+            return true;
+          }
+          var type = Object.prototype.toString(item);
+          return type === '[object Function]' || type === '[object GeneratorFunction]';
+        }
+
+        /**
+        * Trigger custom events
+        */
+        function trigger(el,eventName){
+            var event;
+
+            // Native
+            if(typeof window.CustomEvent === "function" ){
+                event = new CustomEvent(eventName);
+            }
+            else{
+                event = document.createEvent('CustomEvent');
+                event.initCustomEvent(eventName, true, true);
+            }
+
+            el.dispatchEvent(event);
+        }
+
 
 
         /* get a random character between two limits */

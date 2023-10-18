@@ -2,6 +2,8 @@ var camera, scene, renderer,composer, letter1, letter2, letter3, mouseX, mouseY,
 var controls, raycaster, pointer;
 var objArr=[];
 var objArr2=[];
+var allArr=[];
+var randomObjArr=[];
 var letter1_rotate,letter2_button, letter2_tri, letter3_bigbtn, letter3_sidebtn, letter3_smallbtn1, letter3_smallbtn2, letter3_smallbtn3, letter3_smallbtn4;
 var hoverLetter = "";
 var activeLetter = "";
@@ -11,6 +13,8 @@ const GLTFLoader = new THREE.GLTFLoader();
 const dracoLoader = new THREE.DRACOLoader();
 dracoLoader.setDecoderPath( 'script/lib/draco/' );
 GLTFLoader.setDRACOLoader( dracoLoader );
+var breakmodel=false;
+
 var addElement2 = function ( myid,groupid,group, src, x, y, z,cubeTexture, roughnessTexture ) {
 
 
@@ -31,6 +35,7 @@ var addElement2 = function ( myid,groupid,group, src, x, y, z,cubeTexture, rough
             if ( child.isMesh ) {
                 // only replace texture if a texture map exist
                 child.material.color.setHex( 0xef5a24 );
+                child.material.transparent=true;
                 child.material.opacity=1;
                 if (child.material.map){
                     child.material.map = "";
@@ -39,7 +44,6 @@ var addElement2 = function ( myid,groupid,group, src, x, y, z,cubeTexture, rough
                 child.material.roughnessMap = roughnessTexture;
                 child.material.metalness = 0.1;
                 child.material.roughness = 0.3;
-                child.material.transparent=true;
 
                 //update
                 child.material.envMap.needsUpdate = true;
@@ -101,6 +105,22 @@ var addElement = function ( myid,groupid,group, src, x, y, z,cubeTexture, roughn
             window[myid]=gltf.scene;
         }
         group.add(gltf.scene)
+        allArr.push(gltf.scene)
+        var obj ={
+            x:5-Math.random()*10,
+            y:5-Math.random()*10,
+            z:5-Math.random()*10,
+            x2:5-Math.random()*10,
+            y2:5-Math.random()*10,
+            z2:5-Math.random()*10,
+            x3:5-Math.random()*10,
+            y3:5-Math.random()*10,
+            z3:5-Math.random()*10,
+            original_x:x,
+            original_y:y,
+            original_z:z,
+        }
+        randomObjArr.push(obj)
   
     } );
 
@@ -288,79 +308,21 @@ function init() {
 
 	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
-    $(".home_status").on( "click", function() {
-        if(changecolor){
-            changecolor=false
-        }else{
-            changecolor = true;
-        }
-        // if(hoverLetter=="letter1"){
-        //     $("body").addClass("hasActiveLetter")
-        //     activeLetter="letter1";
-        //     $(".home_status").scrambler({
-        //         effect: "typing",
-        //         final_text: "Analysing...",
-        //         speed: 50,
-        //         reveal: 50
-        //     });
-        //     startAnalysing();
-        //     //$("body").removeClass("ishover")
-        // }else if(hoverLetter=="letter2"){
-        //     $("body").addClass("hasActiveLetter")
-        //     activeLetter="letter2";
-        //     $(".home_status").scrambler({
-        //         effect: "typing",
-        //         final_text: "Analysing...",
-        //         speed: 50,
-        //         reveal: 50
-        //     });
-        //     startAnalysing();
-        //     //$("body").removeClass("ishover")
-        // }else if(hoverLetter=="letter3"){
-        //     $("body").addClass("hasActiveLetter")
-        //     activeLetter="letter3";
-        //     $(".home_status").scrambler({
-        //         effect: "typing",
-        //         final_text: "Analysing...",
-        //         speed: 50,
-        //         reveal: 50
-        //     });
-        //     startAnalysing();
-        //     //$("body").removeClass("ishover")
-        // }else{
-        //     $("body").removeClass("hasActiveLetter")
-        //     activeLetter="";
-        //     $(".home_status").scrambler({
-        //         effect: "typing",
-        //         final_text: "Please choose a device",
-        //         speed: 50,
-        //         reveal: 50
-        //     });
-
-        //     $("body").removeClass("startAnalysing")
-        //     $("body").removeClass("finishAnalysing")
-        // }
-        if(changecolor){
-            for ( var i = 0; i < objArr.length; i++ ) { 
-                gsap.to(objArr[i].material, {opacity: 1, duration: 3});
-                gsap.to(objArr2[i].material, {opacity: 0, duration: 3});
-            }
-        }else{
-            for ( var i = 0; i < objArr.length; i++ ) { 
-                gsap.to(objArr[i].material, {opacity: 0, duration: 3});
-                gsap.to(objArr2[i].material, {opacity: 1, duration: 3});
-            }
-        }
-
-    });
 
     $(".test_humanity_btn").on( "click", function() {
+        $(".chat_answer_wrapper").addClass("stopTyping");
+        $(".start_typing:last").scrambler({
+            effect: "typing",
+            final_text: $(".start_typing:last").text(),
+            speed: 10,
+            reveal: 10,
+            onFinish: function(){
+                $(".chat_answer_wrapper").removeClass("stopTyping");
+            }
+        });
+
         $("body").addClass("body_test_humanity")
         do_pushstate("?id=HumanityTest");
-        for ( var i = 0; i < objArr.length; i++ ) { 
-            gsap.to(objArr[i].material, {opacity: 0, duration: 3});
-            gsap.to(objArr2[i].material, {opacity: 1, duration: 3});
-        }
     });
 
     $(".user_guide_btn").on( "click", function() {
@@ -373,17 +335,27 @@ function init() {
 
     $(".leave_chat_btn").on( "click", function() {
         $("body").removeClass("body_test_humanity")
-        for ( var i = 0; i < objArr.length; i++ ) { 
-            gsap.to(objArr[i].material, {opacity: 0, duration: 3});
-            gsap.to(objArr2[i].material, {opacity: 1, duration: 3});
-        }
+        $("body").removeClass("body_test_humanity_result_loading")
+        $("body").removeClass("body_test_humanity_result_done")
         do_pushstate("?id=Home");
     });
 
     $(".leave_chat_result_btn").on( "click", function() {
-        $("body").addClass("body_test_humanity")
         $("body").removeClass("body_test_humanity_result_loading")
         $("body").removeClass("body_test_humanity_result_done")
+        $(".chat_answer_wrapper").removeClass("endchat")
+        $(".chat_answer_wrapper").removeClass("forceendchat")
+        
+        $(".chat_answer_wrapper").addClass("restartchat")
+        $(".chat_question").append('<div class="chat_question_item chat_question_item_system"><div  class="text5 start_typing">請按Start Again重新開始</div></div>')
+        $(".start_typing:last").scrambler({
+            effect: "typing",
+            final_text: $(".start_typing:last").text(),
+            speed: 50,
+            reveal: 50
+        });
+        do_pushstate("?id=Home");
+        messagesArr=[];
     });
 
     $(".leave_user_guide_btn").on( "click", function() {
@@ -510,7 +482,7 @@ var t2 = gsap.timeline();
 var t3 = gsap.timeline();
 
 function doletter1animation(){
-    if((!startletter1_animation && hoverLetter=="letter1")  || (!startletter1_animation && activeLetter=="letter1")){
+    if(!startletter1_animation){
         if(letter1_rotate){
             clearTimeout(startletter1_timer);
             startletter1_animation=true;
@@ -531,7 +503,7 @@ function doletter1animation(){
 }
 
 function doletter2animation(){
-    if((!startletter2_animation && hoverLetter=="letter2") || (!startletter2_animation && activeLetter=="letter2")){
+    if(!startletter2_animation ){
         if(letter2_tri && letter2_button){
             clearTimeout(startletter2_timer);
             startletter2_animation=true;
@@ -553,7 +525,7 @@ function doletter2animation(){
 }
 
 function doletter3animation(){
-    if((!startletter3_animation && hoverLetter=="letter3") || (!startletter3_animation && activeLetter=="letter3")){
+    if(!startletter3_animation){
         if(letter3_bigbtn && letter3_sidebtn && letter3_smallbtn1 && letter3_smallbtn2 && letter3_smallbtn3 && letter3_smallbtn4){
             clearTimeout(startletter3_timer);
             startletter3_animation=true;
@@ -602,44 +574,96 @@ function doletter3animation(){
 }
 
 function animate() {
+    
     camera.position.y += ( - mouseY/10 - camera.position.y ) * .05;
+
+    if(allArr.length){
+        if(!breakmodel){
+            for ( var i = 0; i < allArr.length; i++ ) { 
+                allArr[i].position.x += (  randomObjArr[i].x - allArr[i].position.x ) * .05;
+                allArr[i].position.y += (  randomObjArr[i].y - allArr[i].position.y ) * .05;
+                allArr[i].position.z += (  randomObjArr[i].z - allArr[i].position.z ) * .05;
+            }
+        }else{
+            for ( var i = 0; i < allArr.length; i++ ) { 
+                allArr[i].position.x += (  randomObjArr[i].original_x - allArr[i].position.x ) * .05;
+                allArr[i].position.y += (  randomObjArr[i].original_y - allArr[i].position.y ) * .05;
+                allArr[i].position.z += (  randomObjArr[i].original_z - allArr[i].position.z ) * .05;
+            }
+        }
+    }
+
+
     //camera.lookAt( scene.position );
 
     if($(".mobile_show").is(":hidden")){
 		// desktop
         if($("body").hasClass("body_test_humanity") || $("body").hasClass("body_user_guide")){
             letter1.position.y += ( 0 - letter1.position.y ) * .05;
-            letter1.rotation.y +=0.02;
-            // if(letter1.rotation.y > 2){
-            //     letter1.rotation.y -= 2;
-            // }
-            letter1.rotation.y %= Math.PI*2;
             letter2.position.y += ( 0 - letter2.position.y ) * .05;
+            letter3.position.y += ( 0 - letter3.position.y ) * .05;
+
+        }else{
+            letter1.position.y += ( -1 - letter1.position.y ) * .05;
+            letter2.position.y += ( -1 - letter2.position.y ) * .05;
+            letter3.position.y += ( -1 - letter3.position.y ) * .05;
+        }
+        
+
+
+        if($("body").hasClass("body_test_humanity_result_loading")){
+            letter1.rotation.y +=0.02;
+            letter1.rotation.y %= Math.PI*2;
             letter2.rotation.y +=0.02;
             letter2.rotation.y %= Math.PI*2;
-            letter3.position.y += ( 0 - letter3.position.y ) * .05;
             letter3.rotation.y +=0.02;
             letter3.rotation.y %= Math.PI*2;
         }else{
-            letter1.position.y += ( -1 - letter1.position.y ) * .05;
-            letter1.rotation.y += ( 2 * Math.PI * (30 / 360) - letter1.rotation.y ) * .05;
-            letter2.position.y += ( -1 - letter2.position.y ) * .05;
-            letter2.rotation.y += ( 2 * Math.PI * (30 / 360) - letter2.rotation.y ) * .05;
-            letter3.position.y += ( -1 - letter3.position.y ) * .05;
-            letter3.rotation.y += ( 2 * Math.PI * (30 / 360) - letter3.rotation.y ) * .05;
-            
+            letter1.rotation.y += ( 0 * Math.PI * (30 / 360) - letter1.rotation.y ) * .05;
+            letter2.rotation.y += ( 0 * Math.PI * (30 / 360) - letter2.rotation.y ) * .05;
+            letter3.rotation.y += ( 0 * Math.PI * (30 / 360) - letter3.rotation.y ) * .05;
         }
-		
-        letter1.position.x += ( -6 - letter1.position.x ) * .05;
-        letter2.position.x += ( 0 - letter2.position.x ) * .05;
-        letter3.position.x += ( 6 - letter3.position.x ) * .05;
 
-        letter1.scale.x += ( 1 - letter1.scale.x ) * .05;
-        letter1.scale.y += ( 1 - letter1.scale.y ) * .05;
-        letter2.scale.x += ( 1 - letter2.scale.x ) * .05;
-        letter2.scale.y += ( 1 - letter2.scale.y ) * .05;
-        letter3.scale.x += ( 1 - letter3.scale.x ) * .05;
-        letter3.scale.y += ( 1 - letter3.scale.y ) * .05;
+        if($("body").hasClass("body_test_humanity_result_start_chat")){
+            if(rndInt==1){
+                letter1.position.x += ( 0 - letter1.position.x ) * .05;
+                letter2.position.x += ( 20 - letter2.position.x ) * .05;
+                letter3.position.x += ( 26 - letter3.position.x ) * .05;
+            }
+            if(rndInt==2){
+                letter1.position.x += ( -20 - letter1.position.x ) * .05;
+                letter2.position.x += ( 0 - letter2.position.x ) * .05;
+                letter3.position.x += ( 20 - letter3.position.x ) * .05;
+            }
+            if(rndInt==3){
+                letter1.position.x += ( -26 - letter1.position.x ) * .05;
+                letter2.position.x += ( -20 - letter2.position.x ) * .05;
+                letter3.position.x += ( 0 - letter3.position.x ) * .05;
+            }
+            
+            letter1.rotation.x += ( Math.PI * (rndRotate / 360) - letter1.rotation.x ) * .05;
+            letter2.rotation.x += ( Math.PI * (rndRotate / 360) - letter2.rotation.x ) * .05;
+            letter3.rotation.x += ( Math.PI * (rndRotate / 360) - letter3.rotation.x ) * .05;
+
+            letter1.scale.x += ( rndScale - letter1.scale.x ) * .05;
+            letter1.scale.y += ( rndScale - letter1.scale.y ) * .05;
+            letter2.scale.x += ( rndScale - letter2.scale.x ) * .05;
+            letter2.scale.y += ( rndScale - letter2.scale.y ) * .05;
+            letter3.scale.x += ( rndScale - letter3.scale.x ) * .05;
+            letter3.scale.y += ( rndScale - letter3.scale.y ) * .05;
+
+        }else{
+            letter1.position.x += ( -6 - letter1.position.x ) * .05;
+            letter2.position.x += ( 0 - letter2.position.x ) * .05;
+            letter3.position.x += ( 6 - letter3.position.x ) * .05;
+
+            letter1.scale.x += ( 1 - letter1.scale.x ) * .05;
+            letter1.scale.y += ( 1 - letter1.scale.y ) * .05;
+            letter2.scale.x += ( 1 - letter2.scale.x ) * .05;
+            letter2.scale.y += ( 1 - letter2.scale.y ) * .05;
+            letter3.scale.x += ( 1 - letter3.scale.x ) * .05;
+            letter3.scale.y += ( 1 - letter3.scale.y ) * .05;
+        }
 	}else{
 		//mobile
         letter1.rotation.y +=0.02;
