@@ -167,7 +167,7 @@ function setbookposition(){
 	if($(".mobile_show").is(":hidden")){
 		const rELength = $(".book_wrapper:visible").not(".book_style0").length;
 		$(".book_wrapper:visible").not(".book_style0").each(function(i){
-			$(this).find(".book").attr("data-bottom", 0 + (rELength - i) * 50)
+			$(this).find(".book").attr("data-bottom", 0 + (rELength - i - 1) * 50)
 		})
 
 		$(".book_wrapper:visible .book").not(".book_style0").each(function(){
@@ -591,7 +591,7 @@ function dosize(){
 	})
 
 	$(".book_style5 .sticky_book_page").each(function(){
-		console.log(window.innerWidth)
+		// console.log(window.innerWidth)
 		if (window.innerWidth > 1023) {
 			$(this).height($(this).parents(".book_page_scroll_wrapper").outerHeight()-150);
 		} else {
@@ -601,6 +601,15 @@ function dosize(){
 	$(".book_style5 .book_page_head_bg_img").each(function(){
 		if (window.innerWidth > 1023) {
 			$(this).height($(this).parents(".book_page_scroll_wrapper").outerHeight());
+		} else {
+			$(this).height("");
+		}
+	})
+
+	$(".book_style7 .row_content").each(function(){
+		// console.log(window.innerWidth)
+		if (window.innerWidth > 1023) {
+			$(this).height($(this).parents(".book_page_scroll_wrapper").outerHeight()-132-25);
 		} else {
 			$(this).height("");
 		}

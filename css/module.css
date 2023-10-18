@@ -1665,6 +1665,108 @@ body{
 	/* color: rgba(0, 0, 0, 1); */
 	opacity: 1;
 }
+
+.book_style7 {
+	position: absolute;
+	width: 70%;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	color: #000000;
+	min-width: 900px;
+	filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+}
+
+.book_style7 .book_page_scroll_wrapper {
+	width: 100%;
+	padding-bottom: 50%;
+	position: relative;
+	background-color: #9fa1a4;
+	border-radius: 15px;
+	overflow: hidden;
+  }
+
+.book_style7 .book_page_scroll_wrapper::after{
+	content:"";
+	position: absolute;
+	top:0px;
+	bottom:0px;
+	left:50%;
+	width: 50px;
+	background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%); 
+	z-index: 2;
+}
+
+.book_style7 .book_page_scroll {
+	position: absolute;
+	left: 0px;
+	top:0px;
+	width: 100%;
+	height: 100%;
+}
+
+.book_style7 .book_page_wrapper{
+	display: flex;
+	flex-wrap: wrap;
+}
+.book_style7 .book_page{
+	width: 50%;
+	padding: 50px;
+	box-sizing: border-box;
+}
+
+.book_style7 .book_page_head{
+	padding: 25px 50px;
+	position: -webkit-sticky; /* for Safari */
+	position: sticky;
+	top: 0;
+	align-self: flex-start;
+	background-color: #9fa1a4;
+	z-index: 1;
+	margin-bottom: 0px;
+}
+
+.book_style7 .book_page_body{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: auto;
+}
+.book_style7 .book_page_body:last-child {
+	padding-bottom: 0;
+}
+
+.book_style7 .ps__rail-y {
+	z-index: 2;
+}
+
+.book_style7 .row_content {
+	padding-left: 0;
+    width: 100%;
+	align-items: flex-end;
+}
+.book_style7 .row_content > .col6:first-child {
+    padding-right: 10px;
+}
+.book_style7 .row_content > div {
+    padding-left: 10px;
+    border-left: none;
+}
+
+.screening_img {
+	width: 100%;
+	padding-bottom: 67%;
+	background-color: #000;
+	border-radius: 5px;
+	overflow: hidden;
+	background-size: contain;
+	background-position: center;
+	margin-top: 5px;
+}
+
 .book_style8{
 	position: absolute;
 	width: 70%;
@@ -2174,7 +2276,7 @@ a:hover .boxed_registration {
 		padding-left: 0;
 		flex-direction: column;
 	}
-	.book_style8 .col6 {
+	.book_style7 .col6, .book_style8 .col6 {
 		width: 100%;
 		flex-basis: 100%;
 		padding-left: 0;
