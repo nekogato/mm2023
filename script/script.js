@@ -165,12 +165,12 @@ function do_pushstate(link){
 
 function setbookposition(){
 	if($(".mobile_show").is(":hidden")){
-		const rELength = $(".book_wrapper:visible").length;
-		$(".book_wrapper:visible").each(function(i){
+		const rELength = $(".book_wrapper:visible").not(".book_style0").length;
+		$(".book_wrapper:visible").not(".book_style0").each(function(i){
 			$(this).find(".book").attr("data-bottom", 0 + (rELength - i) * 50)
 		})
 
-		$(".book_wrapper:visible .book").each(function(){
+		$(".book_wrapper:visible .book").not(".book_style0").each(function(){
 			var mybottom = $(this).attr("data-bottom");
 			$(this).css({
 				"bottom": mybottom+"px",
