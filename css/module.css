@@ -709,7 +709,8 @@ body{
 .sticky_book_page{
 	position: -webkit-sticky; /* for Safari */
 	position: sticky;
-	top: 100px;
+	/* top: 100px; */
+	top: 90px;
 	align-self: flex-start;
 }
 
@@ -2219,6 +2220,10 @@ a:hover .boxed_registration {
 	transition: bottom 0.3s ease-out, right 0.3 ease-out;
 	/* -webkit-transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1) 0s;  */
     /* transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1) 0s;  */
+}
+
+.one-liner {
+	display: inline-block;
 }
 
 @media screen and (max-width: 1440px) { 
