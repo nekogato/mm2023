@@ -615,6 +615,15 @@ function dosize(){
 		}
 	})
 
+	$(".book_style2 .sticky_book_page").each(function(){
+		// console.log(window.innerWidth)
+		if (window.innerWidth > 1023) {
+			$(this).height($(this).parents(".book_page_scroll_wrapper").outerHeight()-120);
+		} else {
+			$(this).height("");
+		}
+	})
+
 	$(".book_style7 .row_content").each(function(){
 		// console.log(window.innerWidth)
 		if (window.innerWidth > 1023) {

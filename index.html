@@ -34,6 +34,17 @@
 
     <script src="script/lib/jquery.ba-hashchange.min.js"></script>
     <script src="script/script.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148167215-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-148167215-1');
+    </script>
+
 </head>
 <body>
     <div id="blocker"></div>
@@ -83,8 +94,8 @@
                                         <li><a href="?id=MainExhibition"  data-target="MainExhibition"><div class="menu_text">Main Exhibition <span class="chi_text">主題展覽</span></div></a></li>
                                         <!-- <li><a href="?id=FestivalGrandOpening"  data-target="FestivalGrandOpening"><div class="menu_text">Festival Grand Opening <span class="chi_text">藝術節開幕禮</span></div></a></li> -->
                                         <li><a href="?id=ProjectRoom"  data-target="ProjectRoom"><div class="menu_text">Project Room <span class="chi_text">實驗N場</span></div></a></li>
-                                        <!-- <li><a href="?id=Unconference"  data-target="Unconference"><div class="menu_text">Unconference <span class="chi_text">反轉研討會</span></div></a></li>
-                                        <li><a href="?id=ArtistVideo"  data-target="ArtistVideo"><div class="menu_text">Artist Video <span class="chi_text">藝術家錄像分享</span></div></a></li> -->
+                                        <li><a href="?id=Unconference"  data-target="Unconference"><div class="menu_text">Unconference <span class="chi_text">反轉研討會</span></div></a></li>
+                                        <!-- <li><a href="?id=ArtistVideo"  data-target="ArtistVideo"><div class="menu_text">Artist Video <span class="chi_text">藝術家錄像分享</span></div></a></li> -->
                                         <li><a href="?id=ScreeningProgramme"  data-target="ScreeningProgramme"><div class="menu_text">Screening Programme <span class="chi_text">放映節目</span></div></a></li>
                                         <li><a href="?id=ProgrammeSchedule"  data-target="ProgrammeSchedule"><div class="menu_text">Programme Schedule <span class="chi_text">節目時間表</span></div></a></li>
                                         <li><a href="?id=Crew"  data-target="Crew"><div class="menu_text">Crew <span class="chi_text">策劃團隊</span></div></a></li>
@@ -951,7 +962,7 @@
                                 <div class="book_page_head_right">實驗 N 場</div>
                             </div>
                             <div class="book_page book_page_body sticky_book_page">
-                                <div class="book_page_head_bg_img" style="background-image: url('../images/project-room-rh.jpg');"></div>
+                                <div class="book_page_head_bg_img" style="background-image: url('images/project-room-rh.jpg');"></div>
                                 <h4>
                                     Project Room : <br/>Reimagines Heritage
                                     <div class="text6 chi_text">
@@ -1096,7 +1107,7 @@
             </div>
         </div>
 
-        <div class="book_wrapper" data-id="ScreeningProgramme" data-prev="ProjectRoom" data-next="ProgrammeSchedule">
+        <div class="book_wrapper" data-id="ScreeningProgramme" data-prev="ProjectRoom" data-next="Unconference">
             <a class="book_leave_btn"></a>
             <div class="book book_style7">
                 <div class="book_page_scroll_wrapper">
@@ -1124,13 +1135,13 @@
                                         Ars Electronica Animation Festival 2022 on Tour<br/>
                                         奧地利 Ars Electronica 動畫節 2022 巡禮<br/>
                                         ●<br/>
-                                        <div class="screening_img" style="background-image: url(../images/screening-programme-01.jpg)"></div>
+                                        <div class="screening_img" style="background-image: url(images/screening-programme-01.jpg)"></div>
                                     </div>
                                     <div class="col col6 text7 sp_item"  data-target="">
                                         Microwave International New Media Arts Festival 2023 presents <br/>Special Screening Programme: Genetic Salon by Bobby Yu<br/>
                                         微波國際新媒體藝術節2023呈獻 <br/>特備放映節目：余淑培的《基因髮廊》<br/>
                                         ●<br/>
-                                        <div class="screening_img" style="background-image: url(../images/screening-programme-02.jpg)"></div>
+                                        <div class="screening_img" style="background-image: url(images/screening-programme-02.jpg)"></div>
                                     </div>
                                 </div>
                             </div>
@@ -1141,17 +1152,147 @@
                                         Microwave International New Media Arts Festival 2023 presents <br/>Special Animation Programme: Selected Works by Florence Lee<br/>
                                         微波國際新媒體藝術節2023呈獻 <br/>特備動畫放映節目：李鈺淇作品選<br/>
                                         ●<br/>
-                                        <div class="screening_img" style="background-image: url(../images/screening-programme-03.jpg)"></div>
+                                        <div class="screening_img" style="background-image: url(images/screening-programme-03.jpg)"></div>
                                     </div>
                                     <div class="col col6 text7 sp_item"  data-target="">
                                         Microwave International New Media Arts Festival 2023 presents <br/>Special Screening Programme: Microwave x Oyster Films<br/>
                                         微波國際新媒體藝術節2023呈獻 <br/>特備放映節目：Microwave x 牡蠣電影<br/>
                                         ●<br/>
-                                        <div class="screening_img" style="background-image: url(../images/screening-programme-04.jpg)"></div>
+                                        <div class="screening_img" style="background-image: url(images/screening-programme-04.jpg)"></div>
                                     </div>
                                 </div>
                             </div>
 
+                        </div>
+                    </div>
+                    <div class="scrolltonext text7"><div class="progress" data-progress="0"></div><div class="text"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book_wrapper" data-id="Unconference" data-prev="ScreeningProgramme" data-next="ProgrammeSchedule">
+            <a class="book_leave_btn"></a>
+            <div class="book book_style2 book_style2_2">
+                <div class="book_page_scroll_wrapper">
+                    <div class="book_page_scroll scroll_area">
+                        <div class="book_page_wrapper">
+                            <div class="book_page book_page_head text7">M.I.N.M.A.F<span class="boxed_2023">2023</span></div>
+                            <div class="book_page book_page_head text7">
+                                <div class="book_page_head_left">Unconference</div>
+                                <div class="book_page_head_right">反轉研討會</div>
+                            </div>
+
+                            <div class="book_page book_page_body sticky_book_page">
+                                <h4 class="left_text">
+                                    Unconference
+                                    <div class="text6 chi_text">
+                                        反轉研討會
+                                    </div>
+                                </h4>
+
+                                <div class="left_bottom_text">
+                                    <div class="col_wrapper">
+                                        <div class="row">
+                                            <div class="col col6">
+                                                <div class="col_spacing">
+                                                    Human, Animals, Plants, Machines &<br>Artificial Intelligence
+                                                    <div class="text7 chi_text">生靈、機器與人工智慧</div>
+                                                    ●<br/>
+                                                    9/11/2022 (Thu ㊃)<br>20:00 - 22:00<br>Zoom Live<br>
+                                                    ●<br/>
+                                                </div>
+                                            </div>
+                                            <div class="col col6">
+                                                <div class="col_spacing">
+                                                    <a href="https://forms.gle/jB9ceMdEX1PAcY9L8" target="_blank" class="boxed_registration_btn">
+                                                        <div class="boxed_registration">
+                                                            <div class="registration_note">
+                                                                Guided tour is available. Reservation required.<br/>
+                                                                設有導賞團，敬請預約。
+                                                            </div>
+                                                            <div class="registration_cta text7">
+                                                                Registration <span class="chi_text">預約</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                            
+                                </div>
+
+                            </div>
+
+                            <div class="book_page book_page_body">
+                                <p>
+                                    The curatorial approach of Festival 2023 is about Non-Human Intelligence; what would happen if we move away from human-centred thinking by understanding the “more than human powers of plants & animals” or say the all the “living matters” on earth? Can we explore/ co-create a better symbiosis?  Unconference this year will continue as an online conference, three international professionals will share their views towards the theme and explore from different angles of research, and communicate with audience online directly.
+                                </p>
+                                <p>
+                                    今年藝術節主題以非人類智慧出發，這個起點是想要離開以人為中心的思維，通過理解生靈的智慧以及科技而來的「生靈」發展，是否能投入及創建一個更好的「萬物共生」模式？反轉研討會將持續線上模式，邀來三位國際專家去分享他們的見解與相關研究，通過線上會議與與會者共同探索主題。
+                                </p>
+                                <hr/>
+                                <p class="center_text">
+                                Eco Intelligence
+                                生態智慧
+                                </p>
+                                <p>
+                                    Plants, animals, fungi, and microbes work together in complex ways to produce an abundance of life. They compose, compost, evolve, and change in ways that are intelligent. Humans are not the only species who can learn, adapt, and shape the world. With the motivation to become more ecologically intelligent, I create artworks that focus on learning from non-humans. Crickets, worms, plants, and springtails take center stage as the focus of artworks designed to engage viewers in unexpected encounters. The extended perceptual capabilities offered by technologies are used for purposes of sensing the other, attempting to take on their perspectives, or amplifying our connections. Engaging with these non-humans reminds us that they are an important part of our community, and that the human species has much to learn from those who have figured out how to live together on earth for far longer than we have. 
+                                </p>
+                                <p>
+                                    植物、動物、真菌與微生物以複雜的方式共同協作，他們以智能的方式組成、堆肥、進化及變化，創造出豐富的生命生態。而人類並不是唯一能學習、適應以及塑造世界的物種。為了提高生態智慧，我創作的藝術作品專注於向非人類學習，例如蟋蟀、蠕蟲、植物與跳蟲作為作品的焦點，旨在吸引觀眾進行意想不到的接觸。科技提供的擴展感知能力被用於感知他人，嘗試採用他人的角度或放大與人們之間的關係。與這些非人類接觸提醒人們，他們是社會的重要組成部分，人類可以從他們身上學習許多東西，因為他們已經想出如何在地球上共同生活的方法，而且比人們在此生活的時間要長得多。
+                                </p>
+
+                                <div class="line_header text7">
+                                    <div>Speaker Biography </div>
+                                    <div>講者簡介</div>
+                                </div>
+
+                                <div class="image_box_wrapper">
+                                    <div class="col_wrapper">
+                                        <div class="row">
+                                            <div class="col col6">
+                                                <div class="col_spacing">
+                                                    <div class="bg" style="background-image: url(images/AmyYoungs.jpg);"></div>
+                                                    <div class="text">
+                                                        <div>Amy M. Youngs (USA)</div>
+                                                        <div class="text7">艾米‧揚斯 (美國)</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col col6">
+                                                <div class="col_spacing">
+                                                    <div class="bg" style="background-image: url(images/ChrisDanta.jpg);"></div>
+                                                    <div class="text">
+                                                        <div>Chris Danta (Australia)</div>
+                                                        <div class="text7">克里斯‧丹塔 (澳洲)</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col col6">
+                                                <div class="col_spacing">
+                                                    <div class="bg" style="background-image: url(images/MadelineGannon.jpg);"></div>
+                                                    <div class="text">
+                                                        <div>Dr. Madeline Gannon (USA)</div>
+                                                        <div class="text7">瑪德琳‧甘農博士 (美國)</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col col6">
+                                                <div class="col_spacing">
+                                                    <div class="bg" style="background-image: url(images/Joyce.jpg);"></div>
+                                                    <div class="text">
+                                                        <div>Joyce Hei-ting Wong  (Hong Kong)</div>
+                                                        <div class="text7">黃熙婷 (香港)</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                     <div class="scrolltonext text7"><div class="progress" data-progress="0"></div><div class="text"></div></div>
@@ -1665,8 +1806,8 @@
                                     Programme Partners<br>
                                     <span class="chi_text">節目伙伴</span>
                                     <div class="sponsors_logo_row">
-                                        <div class="sponsors_logo_item" style="height: 102px"><img src="../images/logo-institut-francais.png" /></div>
-                                        <div class="sponsors_logo_item" style="height: 102px"><img src="../images/logo-consulat-general-de-france.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 102px"><img src="images/logo-institut-francais.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 102px"><img src="images/logo-consulat-general-de-france.png" /></div>
                                     </div>
                                 </div>
 
@@ -1674,7 +1815,7 @@
                                     Supported by <br>
                                     <span class="chi_text">資助</span>
                                     <div class="sponsors_logo_row">
-                                        <div class="sponsors_logo_item" style="height: 60px"><img src="../images/logo-hkadc.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 60px"><img src="images/logo-hkadc.png" /></div>
                                     </div>
                                 </div>
 
@@ -1682,9 +1823,9 @@
                                    Design & Web Partners <br>
                                     <span class="chi_text">設計伙伴</span>
                                     <div class="sponsors_logo_row">
-                                        <div class="sponsors_logo_item" style="height: 57px"><img src="../images/logo-alonglongtime.png" /></div>
-                                        <div class="sponsors_logo_item" style="height: 57px"><img src="../images/logo-nekogato.png" /></div>
-                                        <div class="sponsors_logo_item" style="height: 57px"><img src="../images/logo-things-i-did.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 57px"><img src="images/logo-alonglongtime.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 57px"><img src="images/logo-nekogato.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 57px"><img src="images/logo-things-i-did.png" /></div>
                                     </div>
                                 </div>
 
@@ -1692,9 +1833,9 @@
                                     Screening Partners <br>
                                     <span class="chi_text">放映伙伴</span>
                                     <div class="sponsors_logo_row">
-                                        <div class="sponsors_logo_item" style="height: 60px"><img src="../images/logo-ars-electronica.png" /></div>
-                                        <div class="sponsors_logo_item" style="height: 60px"><img src="../images/logo-oyster-films.png" /></div>
-                                        <div class="sponsors_logo_item" style="height: 60px"><img src="../images/logo-form-society.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 60px"><img src="images/logo-ars-electronica.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 60px"><img src="images/logo-oyster-films.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 60px"><img src="images/logo-form-society.png" /></div>
                                     </div>
                                 </div>
 
@@ -1702,7 +1843,7 @@
                                     Education Partners <br>
                                     <span class="chi_text">教育伙伴</span>
                                     <div class="sponsors_logo_row">
-                                        <div class="sponsors_logo_item" style="height: 60px"><img src="../images/logo-hkdi.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 60px"><img src="images/logo-hkdi.png" /></div>
                                     </div>
                                 </div>
 
@@ -1710,16 +1851,16 @@
                                     Media Partners <br>
                                     <span class="chi_text">媒體伙伴</span>
                                     <div class="sponsors_logo_row">
-                                        <div class="sponsors_logo_item" style="height: 52px"><img src="../images/logo-arts-elevator.png" /></div>
-                                        <div class="sponsors_logo_item" style="height: 52px"><img src="../images/logo-happy-kongner.png" /></div>
-                                        <div class="sponsors_logo_item" style="height: 52px"><img src="../images/logo-laichieagle.png" /></div>
-                                        <div class="sponsors_logo_item" style="height: 52px"><img src="../images/logo-excohk.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-arts-elevator.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-happy-kongner.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-laichieagle.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-excohk.png" /></div>
                                     </div>
                                     <div class="sponsors_logo_row">
-                                        <div class="sponsors_logo_item" style="height: 52px"><img src="../images/logo-sample.png" /></div>
-                                        <div class="sponsors_logo_item" style="height: 52px"><img src="../images/logo-scan-now.png" /></div>
-                                        <div class="sponsors_logo_item" style="height: 52px"><img src="../images/logo-the-culturist.png" /></div>
-                                        <div class="sponsors_logo_item" style="height: 52px"><img src="../images/logo-zenegeist.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-sample.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-scan-now.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-the-culturist.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-zenegeist.png" /></div>
                                     </div>
                                 </div>
                             </div>
