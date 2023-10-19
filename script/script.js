@@ -71,6 +71,15 @@ function init_event(){
 		setbookposition();
 	})
 
+	$(".sp_item").click(function(){
+		var mytarget = $(this).attr("data-target");
+		var $mytarget = $("[data-id='"+mytarget+"']");
+		$mytarget.stop().fadeIn().addClass("show");
+		$(window).resize();
+		$mytarget.find(".scroll_area").scrollTop(0);
+		setbookposition();
+	})
+
 	$(".scrolltonext").click(function(){
 		var $p = $(this).parents(".book_wrapper");
 		var mynexttarget = $p.attr("data-next");
@@ -439,7 +448,7 @@ function init_function(){
 					var progress = parseInt($p.find(".progress").attr("data-progress"));
 					if (event.type == "touchmove") {
 						touchObject.update(event.touches[0].pageX, event.touches[0].pageY);
-						progress += -touchObject.distance/2;
+						progress += -touchObject.distance;
 					} else {
 						progress+=event.deltaY/5;
 					}
@@ -508,7 +517,7 @@ function init_function(){
 					var progress = parseInt($p.find(".progress").attr("data-progress"));
 					if (event.type == "touchmove") {
 						touchObject.update(event.touches[0].pageX, event.touches[0].pageY);
-						progress += touchObject.distance/2;
+						progress += touchObject.distance;
 					} else {
 						// console.log(event.deltaY/5)
 						progress+=-event.deltaY/5;

@@ -1035,6 +1035,22 @@ body{
 .book_style1_4 .book_page_head{
 	background-color: #ff0000;
 }
+
+.book_style1_5{
+	left: 0%;
+	right: 0%;
+	top:0%;
+	bottom: 0%;
+	color: #000000;
+}
+
+.book_style1_5 .book_page_scroll_wrapper{
+	background-color: #ffffff;
+}
+
+.book_style1_5 .book_page_head{
+	background-color: #ffffff;
+}
 	
 .line_ul{
 	border-top:1px solid #9fa1a4;
@@ -1760,12 +1776,25 @@ body{
 	width: 100%;
 	padding-bottom: 67%;
 	background-color: #000;
-	border-radius: 5px;
+	border-radius: 10px;
 	overflow: hidden;
 	background-size: contain;
 	background-position: center;
 	margin-top: 5px;
+	transition: opacity 250ms ease-out;
 }
+
+.sp_item[data-target]{
+	cursor: pointer;
+	transition: opacity 250ms ease-out;
+}
+.sp_item:hover {
+	/* color: rgba(255, 255, 255, 0.75); */
+	opacity: 0.5;
+}
+/* .sp_item:hover .screening_img {
+	opacity: 0.75;
+} */
 
 .book_style8{
 	position: absolute;
@@ -2054,6 +2083,31 @@ a:hover .boxed_registration {
 	color: #9fa1a4;
 }
 
+.sponsors_row {
+	font-size: calc(12px);
+	line-height:1.4em;
+	margin-bottom: 50px;
+}
+
+.sponsors_row:last-child {
+	margin-bottom: 0px;
+}
+
+.sponsors_logo_row {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.sponsors_logo_item {
+	margin-right: 25px;
+}
+.sponsors_logo_item img{
+	height: 100%;
+}
+
+
 .book_style0,
 .book_style1,
 .book_style2,
@@ -2286,6 +2340,22 @@ a:hover .boxed_registration {
 		padding-bottom: 25px;
 	}
 
+	.book_style7 .book_page_body.mobile_collapse {
+		padding-bottom: 0;
+	}
+	.book_style7 .book_page_body.mobile_collapse {
+		padding-top: 0;
+	}
+	.book_style7 .row_content > .col6:first-child {
+		padding-right: 0px;
+	}
+	/* .book_style7 .row_content > .col6:last-child {
+		padding-bottom: 0px;
+	} */
+	.book_style7 .row_content > div {
+		padding-left: 0px;
+	}
+
 	.book_style8 .col6:first-child {
 		border-top: none;
 		padding-top: 0;
@@ -2407,6 +2477,11 @@ a:hover .boxed_registration {
 
 	/* .book_style2 .col6 + .col6{
 		margin-top: 40px;
+	} */
+
+	/* .scrolltonext.reversed {
+		bottom: 20px;
+		top: auto;
 	} */
 
 }
