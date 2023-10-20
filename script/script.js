@@ -448,7 +448,14 @@ function init_function(){
 		*/
 
 		["wheel", "touchmove"].forEach( (eventType) => $(this)[0].addEventListener(eventType, (event) => {
-			if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 || $this.find(">*").height() - $this.height() < 30) && (event.deltaY == undefined || event.deltaY > 0) ) {
+			let tHeight = 0;
+			$this.find(">*").each((index, item) => {
+				if( index < $this.find(">*").length - 2) {
+					tHeight += $(item).height();
+				}
+			});
+			if(($this.scrollTop() + $this.height() >= tHeight -5 || tHeight - $this.height() < 30) && (event.deltaY == undefined || event.deltaY > 0) ) {
+			// if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 || $this.find(">*").height() - $this.height() < 30) && (event.deltaY == undefined || event.deltaY > 0) ) {
 				clearTimeout(scrolltimer);
 				$p.addClass("reach-end")
 				if(mynexttarget){
