@@ -1,6 +1,19 @@
 var scrollArr = [];
 var swiperArr = [];
 
+function fbs_click(width, height) {
+    var leftPosition, topPosition;
+    //Allow for borders.
+    leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+    //Allow for title and status bars.
+    topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+    var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
+    u=location.href;
+    t=document.title;
+    window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer', windowFeatures);
+    return false;
+}
+
 if (!("ontouchstart" in document.documentElement)) {
 document.documentElement.className += " no-touch";
 }
@@ -42,10 +55,42 @@ function doscroll(){
 
 
 function loading_finish(){
+	$("body").addClass("loadfinish")
+	
+	if($("body").hasClass("body_test_humanity_result_done")){
+		setTimeout(function(){
+			$(".score_icon_item").mouseenter();
+		},1500)
+	}
 }
 
 
 function init_event(){
+	$(".score_icon_item").mouseenter(function(){
+		var $this = $(this);
+		$this.find(".score_percentage").text("0%")
+		$this.find(".score_percentage").animateNumber(
+		{
+			number: $this.find(".score_percentage").attr("data-text"),
+			numberStep: function(now, tween) {
+				var floored_number = Math.floor(now),
+					target = $(tween.elem);
+				if(parseInt(floored_number)<10){floored_number="0"+floored_number;}
+				target.text(floored_number + '%');
+			}
+		},
+		{
+			easing: 'swing',
+			duration: 1200
+		}
+		);
+		$this.find(".score_percentage_bar > div").addClass("noanimation");
+		$this.find(".score_percentage_bar > div").width("0%");
+		setTimeout(function(){
+			$this.find(".score_percentage_bar > div").removeClass("noanimation");
+			$this.find(".score_percentage_bar > div").width($this.find(".score_percentage_bar > div").attr("data-width"));
+		},0)
+	})
 
 	$(".scrollto_btn").click(function(){
 		var mytarget = $(this).attr("data-target");
@@ -240,6 +285,17 @@ function updateScroll(){
 var scrolltimer;
 
 function init_function(){
+
+	// create offset
+
+	$(".offset_p").each(function(){
+		$(this).find(".offset_child").each(function(i){
+			$(this).css({
+				"-webkit-transition-delay": i*150+"ms",
+				"transition-delay": i*150+"ms",
+			})
+		})
+	})
 
 	class TouchObject {
 	// let touchObject = () => {

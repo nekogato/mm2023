@@ -39,32 +39,23 @@
     $.fn.scrambledWriter = function() {
         this.each(function() {
             var $ele = $(this), str = $ele.html(), progress = 0, replace = /[^\s]/g,
-                random = randomChar, inc = 1, incc = 1;
+                random = randomChar, inc = 1;
 
                 str = str.replace(/<br>/g, '~');
 
                 console.log(str)
             $ele.text('');
-            setTimeout(function(){
-                
-                var timer = setInterval(function() {
-                    var showtext = str.substring(0, progress);
-                    showtext = showtext.replace(/~/g, '<br>');
-                    var showtext2 = str.substring(progress+inc+5, str.length);
-                    $ele.html( showtext + str.substring(progress, str.length).replace(replace, random));
-                    //$ele.html(str.substring(0, progress) + str.substring(progress, progress+inc).replace(replace, random) + str.substring(progress+inc, str.length));
-                    incc+=1;
-                    if(incc>10){
-                        //progress += inc;
-                        incc=1
-                    }
-                    //progress += inc;
-                    if (progress >= str.length + inc){
-                        clearInterval(timer);
-                        $ele.height("auto");
-                    }
-                }, Math.floor(Math.random() * 300));
-            },  Math.floor(Math.random() * 300));
+            var timer = setInterval(function() {
+                var showtext = str.substring(0, progress);
+                showtext = showtext.replace(/~/g, '<br>');
+                $ele.html( showtext + str.substring(progress, progress+inc+1).replace(replace, random) );
+                //$ele.text(str.substring(0, progress) + str.substring(progress, progress+inc).replace(replace, random) + str.substring(progress+inc, str.length));
+                progress += inc
+                if (progress >= str.length + inc){
+                    clearInterval(timer);
+                    $ele.height("auto");
+                }
+            }, 15);
             
         });
         return this;

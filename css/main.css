@@ -13,6 +13,7 @@ p:first-child{margin-top:0px;}
 .td{display:table-cell}
 
 input, textarea{
+	font-size: 16px;
 	color: #000000;
 	font-family: "Neue Montreal", "Noto Sans TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
 	}
@@ -75,7 +76,7 @@ a{
 	opacity:0;
 	}	
 	
-.loadfinish .scrollin1.startani{
+.loadfinish .scrollin1{
 	-ms-transform: translateY(0px) translateX(0px) translateZ(0px) scale(1); 
     -webkit-transform: translateY(0px) translateX(0px) translateZ(0px) scale(1); 
     transform: translateY(0px) translateX(0px) translateZ(0px) scale(1);
@@ -90,7 +91,7 @@ a{
 	opacity:0;
 	}	
 	
-.loadfinish .scrollin2.startani{
+.loadfinish .scrollin2{
 	-ms-transform: translateY(0px) translateX(0px) translateZ(0px) scale(1); 
     -webkit-transform: translateY(0px) translateX(0px) translateZ(0px) scale(1); 
     transform: translateY(0px) translateX(0px) translateZ(0px) scale(1);
@@ -101,7 +102,7 @@ a{
 	opacity:0;
 	}	
 
-.loadfinish .scrollin3.startani{
+.loadfinish .scrollin3{
 	opacity:1;
 	}	
 
@@ -271,6 +272,8 @@ a{
 }
 
 .body_test_humanity .top_menu{
+	top: 11px;
+	right: 50px;
 }
 
 
@@ -786,6 +789,11 @@ h1:first-child,h2:first-child,h3:first-child,h4:first-child,h5:first-child,h6:fi
 		top: 20px;
 		right: 20px;
 	}
+
+	.body_test_humanity .top_menu {
+		top: 20px;
+		right: 20px;
+	  }
 
 	.dropdown {
 	}

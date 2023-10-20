@@ -16,3 +16,12 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Supply';
+    src: url('Supply-Light.woff2') format('woff2'),
+        url('Supply-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+

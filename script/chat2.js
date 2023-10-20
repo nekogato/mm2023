@@ -54,15 +54,8 @@ function arrToParagraph(arr) {
     let paragraph = "<ul>";
 
     for (let i = 0; i < arr.length; i++) {
-        for (const key in arr[i]) {
-            if (arr[i].hasOwnProperty(key)) {
-                if(arr[i].role=="assistant"){
-                    paragraph += "<li class='assistant'>"+arr[i].content+"</li>";
-                }
-                if(arr[i].role=="user"){
-                    paragraph += "<li class='user'>"+arr[i].content+"</li>";
-                }
-            }
+        if(arr[i].role=="assistant"){
+            paragraph += "<li class='assistant'>"+arr[i].content+"</li>";
         }
     } 
 
@@ -75,6 +68,7 @@ function arrToParagraph(arr) {
 function loadresult(){
     $("body").addClass("body_test_humanity_result_loading")
     $("body").removeClass("body_test_humanity_result_start_chat")
+    breakmodel=true;
 
     //fake
     // setTimeout(function(){
@@ -138,7 +132,7 @@ $(document).ready(function() {
             success: function(response) {
                 console.log(response)
                 // Display the result in the "result" div
-                $(".share_result_btn").attr("href",response);
+                $(".share_result_btn").attr("href","http://www.facebook.com/share.php?u="+response);
             }
         });
     });
@@ -157,37 +151,44 @@ $(document).ready(function() {
 });
 
 function checkChat(){
-    breakmodel=false;
-    doletter1animation();
-    doletter2animation();
-    doletter3animation();
-    setTimeout(function(){
-        for ( var i = 0; i < objArr.length; i++ ) { 
-            gsap.to(objArr[i].material, {opacity: 1, duration: 3});
-        }
-        for ( var i = 0; i < objArr2.length; i++ ) { 
-            objArr2[i].visible = false;
-            //gsap.to(objArr2[i].material, {opacity: 0, duration: 3});
-        }
-    },0)
 
-
-
-    $(".chat_question_wrapper").stop().animate({scrollTop:$(".chat_question_inwrapper").outerHeight()-$(".chat_question_wrapper").height()}, 500, 'swing', function() { 
-    });
-    
-    rndInt = Math.floor(Math.random() * 3)+1 ;
-    rndRotate = Math.floor(Math.random() * 120)-60 ;
-    rndScale = (Math.random())+2 ;
-    $("body").addClass("body_test_humanity_result_start_chat");
-
-    loadmessage();
-    if($(".chat_answer_wrapper").hasClass("endchat") || $(".chat_answer_wrapper").hasClass("forceendchat")){
-        loadresult();
+    if($("body").hasClass("body_played_test") && !$(".chat_answer_wrapper").hasClass("restartchat")){
+        $("body").removeClass("body_test_humanity_result_start_chat")
+        $("body").addClass("body_test_humanity_result_done")
     }else{
-        $("#message").focus(); 
-    }
 
+
+        breakmodel=false;
+        doletter1animation();
+        doletter2animation();
+        doletter3animation();
+        setTimeout(function(){
+            for ( var i = 0; i < objArr.length; i++ ) { 
+                gsap.to(objArr[i].material, {opacity: 1, duration: 3});
+            }
+            for ( var i = 0; i < objArr2.length; i++ ) { 
+                objArr2[i].visible = false;
+                //gsap.to(objArr2[i].material, {opacity: 0, duration: 3});
+            }
+        },0)
+
+
+
+        $(".chat_question_wrapper").stop().animate({scrollTop:$(".chat_question_inwrapper").outerHeight()-$(".chat_question_wrapper").height()}, 500, 'swing', function() { 
+        });
+        
+        rndInt = Math.floor(Math.random() * 3)+1 ;
+        rndRotate = Math.floor(Math.random() * 120)-60 ;
+        rndScale = (Math.random())+2 ;
+        $("body").addClass("body_test_humanity_result_start_chat");
+
+        loadmessage();
+        if($(".chat_answer_wrapper").hasClass("endchat") || $(".chat_answer_wrapper").hasClass("forceendchat")){
+            loadresult();
+        }else{
+            //$("#message").focus(); 
+        }
+    }
     // fake
     // setTimeout(function(){
     //     loadresult();
@@ -230,11 +231,13 @@ const responseTextarea = document.getElementById('response');
 var obj = {};
 var messagesArr=[];
 var myheight;
+//var limit = 9;
+var limit = 9;
 async function loadmessage(){
     $(".chat_answer_wrapper").addClass("stopTyping");
     var showforceend = false;
 
-    if (messagesArr.length >=9) {
+    if (messagesArr.length >=5) {
         showforceend = true;
     }
 
@@ -367,15 +370,12 @@ async function loadmessage(){
             console.log(data)
 
 
-            $(".human_percentage").text(data.human_percentage)
-            $(".human_score_percentage_bar").css("width",data.human_percentage)
-            $(".human_percentage_reason").text(data.human_percentage_reason)
-            $(".alien_percentage").text(data.alien_percentage)
-            $(".alien_score_percentage_bar").css("width",data.alien_percentage)
-            $(".alien_percentage_reason").text(data.alien_percentage_reason)
-            $(".robot_percentage").text(data.robot_percentage)
-            $(".robot_score_percentage_bar").css("width",data.robot_percentage)
-            $(".robot_percentage_reason").text(data.robot_percentage_reason)
+            $(".human_percentage").attr("data-text",data.human_percentage)
+            $(".human_score_percentage_bar").attr("data-width",data.human_percentage)
+            $(".alien_percentage").attr("data-text",data.alien_percentage)
+            $(".alien_score_percentage_bar").attr("data-width",data.alien_percentage)
+            $(".robot_percentage").attr("data-text",data.robot_percentage)
+            $(".robot_score_percentage_bar").attr("data-width",data.robot_percentage)
 
             Math.max(x,y,z)
             var x = parseInt(data.human_percentage);
@@ -422,8 +422,14 @@ async function loadmessage(){
 
             $("body").removeClass("body_test_humanity_result_loading")
             $("body").addClass("body_test_humanity_result_done")
+            setTimeout(function(){
+                $(".score_icon_item").mouseenter();
+                $(".chat_result_identity_icon").addClass("show")
+            },1500)
+
             $("body").addClass("body_played_test")
             $(".chat_answer_wrapper").removeClass("stopTyping");
+            breakmodel=false;
             
             // data.identity_guess
             // data.identity_reason

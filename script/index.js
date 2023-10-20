@@ -337,12 +337,14 @@ function init() {
         $("body").removeClass("body_test_humanity")
         $("body").removeClass("body_test_humanity_result_loading")
         $("body").removeClass("body_test_humanity_result_done")
+        $(".chat_result_identity_icon").removeClass("show")
         do_pushstate("?id=Home");
     });
 
     $(".leave_chat_result_btn").on( "click", function() {
         $("body").removeClass("body_test_humanity_result_loading")
         $("body").removeClass("body_test_humanity_result_done")
+        $(".chat_result_identity_icon").removeClass("show")
         $(".chat_answer_wrapper").removeClass("endchat")
         $(".chat_answer_wrapper").removeClass("forceendchat")
         
@@ -578,7 +580,7 @@ function animate() {
     camera.position.y += ( - mouseY/10 - camera.position.y ) * .05;
 
     if(allArr.length){
-        if(!breakmodel){
+        if(breakmodel){
             for ( var i = 0; i < allArr.length; i++ ) { 
                 allArr[i].position.x += (  randomObjArr[i].x - allArr[i].position.x ) * .05;
                 allArr[i].position.y += (  randomObjArr[i].y - allArr[i].position.y ) * .05;
