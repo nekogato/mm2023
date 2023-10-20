@@ -145,7 +145,9 @@ function init_event(){
 			$(".book_wrapper").each(function(){
 				if($(this).index()<myindex){
 					if($(this).attr("data-prev") !== $(this).attr("data-next")){
-						$(this).stop().fadeIn().addClass("show");
+						$(this).stop().fadeIn(function(){
+							setbookposition();
+						}).addClass("show");
 						$(window).resize();
 						$(this).find(".scroll_area").scrollTop($(this).find(".scroll_area > *").outerHeight());
 						// $(this).parents(".book_wrapper").addClass('reach-end');
@@ -153,7 +155,9 @@ function init_event(){
 				}
 
 				if($(this).index()>myindex){
-					$(this).stop().fadeOut().removeClass("show");
+					$(this).stop().fadeOut(function(){
+						setbookposition();
+					}).removeClass("show");
 					// $(this).parents(".book_wrapper").removeClass('reach-end');
 				}
 			})

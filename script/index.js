@@ -605,41 +605,74 @@ function animate() {
     camera.position.y += ( - mouseY/10 - camera.position.y ) * .05;
     //camera.lookAt( scene.position );
 
-    if($(".mobile_show").is(":hidden")){
+    if($(".mobile_show:last").is(":hidden")){
 		// desktop
         if($("body").hasClass("body_test_humanity") || $("body").hasClass("body_user_guide")){
             letter1.position.y += ( 0 - letter1.position.y ) * .05;
-            letter1.rotation.y +=0.02;
-            // if(letter1.rotation.y > 2){
-            //     letter1.rotation.y -= 2;
-            // }
-            letter1.rotation.y %= Math.PI*2;
             letter2.position.y += ( 0 - letter2.position.y ) * .05;
+            letter3.position.y += ( 0 - letter3.position.y ) * .05;
+
+        }else{
+            letter1.position.y += ( -1 - letter1.position.y ) * .05;
+            letter2.position.y += ( -1 - letter2.position.y ) * .05;
+            letter3.position.y += ( -1 - letter3.position.y ) * .05;
+        }
+        
+
+
+        if($("body").hasClass("body_test_humanity_result_loading")){
+            letter1.rotation.y +=0.02;
+            letter1.rotation.y %= Math.PI*2;
             letter2.rotation.y +=0.02;
             letter2.rotation.y %= Math.PI*2;
-            letter3.position.y += ( 0 - letter3.position.y ) * .05;
             letter3.rotation.y +=0.02;
             letter3.rotation.y %= Math.PI*2;
         }else{
-            letter1.position.y += ( -1 - letter1.position.y ) * .05;
-            letter1.rotation.y += ( 2 * Math.PI * (30 / 360) - letter1.rotation.y ) * .05;
-            letter2.position.y += ( -1 - letter2.position.y ) * .05;
-            letter2.rotation.y += ( 2 * Math.PI * (30 / 360) - letter2.rotation.y ) * .05;
-            letter3.position.y += ( -1 - letter3.position.y ) * .05;
-            letter3.rotation.y += ( 2 * Math.PI * (30 / 360) - letter3.rotation.y ) * .05;
-            
+            letter1.rotation.y += ( 0 * Math.PI * (30 / 360) - letter1.rotation.y ) * .05;
+            letter2.rotation.y += ( 0 * Math.PI * (30 / 360) - letter2.rotation.y ) * .05;
+            letter3.rotation.y += ( 0 * Math.PI * (30 / 360) - letter3.rotation.y ) * .05;
         }
-		
-        letter1.position.x += ( -6 - letter1.position.x ) * .05;
-        letter2.position.x += ( 0 - letter2.position.x ) * .05;
-        letter3.position.x += ( 6 - letter3.position.x ) * .05;
 
-        letter1.scale.x += ( 1 - letter1.scale.x ) * .05;
-        letter1.scale.y += ( 1 - letter1.scale.y ) * .05;
-        letter2.scale.x += ( 1 - letter2.scale.x ) * .05;
-        letter2.scale.y += ( 1 - letter2.scale.y ) * .05;
-        letter3.scale.x += ( 1 - letter3.scale.x ) * .05;
-        letter3.scale.y += ( 1 - letter3.scale.y ) * .05;
+        if($("body").hasClass("body_test_humanity_result_start_chat")){
+            if(rndInt==1){
+                letter1.position.x += ( 0 - letter1.position.x ) * .05;
+                letter2.position.x += ( 20 - letter2.position.x ) * .05;
+                letter3.position.x += ( 26 - letter3.position.x ) * .05;
+            }
+            if(rndInt==2){
+                letter1.position.x += ( -20 - letter1.position.x ) * .05;
+                letter2.position.x += ( 0 - letter2.position.x ) * .05;
+                letter3.position.x += ( 20 - letter3.position.x ) * .05;
+            }
+            if(rndInt==3){
+                letter1.position.x += ( -26 - letter1.position.x ) * .05;
+                letter2.position.x += ( -20 - letter2.position.x ) * .05;
+                letter3.position.x += ( 0 - letter3.position.x ) * .05;
+            }
+            
+            letter1.rotation.x += ( Math.PI * (rndRotate / 360) - letter1.rotation.x ) * .05;
+            letter2.rotation.x += ( Math.PI * (rndRotate / 360) - letter2.rotation.x ) * .05;
+            letter3.rotation.x += ( Math.PI * (rndRotate / 360) - letter3.rotation.x ) * .05;
+
+            letter1.scale.x += ( rndScale - letter1.scale.x ) * .05;
+            letter1.scale.y += ( rndScale - letter1.scale.y ) * .05;
+            letter2.scale.x += ( rndScale - letter2.scale.x ) * .05;
+            letter2.scale.y += ( rndScale - letter2.scale.y ) * .05;
+            letter3.scale.x += ( rndScale - letter3.scale.x ) * .05;
+            letter3.scale.y += ( rndScale - letter3.scale.y ) * .05;
+
+        }else{
+            letter1.position.x += ( -6 - letter1.position.x ) * .05;
+            letter2.position.x += ( 0 - letter2.position.x ) * .05;
+            letter3.position.x += ( 6 - letter3.position.x ) * .05;
+
+            letter1.scale.x += ( 1 - letter1.scale.x ) * .05;
+            letter1.scale.y += ( 1 - letter1.scale.y ) * .05;
+            letter2.scale.x += ( 1 - letter2.scale.x ) * .05;
+            letter2.scale.y += ( 1 - letter2.scale.y ) * .05;
+            letter3.scale.x += ( 1 - letter3.scale.x ) * .05;
+            letter3.scale.y += ( 1 - letter3.scale.y ) * .05;
+        }
 	}else{
 		//mobile
         letter1.rotation.y +=0.02;
