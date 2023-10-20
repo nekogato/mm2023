@@ -47,6 +47,13 @@ function loading_finish(){
 
 function init_event(){
 
+	$(".scrollto_btn").click(function(){
+		var mytarget = $(this).attr("data-target");
+		var mytop = $("[data-id='"+mytarget+"']").position().top+$(this).parents(".book_page_scroll").scrollTop()-70;
+		$(this).parents(".book_page_scroll").animate({scrollTop:mytop}, 500, 'swing', function() { 
+		 });
+		return false;
+	})
 
 	$(".dropdown_btn").click(function(){
 			
