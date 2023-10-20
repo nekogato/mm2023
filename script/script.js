@@ -204,10 +204,9 @@ function updateScroll(){
 		scrollArr[i].update();
 	}
 
-
-	if($(".mobile_show").is(":hidden")){
+	if($("body > .mobile_show").is(":hidden")){
 		// desktop
-
+		
 		$(".book_wrapper.show .book").each(function(){
 			$(this).css({
 				"top":"0px"
