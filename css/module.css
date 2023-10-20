@@ -1347,6 +1347,10 @@ body{
     margin-top: 0px;
 }
 
+.book_style2_2 .book_section_head.mobile_show{
+	display: none;
+}
+
 
 .image_box_wrapper .row{
 	display: flex;
@@ -1367,6 +1371,14 @@ body{
 
 .book_style2_2 .image_box_wrapper .text{
 	margin-top: 10px;
+}
+
+.book_style2_2 .scrollto_btn{
+	cursor: pointer;
+}
+
+.book_style2_2 .scrollto_btn:hover .bg{
+	opacity: 0.5;
 }
 
 .book_style2_2 .scrollto_box_wrapper{
@@ -2401,6 +2413,9 @@ a:hover .boxed_registration {
 		position: absolute;
 		left: 0%;
 		margin-left: calc((100% - 50px) * 0.33 + 25px);
+	}
+	.book_style2_2 .book_section_head.mobile_show{
+		display: flex;
 	}
 	.book_page_head_right {
 		margin-left: 0;

@@ -72,6 +72,7 @@ function init_event(){
 	$(".main_ex_text").click(function(){
 		var mytarget = $(this).attr("data-target");
 		var $mytarget = $("[data-id='"+mytarget+"']");
+		do_pushstate("?id="+mytarget);
 		$mytarget.stop().fadeIn().addClass("show");
 		$(window).resize();
 		$mytarget.find(".scroll_area").scrollTop(0);
@@ -113,7 +114,9 @@ function init_event(){
 	$(".book_leave_btn").click(function(){
 		var $mytarget = $(this).parents(".book_wrapper");
 		$mytarget.stop().fadeOut().removeClass("show");
-		setbookposition()
+		var myprevtarget = $(this).parents(".book_wrapper").attr("data-prev");
+		do_pushstate("?id="+myprevtarget);
+		setbookposition();
 	})
 	
 
@@ -585,6 +588,10 @@ function init_function(){
 	var id = getQueryParams('id');
 	if(id=="HumanityTest"){
 		$(".test_humanity_btn").click();
+	}else if($(".main_ex_text[data-target='"+id+"']").length){
+		var myprevtarget = $(".book_wrapper[data-id='"+id+"']").attr("data-prev");
+		$(".dropdown_content a[data-target='"+myprevtarget+"']").click();
+		$(".main_ex_text[data-target='"+id+"']").click();
 	}else if($(".book_wrapper[data-id='"+id+"']").length){
 		$(".dropdown_content a[data-target='"+id+"']").click();
 	}
