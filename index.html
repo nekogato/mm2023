@@ -13,7 +13,7 @@
     <script src="script/lib/swiper/js/swiper.min.js"></script>
     <script src="script/lib/gsap.min.js"></script>
     <script src="script/lib/jquery.scrambler.js"></script>
-    <script src="script/lib/hammer.min.js"></script>
+    <!-- <script src="script/lib/hammer.min.js"></script> -->
     <script src="script/lib/perfect-scrollbar.js"></script>
     <script src="script/lib/jquery.history.js"></script>
     <link href="script/lib/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
@@ -34,6 +34,17 @@
 
     <script src="script/lib/jquery.ba-hashchange.min.js"></script>
     <script src="script/script.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148167215-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-148167215-1');
+    </script>
+
 </head>
 <body>
     <div id="blocker"></div>
@@ -79,16 +90,16 @@
                                 <div class="book_page book_page_body">
                                     <ul>
                                         <li><a href="?id=Home" data-target="Home"><div class="menu_text">Home <span class="chi_text">主頁</span></div></a></li>
-                                        <!-- <li><a href="?id=CuratorialStatement" data-target="CuratorialStatement"><div class="menu_text">Curatorial Statement <span class="chi_text">策展論</span></div></a></li> -->
+                                        <li><a href="?id=CuratorialStatement" data-target="CuratorialStatement"><div class="menu_text">Curatorial Statement <span class="chi_text">策展論</span></div></a></li>
                                         <li><a href="?id=MainExhibition"  data-target="MainExhibition"><div class="menu_text">Main Exhibition <span class="chi_text">主題展覽</span></div></a></li>
                                         <!-- <li><a href="?id=FestivalGrandOpening"  data-target="FestivalGrandOpening"><div class="menu_text">Festival Grand Opening <span class="chi_text">藝術節開幕禮</span></div></a></li> -->
-                                        <!-- <li><a href="?id=ProjectRoom"  data-target=ProjectRoom"><div class="menu_text">Project Room <span class="chi_text">實驗M場</span></div></a></li>
+                                        <li><a href="?id=ProjectRoom"  data-target="ProjectRoom"><div class="menu_text">Project Room <span class="chi_text">實驗N場</span></div></a></li>
                                         <li><a href="?id=Unconference"  data-target="Unconference"><div class="menu_text">Unconference <span class="chi_text">反轉研討會</span></div></a></li>
-                                        <li><a href="?id=ArtistVideo"  data-target="ArtistVideo"><div class="menu_text">Artist Video <span class="chi_text">藝術家錄像分享</span></div></a></li>
-                                        <li><a href="?id=Screening"  data-target="Screening"><div class="menu_text">Screening <span class="chi_text">放映會</span></div></a></li> -->
+                                        <!-- <li><a href="?id=ArtistVideo"  data-target="ArtistVideo"><div class="menu_text">Artist Video <span class="chi_text">藝術家錄像分享</span></div></a></li> -->
+                                        <li><a href="?id=ScreeningProgramme"  data-target="ScreeningProgramme"><div class="menu_text">Screening Programme <span class="chi_text">放映節目</span></div></a></li>
                                         <li><a href="?id=ProgrammeSchedule"  data-target="ProgrammeSchedule"><div class="menu_text">Programme Schedule <span class="chi_text">節目時間表</span></div></a></li>
                                         <li><a href="?id=Crew"  data-target="Crew"><div class="menu_text">Crew <span class="chi_text">策劃團隊</span></div></a></li>
-                                        <!-- <li><a href="?id=SponsorsAndPartners"  data-target="SponsorsAndPartners"><div class="menu_text">Sponsors and Partners <span class="chi_text">贊助機構及合作伙伴</span></div></a></li> -->
+                                        <li><a href="?id=SponsorsAndPartners"  data-target="SponsorsAndPartners"><div class="menu_text">Sponsors and Partners <span class="chi_text">贊助機構及合作伙伴</span></div></a></li>
                                         <li><a href="?id=Press"  data-target="Press"><div class="menu_text">Press <span class="chi_text">傳媒</span></div></a></li>
                                         <li><a href="?id=ContactUs"  data-target="ContactUs"><div class="menu_text">Contact Us <span class="chi_text">聯絡</span></div></a></li>
                                         <li><a href="?id=AboutMicrowave"  data-target="AboutMicrowave"><div class="menu_text">About Microwave <span class="chi_text">微波簡介</span></div></a></li>
@@ -223,7 +234,7 @@
 
     <div class="blur_bg"></div>
     <div class="load_content">
-        <div class="book_wrapper" data-id="CuratorialStatement" data-prev="MainExhibition" data-next="MainExhibition">
+        <div class="book_wrapper active show" data-id="CuratorialStatement" data-next="MainExhibition">
             <div class="book book_style1">
                 <div class="book_page_scroll_wrapper">
                     <div class="book_page_scroll scroll_area">
@@ -237,11 +248,15 @@
                                 <h4>
                                 N.H Intelligence<br>
                                 Curatorial Statement<br>
-                                Joel Kwong</h4>
+                                by Joel Kwong</h4>
 
-                                <p>Here, “half-and-half” may refer to equal halves of a larger entity or an unknown equilibrium. If we calibrate the relationship between humans and machines on a scale of zero to one hundred, every single point at which we may achieve equilibrium is a variation. How do we build a balance that is symbotic? With a main exhibition and a curated series of programs, this year’s festival leads visitors to “dream,” a dream in which we assimilate, think, rehearse, and learn about future life. We see our imminent possibilities when navigating between reality and imagination. In Art of War, Sun Tzu writes that the best course of attack is to understand: If one knows the enemy and oneself, one need not fear a hundred battles. This is not to say that technology and artificial intelligence (AI) are the antagonists of humankind, but it is wise, surely, to also learn more about the capabilities of a friend, ally, partner. We also need to know ourselves before we know others. In The Storytelling Animal: How Stories make us Human, Jonathan Gottschall stipulates that man are creatures of storytelling. Even for a singular text, with people’s imagination, a tale can unfold in infinite ways that entertain and also teach people to face difficulties and live bravely. Through stories, people learn to self-heal, destress, and relieve their emotions. Using the language of escape rooms, artist duo Laia Cabrera and Isabelle Duverger explore reality and fantasy in Dream-e-scape, bringing visitors into an immersive lucid dream. Contrary to the idea that dreams are just dreams, the line between the real world and the imaginary world is often blurry. If an immersive installation is a form of lucid dreaming, a VR device is the start of a personal journey into the virtual realm. Jakob Kudsk Steensen’s RE-ANIMATED is a reconstructed environment in the form of a paradisal garden, a habitat for the extinct Kaua’i ʻōʻō bird. The landscape is made from realistic geographic and ecological data as it examines the interstices between extinction, conservation, and immortality through artistic experience.</p>
-
-                                <p>Having learned more about ourselves, we move on to learning more about others. Discussions about art and technology tend to involve a lot of technical discourse, but what exactly are their implications? Rather than focusing on the rapidity of scientific development and the changes its interventions introduce to the world, we are more interested in how we should face our imminent future. Last year, the festival presented a video work about human-machine interaction, which ends with the phrase “Co-AI-existence”—AI being the acronym for artificial intelligence but also the transliteration for love from Mandarin. We continue this line of inquiry in this year’s edition; if humans and machines are to co-exist, we might as well get to know each other well. Design studio Ultravioletto believes that AI is capable of replicating human thought to grow and respond to their environments by understanding and inference. If AIs can read us like a book, how do we in turn comprehend them? In Neural Mirror, the viewer looks at their reflection in a mirror but sees themselves as moving data points, a perspective more attributed to AIs, who observe the world as masses of data, than humans, who rely primarily on sight. How do we reconcile these differences? Some may consider technology insentient and AI to be mere machines, but they already assume distinct personas in our lives in the forms of Alexa, Siri, and the virtual assistant from the movie Her, a woman who eludes touch and captivates by voice alone. Everyone gets a virtual assistant MOA in Charles Ayats’s My Own Assistant, which brings us to an interactive augmented reality set in a future world. Your story with your MOA quickly unfolds, just between the two of you… If sound isn’t enough, might adding video hit the spot? Futurist Ray Kurzweil predicts technological singularity—that is, when AI surpasses humans—to occur by 2045. By then, not all forms of AI will survive, and some will be inevitably eliminated. Greek artist Kyriaki Goni’s video work Not allowed for algorithmic audiences compiles research on AI development and voice interfaces to create a fictional narrative. In a monologue, an AI assistant who is about to disappear teaches humans how to avoid being heard by algorithms. In these universes, is the relationship between humans and machines for better or for worse? Do we fight with or against each other?</p>
+                                <p>When did humans reach the pinnacle of the tower of existence? When did we start distinguishing between the human and the non-human? From where did this centrism originate? How are things divided, categorized, and ordered in universes built on the intelligence of other species? Or is all of this fantasizing coming from a place of anthropocentrism—if we, as humans, head towards it, will it lead us to a way that breaks the illusion?</p>
+                                <p>In 2021, Microwave curated Yesterday’s Fiction from a futurist perspective founded on myth, science fiction, and literary creation to present works exploring the human imagination. The exhibition concluded with Co(AI)xistence, a video work whose story was never finished. The 2022 edition, titled Half Half, searched for balance and ways of co-existence in a world developing at lightspeed with artificial intelligence and technology, with the wish that “science be kind and all forms of life co-exist in peace.” But if we speak about co-existence, what about the other beings on this earth? In what context is “co-existence” agreed upon? Throughout the curatorial process, other life forms seem to be overshadowed by technology. With the rapid advancement of artificial intelligence (AI), we try to shift the focus back to the “non-human” to identify the missing piece. In the field of “non-human intelligence”—which includes animals, insects, plants, and computer systems—humans still play a role, but one that needs to interact and cooperate, and even create something with other species. Will this direction help us go beyond anthropocentric frameworks of understanding?</p>
+                                <p>With these (co-)creations, media artists, technologists, and scientists “collaborate” with a variety of organisms, like bees, elephants, ants, bacteria, and plants. The data and assets from these collaborations are just as complex as what arises from collaborations with AI. Apart from possibilities of de-anthropocentrism, they also make us learn humility and respect. Creation is a process of understanding and co-operating with each other as living beings, a form of cross-species exchange and interaction; perhaps these forms of expression and development can lead us to more symbiotic ways of co-existence.</p>
+                                <p>Curating is a layered process. It is not just about showing works that relate and placing them in the same space, but also reaching out to the audience online and offline, much in the way of an “untouchable lover.” Seen independently, the works fascinate, but together they offer broader, larger narratives and imagery. We begin with American film director Rachel Mayeri’s Primate Cinema: Apes as Family, a film made especially for chimpanzees. Television is a form of entertainment for chimpanzees at the zoo, but no filmmaker has ever made programmes specifically for them. Mayeri worked with primatologists to study the chimpanzees’ reactions to different television programmes and came to an interesting conclusion: their preferences are similar to human viewers and revolve around food, territory, social status, and sex (like our obsession with Instagram and TikTok). Although chimpanzees relate closely to humans and are genetically similar, humans did not evolve from chimpanzees. The Human Genome Project, launched in 1990, and its sequencing of human DNA in 2003 cracked the code of life, allowing us to trace back to six million years ago, when humans and chimpanzees shared an ancestor. This marked our first step away from the center to understand our similarities and differences with other species. Naturally, animals and humans share the same fate—think Noah’s Ark and all the disaster films and science fiction. If the world is really coming to an end (as it seems to be), what can we learn from the world of animals in our bleak present? In 2018, the world’s last male northern white rhino Sudan died, leaving the last two female white rhinos incapable of reproducing. Sudan’s death marked the extinction of their species. With AI, British artist Alexandra Daisy Ginsberg “revived” the extinct rhino, creating The Substitute, a rhino that lives and wanders in virtual space. Once the AI-constructed rhino has adapted to its space, it learns and copies the sounds and behavior of northern white rhinos by amassing animal data until it gradually becomes more three-dimensional and lifelike. Yet what is the purpose of this “life”? A technological resurrection, speculating on the future of humans, who already have one foot in the virtual world—is this a prophecy or a warning?</p>
+                                <p>By itself, an ant is fragile and insignificant as dust; together, they can carry and travel, transporting food to places of storage. We have all seen how they cooperate, build nests, and thrive as they defend themselves against threats and raise offspring, creating a life cycle built on Collective Intelligence. Chinese artist Zhang Tiangang’s The Ant Colony is a representation of aspects of Collective Intelligence. By exploring and practicing a curation/mode of knowledge production with an algorithm based on the Collective Intelligence of ant colonies, the work creates a non-anthropomorphic set of values and worldview. It is contiguous with American philosopher Donna Haraway’s idea of “becoming- with” animals, which indicates a relationship of respect and knowledge of the intelligence of other species—a concept that allows humans to recognise the rights of other species and all living things to exist, develop, express, and build on themselves. In the same way, Chinese artist Zhang Tianyi’s The Plant Intelligence Plan approaches the issue from the angle of ecology to rethink the dynamics between humans and the ecosystem, and to call for a return to a non-anthropocentric and egalitarian relationship with the environment.</p>
+                                <p>Nature, humans, animals, and technology are all part of the world we live in. The works on display allow us to step away from a human-centric view of existence. A difficult feat, but is it not the same as looking at a sky full of stars in the woods at night or scenery from the top of a mountain and realizing the insignificance of human beings? Same breath, same world—Amy M. Youngs’s Belonging to Soil takes us to the inner layers of the earth to experience the symbiotic microcosm, inhabited by tiny springtails from soil ecologies all over the world, in the exhibition space. In contrast, French director Abel Kohen’s virtual reality work Biolum transports us to the ocean as a diver in a sci-fi universe to explore the perils of the deep sea. N.H Intelligence, the theme of this year’s edition, explores conversations around non-human intelligence, from organisms to technology and their exchanges. Asian creative collective hello edo creates AI-generated images through continuous research and experimentation, posting on social media the Hello Edo! Yatai Series, a collection of ukiyo-e art featuring stall vendors that are hybrids of retro robots, humans, cyborgs. The images seem to come from an alternate universe between the past and the future, with its own rules for geographical space, religion, ways of life, and social etiquette. Even if they only exist through the screen in the exhibition, the images still lead us to think about possibilities beyond human creativity. Unconference, the festival’s online series of events, will also explore these themes, with international scholars sharing their research on cybernetics and ecology, presenting a “mirror” of science and technology that lets us become more empathetic, more “human.”</p>
+                                <p>N.H Intelligence is a representation of the spectrum of our current world. When discussing AI, people often approach the subject from a perspective of power despite claims from futurists that AI will surpass humans by around 2045. People have become more vigilant but make the same mistakes again and again, too reliant on the convenience technology brings to be aware of future crisis. In comparison, every element in nature is organic and interactive, their interwoven infrastructure a scenario of co-existence that steals the spotlight from the supremacy of humans on the tower of existence. Project Room edition N will continue Microwave’s explorations with “Reimagines Heritage.” With a series of online and in-person programmes, audiences are encouraged to look at the future while reflecting on the past and to preserve what they consider precious with the tools they have on hand. The evolution of all living things and the development of science and technology are all matters of process. As time marches straight ahead, the future becomes ever more imminent. In the absence of prophets and their readings to guide us, can art pave a way and provide new insights?</p>
                             </div>
                             <div class="book_page book_page_body">
                                 <h4>
@@ -250,22 +265,22 @@
                                 鄺佳玲著
                                 </h4>
 
-                                <p>神話說人類曾經是完整一體的，那時的人類擁有很強的力量，因為驕傲而去挑戰宙斯，宙斯是古希臘神話中統領宇宙至高無上的天神﹐祂一怒之下讓雷神把這些人劈成兩半，然後說：去找你的另一半 (Go find your other half)，神仙把這些被劈開的人們放在世界各地，使他們分離、讓他們忘卻另一半的容貌，生世找尋，期望有天能在合一時變得強大。這是神話，在許久以前就口耳文本流傳下來，然而除了神話我們也有古希臘語：τέχνη + -λογία，意為「技巧學說」，也就是科技 (Technology) 的始源字，這兩者之間似是毫無關聯，然而如果以錄像藝術之父白南準其中一段預視名言來解讀就能看見箇中連結。他說：</p>
-
-                                <p>「我們的生活一半是自然一半是科技，一半半是好的，你不能否認高科技是一種進步，我們需要它來創造就業機會，然而如果你只製造高科技，你就會製造戰爭，因此我們必須保留強大的人性關聯，以保持謙虛和自然的生活。」</p>
-                                
-                                <p>這裡談的「一半半」可以是對半也可以是一個未知的平衡 (Equilibrium)，怎麼加起來都是一百，但左推右佔下呈現的是變數，在拿捏平衡點的過程中，人與機的互惠共生是如何被建立的呢？今年藝術節期望通過精選的展品及節目與觀眾「造夢」，在「夢」中吸收、思考與推演、學習未來生活，嘗試遊走在虛實之間，然後看看近未來的可能性。語本《孫子・謀攻》言道：知彼知己者，百戰不殆；雖不是要視科技/人工智能是對手，但了解自己、隊友、伙伴的實力其實也是萬應之策吧。知彼之前先知己，讀哥德夏的《故事如何改變你的大腦》 (The Storytelling Animal: How Stories make us Human) ，他告訴我們人類是善長故事的生物，即便文本是死的，但透過人的想像力活化就可成無限，透過故事的曲折離奇人們學習如何面對困境如何勇敢生存、獲得樂趣外，還可以訓練自我療癒的能力、釋放壓力和紓解情緒。藝術組合萊亞・卡布蕾拉及伊莎貝拉・杜維格 (Laia Cabrera & Isabelle Duverger) 在《夢景觀》中運用了逃生室的語言去探索虛實，讓觀者醒著入夢，實戰現場。然而談到虛</p>
-                                
-                                
+                                <p>人是什麼時候開始坐上塔尖的呢？是什麼時候分人與非人呢？這個中心點從何而來？在每個以不同物種智慧主軸成就的世界觀裡，一切是如何被分隔、分類以至排列？還是一切不過是以人為中心的幻象？那如果以人出發，走到幻象之中，那幻術會不會就是破局的方法？2021年Microwave以未來學家的觀點出發，結合與神話以及科幻小說與文學創作為藍本，策劃了 《今未來》(Yesterday’s Fiction) ，那些創作與人的想像力有關，展覽結尾以「與愛（AI）同在」(Co(AI)xistence) 錄像作品留白，故事尚未結束。走到2022年以《半半》(Half Half) 為題，嘗試理解在人工智能以及科技加技之下，如何在光速發展的世界中找尋一個平衡點、一種共存的方式，然後許下「科技有靈，萬物共生」一願。但如若要談到共生，那地表上的一切呢？這個「共」字是在什麼語境下被認同？策展的過程中，當科技變成亮點，就像模糊化了別的生靈，於是在人工智能(Artificial Intelligence)以光速發展下，嘗試把焦點挪移至「非人類」，讓我們看見缺失的一角。「非人類智能」(Non-human Intelligence) (即動物、昆蟲、植物和電腦系統) 的領域中，人類的角色仍在，但卻需與他者互動共識，甚至需要共同創造。如果由這方向走，是否可以超越本來以人為中心的理解方式？ 媒體藝術家、科技專才、科學家在這些（聯手）創作的過程中，與各種生靈「合作」，可以是蜜蜂、大象、螞蟻、細菌、植物等，這些合作提供的數據與素材，不比與人工智能合作來得簡易，當中除了有去中心的可能性，也具備了另一個學習場口，就是謙卑與尊重。創作中糅合的是理解、相處，是生靈之間的關係，是跨物種間的交流與互動，也許這樣的表達與發展，可以導引更多關於共生的面向。</p>
+                                <p>策展是一個層層遞進的過程，不止於把作品連結然後在空間中呈現，而是以「觸不到的戀人」方式去接觸群眾，在線上線下全方位的留下片句索引，單獨觀看有意思，但連結一起就可以看到更廣更大的圖像絮語。一開始是美國導演瑞秋‧梅耶里 (Rachel Mayeri) 的《猩猩一家親》(Apes as Family)，這是一部專門為黑猩猩製作的電視劇；黑猩猩看電視是圈養黑猩猩的一種娛樂方式，但還沒有電影製片人為牠們製作過節目。導演與靈長類動物學家一起研究黑猩猩對不同電視節目類型的反應，然後得出一個有趣的結論，牠們的喜好與人類相似，就是圈繞食物、領地、社會地位及性 (想想人們無法離開的IG與抖音)。事實上黑猩猩與人類關係密切，生物學上與人類基因類近，但人不是從黑猩猩演化而來的，根據1990年啓動的《人類基因工程》(Human Genome Project)以及2003年繪製的《人類基因圖譜》，我們揭開了生命之書的密碼，知道大約在六百萬年前，人跟黑猩猩有共同的祖先。以此作開啓第一度大門，離開中心點，去理解我們的同與不同。動物當然與人類共同進退，想想挪亞方舟想想許多災難電影與科幻小說，如果世界真會末日(也似不遠矣)，在嚴峻的當下，我們可以借動物的世界照見什麼？2018年地球上最後一隻雄性白犀牛蘇丹死了，餘下的兩頭雄性白犀牛已沒有生育能力，蘇丹的死標誌著白犀牛物類的滅絕。英國藝術家亞歷山德拉‧黛茜‧金期堡 (Alexandra Daisy Ginsberg) 通過人工智能「重生」了滅絕的犀牛；作品《替代品》(The Substitute) 重塑了一只具有人工智能的犀牛，它活在那虛擬的空間之中，流離漫遊。當人工智能犀牛適應空間後，透過動物數據庫中複製犀牛的聲音與行動，慢慢變成更立體逼真，而這樣的「活著」為了什麼？這種復生由科技而來，卻照出一只腳踏進虛擬世界的人們的未來，這是預言還是儆醒？</p>
+                                <p>一只螞蟻微不足道，牠們看起來那麼脆弱，像塵埃一樣；但幾只湊一起就可以搬運移動，把食物移到牠們想要收藏的地方。很多人都見過吧？牠們協同工作、建築巢穴、富有生命力，牠們能共同抵禦危險也一同撫養後代，生生不息下呈現的是群體智能(Collective Intelligence) 。中國藝術家張天鋼的《在蟻群中》(The Ant Colony)就是要呈現這個群體智能的面向；通過基於螞蟻群體智能的蟻群算法探索和實踐一種策展/知識生產的方式，也構建了一個非人類中心主義知識生產的價值觀和世界觀。就此延伸思考至美國哲學家唐娜‧哈拉維 (Donna Haraway) 提出的與動物相處 (Becoming with)的概念；，它描述了關係的建立，開拓了對其他物種智慧的尊重與本質的認知。這個概念容讓人們去承認他者的生存、發展以至表達與建構的權利，萬物生靈如是；於是另一中國藝術家張天怡的《植物智能計劃》(The Plant Intelligence Plan)即能照出另一面向，以「生態關係」作為切入點，啟發人們重新思考人與生態的關係，呼籲回歸非「人類中心主義」的平等生態關係。</p>
+                                <p>天地之間有大自然有人有獸有科技，作品的一件件鋪陳，是讓觀眾步步遠離以人為中心的世界觀，這很難，但就似某天當閣下在林間看夜空，又或且站在高山上看風景，不也能受感到人類的渺小嗎？一呼一吸一世界，由美國藝術家艾米‧揚斯 (Amy M. Youngs)的作品《塵歸塵土歸土》(Belonging to Soil) 帶觀眾走進土壤的內層，體驗與自身有共生關係的微小世界，並把生活在世界各地土壤生態的微小生物 - 跳蟲，帶進展間，讓觀眾可以近距離觀察。而法國導演阿貝爾‧科恩 (Albel Kohen)的虛擬實境作品《光體》 (Biolum) 則把觀眾由地上送進深海，以潛水員的角色在科幻世界裡遊走探索，在這場迷幻鬥爭下受感深海的世界。主題「人‧鬼‧獸」想呈現的是以非人類智慧譜集而成的討論，可以是由生靈或科技而來，都可以是相互交錯的成果；亞洲創意團隊hello edo側重於人工智能生成圖像，通過不斷研究與嘗試，在社交平台發佈了《江戶未來世_屋台系列》(Hello Edo! Yatai Series)，一個由復古機器人、人類、賽伯格、跨物種所組成的浮世攤商故事。似是生存於過去與未來折疊時空之中的異世界，擁有獨特的地理空間觀、宗教信仰、生活方式、社會儀式等，即便只是存於屏幕中，通過展覽的加持，讓觀眾能夠進一步思考除以人為中心的創作以外，尚在開發的其他可能性。藝術節的線上反轉研討會 (Unconference)也會沿著此命題，邀來國際學者分享他們相關神經機械學、生態學等研究，也也許這由科學科技而來的鏡子可以讓我們變得更「同理」更「人」。</p>
+                                <p>「人‧鬼‧獸」某程度展現的是當下的世界光譜，在探討人工智能的過程中，人們經常採取的視點都是由上至下，但未來學學家說過在2045年左右人工智能將超越人類，於是人們提高警覺卻又重覆犯錯，過於依賴科技帶來的便利，忘卻在近未來的危機與走向，反觀大自然中的一切都是有機互動的，那環環相扣的底蘊也揭示了共存的美景，也可以退去塔尖的光環。Project Room 實驗 N 場將延續Microwave的另一實驗項目《一切堅固的都煙消雲散》（Reimagines Heritage），通過線上線下的節目，鼓勵觀眾在觀望未來的同時也記存往昔，以任何手到拿來的工具把珍貴的東西保存下來。萬物生靈的進化以至科技發展畢竟都是過程，時間不會往回走，近未來近在咫尺間， 在無先知預言可讀之時，藝術是否可以從中開闢一條出路並提出新的洞見呢？</p>
                             </div>
                         </div>
                     </div>
+                    <div class="scrolltonext text7"><div class="progress" data-progress="0"></div><div class="text"></div></div>
                 </div>
             </div>
         </div>
         
-        <!-- <div class="book_wrapper" data-id="MainExhibition" data-prev="CuratorialStatement" data-next="FestivalGrandOpening"> -->
-        <div class="book_wrapper active show" data-id="MainExhibition" data-next="ProgrammeSchedule">
+        <div class="book_wrapper" data-id="MainExhibition" data-prev="CuratorialStatement" data-next="ProjectRoom">
+            <a class="book_leave_btn"></a>
+        <!-- <div class="book_wrapper active show" data-id="MainExhibition" data-next="ProjectRoom"> -->
             <div class="book book_style2">
                 <div class="book_page_scroll_wrapper">
                     <div class="book_page_scroll scroll_area">
@@ -687,7 +702,7 @@
                                         <div class="book_page_head_right text7 chi_text">藝術家簡介</div>
                                     </div>
                                     <div class="book_profile">
-                                        <div class="book_artist_pic"></div>
+                                        <div class="book_artist_pic" style="background-image:url('images/projects/artist-04-01.jpg')"></div>
                                         <div class="book_artist_name text7">hello edo</div>
                                     </div>
                                     <div class="book_artist_desc">
@@ -702,7 +717,7 @@
                                         <div class="book_page_head_right text7 chi_text">作家簡介</div>
                                     </div>
                                     <div class="book_profile">
-                                        <div class="book_artist_pic"></div>
+                                        <div class="book_artist_pic" style="background-image:url('images/projects/artist-04-02.jpg')"></div>
                                         <div class="book_artist_name text7">Lo Yi-Chin<br/>駱以軍</div>
                                     </div>
                                     <div class="book_artist_desc">
@@ -879,7 +894,7 @@
                                         <div class="book_page_head_right text7 chi_text">藝術家簡介</div>
                                     </div>
                                     <div class="book_profile">
-                                        <div class="book_artist_pic"></div>
+                                        <div class="book_artist_pic" style="background-image:url('images/projects/artist-07.jpg')"></div>
                                         <div class="book_artist_name text7">Alexandra Daisy Ginsberg (United Kingdom)<br/>亞歷山德拉‧黛茜‧金期堡 (英國)</div>
                                     </div>
                                     <div class="book_artist_desc">
@@ -933,7 +948,568 @@
             </div>
         </div>
 
-        <div class="book_wrapper" data-id="ProgrammeSchedule" data-prev="MainExhibition" data-next="Crew">
+        <!-- <div class="book_wrapper" data-id="ProjectRoom" data-prev="FestivalGrandOpening" data-next="ProgrammeSchedule"> -->
+        <div class="book_wrapper" data-id="ProjectRoom" data-prev="MainExhibition" data-next="ScreeningProgramme">
+            <a class="book_leave_btn"></a>
+            <div class="book book_style5">
+                <div class="book_page_scroll_wrapper">
+                    <div class="book_page_scroll scroll_area">
+                        <div class="book_page_wrapper">
+                            <div class="book_page book_page_head text7 transparent_bg_color">
+                                M.I.N.M.A.F<span class="boxed_2023">2023</span>
+                            </div>
+                            <div class="book_page book_page_head text7">
+                                <div class="book_page_head_left">Project Room</div>
+                                <div class="book_page_head_right">實驗 N 場</div>
+                            </div>
+                            <div class="book_page book_page_body sticky_book_page">
+                                <div class="book_page_head_bg_img" style="background-image: url('images/project-room-rh.jpg');"></div>
+                                <h4>
+                                    Project Room : <br/>Reimagines Heritage
+                                    <div class="text6 chi_text">
+                                    實驗N場： <br/>《一切堅固的東西都煙消雲散》
+                                    </div>
+                                </h4>
+
+                            </div>
+                            <div class="book_page book_page_body">
+                                <p>Project Room was established in 2007, aims to experiment outside of the context from the festival main exhibition and education programmes such as conference & seminars. It aims to provide an “unshaped” platform, which can be either physical or virtual, with old or new media, which doesn’t limit from the annual festival curatorial theme, but a fully open and organic platform. Over the years, Microwave has been involved in interactive media, screen culture, cross-disciplinary experiments and transmedia storytelling etc. And it came to 2023, Microwave has kicked off an experimental project entitled “Reimagines Heritage”, which is inspired by the incident of Jumbo Floating Restaurant in Hong Kong, and invited two local artists Vvzela Kook and Shiu Ka Heng. Through their experiments through old and new media, and explore the possibilities of preservation and transformation of heritages in different ways. The project gradually launch since Sep 2023, programmes include online exhibition, offline artist showcase, curators’ podcast, storytelling podcast etc., aims to encourage general public to try to archive, preserve or transform their treasurable memories. All the programmes launched/ going to be launch layer by layer, which are designed to progressively reach out to the public from a wider perspective.</p>
+
+                                <p>Nov 2023 is the annual festival period, the team decided to extend this experimental project and continue to explore and experiment, try to break the barrier of digital oblivion, even all that is solid melts into air, who says intangibles cannot be retained?</p>
+                                
+                                <p>Project Room 是由2007年開始的，旨在實驗，期望在主題展覽及研討會等學術及教育節目以外，可以為觀眾及藝術家提供一個「不定形」平台，可實體可虛擬，可以是舊媒體可以是新媒體，不被藝術節主題所規限，而是一個全面開放的有機平台。這些年來面向由互動媒體、屏幕文化、跨界實驗到串媒體敍事等均略有涉獵，而今年Microwave在年初就開始進行一項名為《一切堅固的東西都煙消雲散》的實驗計劃，由香港珍寶海鮮舫事件出發，邀請兩位本地藝術家曲淵澈及蕭家恒嘗試以不同的方法去實驗想要保存以及轉化的可能性。這一個實驗計劃主要以線上平台為主軸，記載特邀藝術家如何通過研究與手法去典藏珍貴的香港文化遺產。計劃早於2023年9月份開始逐步發佈，通過實驗作品與平台，鼓勵觀眾以新/舊媒體去記載存取大家所珍貴的；計劃內容有線上展、線下創作間開放展、策展人Podcast對談、Podcast 講故以至沙龍講座，把內容層層遞進，以更廣闊角度接觸群眾。</p>
+                                <p>適逢十一月為年度藝術節，於是團隊決定把實驗項目延伸，持續在不同層面進一步嘗試與推廣，鼓勵大眾突破數位遣忘的關卡，即便一切堅固的事物始終都會煙消雲散，誰說虛擬留不住。</p>
+
+                                <hr>
+                                <div class="row_content">
+                                    <div class="col col12">
+                                        Artists with Tools (Part 2) - Featuring Artist: Vvzela Kook<br/>
+                                        <div class="text7 chi_text">藝術家創作間開放展（下集）- 特邀藝術家: 曲淵澈</div>
+                                        ●<br/>
+                                        22.11.2023 (Wed ㊂) - 3.12.2023 (Sun ㊐)<br/>
+                                        12:00 - 19:00<br/>
+                                        Form Society<br/>
+                                        <div class="text7 chi_text">合舍</div>
+                                        ●<br/>
+                                    </div>
+                                </div>
+
+                                <hr class="dashed_hr">
+
+                                <div class="row_content">
+                                    <div class="col col6">
+                                        Artist’s Demo Talk (Part 2)<br/>
+                                        <div class="text7 chi_text">藝術家見面會（下集）</div>
+                                        ●<br/>
+                                        25.11.2023 (Sat ㊅)<br/>
+                                        14:00 - 16:00<br/>
+                                        Form Society<br/>
+                                        <div class="text7 chi_text">合舍</div>
+                                        ●<br/>
+                                    </div>
+                                    <a href="https://forms.gle/GXKzdHbWEtcoKjTU9" target="_blank"  class="boxed_registration_btn">
+                                        <div class="boxed_registration">
+                                            <div class="registration_note">
+                                                Reservation required.<br/>
+                                                敬請預約。
+                                            </div>
+                                            <div class="registration_cta text7">
+                                                Registration <span class="chi_text">預約</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <hr>
+
+                                <div class="row_content">
+                                    <div class="col col6">
+                                        Online Exhibition<br/>
+                                        <div class="text7 chi_text">網上展覽</div>
+                                        ●<br/>
+                                        Featuring Artist: Shiu Ka Heng
+                                        <div class="text7 chi_text">特邀藝術家: 蕭家恒</div>
+                                        The Lost Metropolis (2019 - present)
+                                        <div class="text7 chi_text">情迷香港 (2019至今)</div>
+                                        Intersection (2023)
+                                        <div class="text7 chi_text">相交點 (2023)</div>
+                                        <br/>
+                                        Featuring Artist: Vvzela Kook
+                                        <div class="text7 chi_text">特邀藝術家: 曲淵澈</div>
+                                        Confidential Records (2016 - present)
+                                        <div class="text7 chi_text">機密錄 (2016至今)</div>
+                                        Limbo (2023)
+                                        <div class="text7 chi_text">懸停 (2023)</div>
+                                        ●<br/>
+                                    </div>
+                                    <a href="http://www.microwavefest.net/reimaginesheritage/" target="_blank"  class="boxed_registration_btn">
+                                        <div class="boxed_registration">
+                                            <div class="registration_cta text7">
+                                                Online Exhibition<br>
+                                                <span class="chi_text">網上展覽</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <hr>
+
+                                <div class="row_content">
+                                    <div class="col col6">
+                                        Curators’ Podcast Dialogue: I am (not) Hemingway<br/>
+                                        <div class="text7 chi_text">台港策展人Podcast對談：我是（不是）海明威</div>
+                                        <br/>
+                                        <div class="text7">(Conducted in Mandarin <br/>以國語主講)</div>
+                                        ●<br/>
+                                    </div>
+                                    <div class="multiple_boxed_registration_btn">
+                                        <a href="https://podcasters.spotify.com/pod/show/microwave67/episodes/Podcast---e2a3f5f" target="_blank"  class="boxed_registration_btn">
+                                            <div class="boxed_registration">
+                                                <div class="registration_cta text7">
+                                                    Spotify
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="https://podcasts.apple.com/us/podcast/microwave/id1710116109" target="_blank"  class="boxed_registration_btn">
+                                            <div class="boxed_registration">
+                                                <div class="registration_cta text7">
+                                                    Apple Podcast
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="row_content">
+                                    <div class="col col6">
+                                        Storytelling Podcast<br/>
+                                        <div class="text7">Podcast<span class="chi_text">講故</span></div>
+                                        <br/>
+                                        <div class="text7">(Conducted in Cantonese <br/>廣東話限定)</div>
+                                        ●<br/>
+                                    </div>
+                                    <div class="multiple_boxed_registration_btn">
+                                        <a href="" target="_blank"  class="boxed_registration_btn">
+                                            <div class="boxed_registration">
+                                                <div class="registration_cta text7">
+                                                    Link
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scrolltonext text7"><div class="progress" data-progress="0"></div><div class="text"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book_wrapper" data-id="ScreeningProgramme" data-prev="ProjectRoom" data-next="Unconference">
+            <a class="book_leave_btn"></a>
+            <div class="book book_style7">
+                <div class="book_page_scroll_wrapper">
+                    <div class="book_page_scroll scroll_area">
+                        <div class="book_page_wrapper">
+                            <div class="book_page book_page_head text7">M.I.N.M.A.F<span class="boxed_2023">2023</span></div>
+                            <div class="book_page book_page_head text7">
+                                <div class="book_page_head_left">Screening Programme</div>
+                                <div class="book_page_head_right">放映節目</div>
+                            </div>
+
+                            <div class="book_page book_page_body">
+                                <h4 class="left_text">
+                                    Screening Programme
+                                    <div class="text6 chi_text">
+                                        放映節目
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="book_page book_page_body  mobile_hide"></div>
+
+                            <div class="book_page book_page_body mobile_collapse">
+                                <div class="row_content">
+                                    <div class="col col6 text7 sp_item"  data-target="">
+                                        Ars Electronica Animation Festival 2022 on Tour<br/>
+                                        奧地利 Ars Electronica 動畫節 2022 巡禮<br/>
+                                        ●<br/>
+                                        <div class="screening_img" style="background-image: url(images/screening-programme-01.jpg)"></div>
+                                    </div>
+                                    <div class="col col6 text7 sp_item"  data-target="">
+                                        Microwave International New Media Arts Festival 2023 presents <br/>Special Screening Programme: Genetic Salon by Bobby Yu<br/>
+                                        微波國際新媒體藝術節2023呈獻 <br/>特備放映節目：余淑培的《基因髮廊》<br/>
+                                        ●<br/>
+                                        <div class="screening_img" style="background-image: url(images/screening-programme-02.jpg)"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="book_page book_page_body mobile_collapse">
+                                <div class="row_content">
+                                    <div class="col col6 text7 sp_item"  data-target="">
+                                        Microwave International New Media Arts Festival 2023 presents <br/>Special Animation Programme: Selected Works by Florence Lee<br/>
+                                        微波國際新媒體藝術節2023呈獻 <br/>特備動畫放映節目：李鈺淇作品選<br/>
+                                        ●<br/>
+                                        <div class="screening_img" style="background-image: url(images/screening-programme-03.jpg)"></div>
+                                    </div>
+                                    <div class="col col6 text7 sp_item"  data-target="">
+                                        Microwave International New Media Arts Festival 2023 presents <br/>Special Screening Programme: Microwave x Oyster Films<br/>
+                                        微波國際新媒體藝術節2023呈獻 <br/>特備放映節目：Microwave x 牡蠣電影<br/>
+                                        ●<br/>
+                                        <div class="screening_img" style="background-image: url(images/screening-programme-04.jpg)"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="scrolltonext text7"><div class="progress" data-progress="0"></div><div class="text"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book_wrapper" data-id="Unconference" data-prev="ScreeningProgramme" data-next="ProgrammeSchedule">
+            <a class="book_leave_btn"></a>
+            <div class="book book_style2 book_style2_2">
+                <div class="book_page_scroll_wrapper">
+                    <div class="book_page_scroll scroll_area">
+                        <div class="book_page_wrapper">
+                            <div class="book_page book_page_head text7">M.I.N.M.A.F<span class="boxed_2023">2023</span></div>
+                            <div class="book_page book_page_head text7">
+                                <div class="book_page_head_left">Unconference</div>
+                                <div class="book_page_head_right">反轉研討會</div>
+                            </div>
+
+                            <div class="book_page book_page_body sticky_book_page">
+                                <h4 class="left_text">
+                                    Unconference
+                                    <div class="text6 chi_text">
+                                        反轉研討會
+                                    </div>
+                                </h4>
+
+                                <div class="left_bottom_text">
+                                    <div class="col_wrapper">
+                                        <div class="row">
+                                            <div class="col col6">
+                                                <div class="col_spacing">
+                                                    Human, Animals, Plants, Machines &<br>Artificial Intelligence
+                                                    <div class="text7 chi_text">生靈、機器與人工智慧</div>
+                                                    ●<br/>
+                                                    9/11/2022 (Thu ㊃)<br>20:00 - 22:00<br>Zoom Live<br>
+                                                    ●<br/>
+                                                </div>
+                                            </div>
+                                            <div class="col col6">
+                                                <div class="col_spacing">
+                                                    <a href="https://forms.gle/jB9ceMdEX1PAcY9L8" target="_blank" class="boxed_registration_btn">
+                                                        <div class="boxed_registration">
+                                                            <div class="registration_note">
+                                                                Guided tour is available. Reservation required.<br/>
+                                                                設有導賞團，敬請預約。
+                                                            </div>
+                                                            <div class="registration_cta text7">
+                                                                Registration <span class="chi_text">預約</span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                            
+                                </div>
+
+                            </div>
+
+                            <div class="book_page book_page_body">
+                                <p>
+                                    The curatorial approach of Festival 2023 is about Non-Human Intelligence; what would happen if we move away from human-centred thinking by understanding the “more than human powers of plants & animals” or say the all the “living matters” on earth? Can we explore/ co-create a better symbiosis?  Unconference this year will continue as an online conference, three international professionals will share their views towards the theme and explore from different angles of research, and communicate with audience online directly.
+                                </p>
+                                <p>
+                                    今年藝術節主題以非人類智慧出發，這個起點是想要離開以人為中心的思維，通過理解生靈的智慧以及科技而來的「生靈」發展，是否能投入及創建一個更好的「萬物共生」模式？反轉研討會將持續線上模式，邀來三位國際專家去分享他們的見解與相關研究，通過線上會議與與會者共同探索主題。
+                                </p>
+
+                                <div class="image_box_wrapper">
+                                    <div class="col_wrapper">
+                                        <div class="row">
+                                            <div class="col col6">
+                                                <div class="col_spacing scrollto_btn" data-target="AmyYoungs">
+                                                    <div class="bg" style="background-image: url(images/AmyYoungs.jpg);"></div>
+                                                    <div class="text">
+                                                        <div>Eco Intelligence</div>
+                                                        <div class="text7">生態智慧</div>
+                                                        <div>●</div>
+                                                        <div>Amy M. Youngs (USA)</div>
+                                                        <div class="text7">艾米‧揚斯 (美國)</div>
+                                                        <div>●</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col col6">
+                                                <div class="col_spacing scrollto_btn" data-target="ChrisDanta">
+                                                    <div class="bg" style="background-image: url(images/ChrisDanta.jpg);"></div>
+                                                    <div class="text">
+                                                        <div>Dear AI Reader: Nonhuman Perspective and Evolutionary Thinking in the Human-Machine Relation</div>
+                                                        <div class="text7">親愛的人工智能讀者：人機關係中的非人類視角與進化思維</div>
+                                                        <div>●</div>
+                                                        <div>Chris Danta (Australia)</div>
+                                                        <div class="text7">克里斯‧丹塔 (澳洲)</div>
+                                                        <div>●</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col col6">
+                                                <div class="col_spacing scrollto_btn" data-target="MadelineGannon">
+                                                    <div class="bg" style="background-image: url(images/MadelineGannon.jpg);"></div>
+                                                    <div class="text">
+                                                        <div>Robots Are Creatures, Not Things</div>
+                                                        <div class="text7">機器人是生物，並非物品</div>
+                                                        <div>●</div>
+                                                        <div>Dr. Madeline Gannon (USA)</div>
+                                                        <div class="text7">瑪德琳‧甘農博士 (美國)</div>
+                                                        <div>●</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col col6">
+                                                <div class="col_spacing scrollto_btn" data-target="Joyce">
+                                                    <div class="bg" style="background-image: url(images/Joyce.jpg);"></div>
+                                                    <div class="text">
+                                                        <div>Moderator</div>
+                                                        <div class="text7">主持人</div>
+                                                        <div>●</div>
+                                                        <div>Joyce Hei-ting Wong  (Hong Kong)</div>
+                                                        <div class="text7">黃熙婷 (香港)</div>
+                                                        <div>●</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+
+                                <div class="scrollto_box_wrapper">
+
+                                    <div class="scrollto_box" data-id="AmyYoungs">
+                                        <h5 class="center_text">
+                                            Eco Intelligence<br>●
+                                            <div class="text6 chi_text">生態智慧</div>●
+                                        </h5>
+                                        <p>
+                                            Plants, animals, fungi, and microbes work together in complex ways to produce an abundance of life. They compose, compost, evolve, and change in ways that are intelligent. Humans are not the only species who can learn, adapt, and shape the world. With the motivation to become more ecologically intelligent, I create artworks that focus on learning from non-humans. Crickets, worms, plants, and springtails take center stage as the focus of artworks designed to engage viewers in unexpected encounters. The extended perceptual capabilities offered by technologies are used for purposes of sensing the other, attempting to take on their perspectives, or amplifying our connections. Engaging with these non-humans reminds us that they are an important part of our community, and that the human species has much to learn from those who have figured out how to live together on earth for far longer than we have. 
+                                        </p>
+                                        <p>
+                                            植物、動物、真菌與微生物以複雜的方式共同協作，他們以智能的方式組成、堆肥、進化及變化，創造出豐富的生命生態。而人類並不是唯一能學習、適應以及塑造世界的物種。為了提高生態智慧，我創作的藝術作品專注於向非人類學習，例如蟋蟀、蠕蟲、植物與跳蟲作為作品的焦點，旨在吸引觀眾進行意想不到的接觸。科技提供的擴展感知能力被用於感知他人，嘗試採用他人的角度或放大與人們之間的關係。與這些非人類接觸提醒人們，他們是社會的重要組成部分，人類可以從他們身上學習許多東西，因為他們已經想出如何在地球上共同生活的方法，而且比人們在此生活的時間要長得多。
+                                        </p>
+                                        <div class="book_artist_bio">
+
+                                            <div class="book_section_head">
+                                                <div class="book_page_head_left text6">Speaker Bio</div>
+                                                <div class="book_page_head_right text7 chi_text">講者簡介</div>
+                                            </div>
+                                            <div class="book_profile">
+                                                <div class="book_artist_pic" style="background-image:url('images/AmyYoungs.jpg')"></div>
+                                                <div class="book_artist_name">
+                                                    <div>Amy M. Youngs (USA)</div>
+                                                    <div class="text7">艾米‧揚斯 (美國)</div>
+                                                </div>
+                                            </div>
+                                            <div class="book_artist_desc">
+                                            <p>
+                                                    Amy M. Youngs creates eco art, interactive sculptures, and digital media works that explore entanglements between technology, plants, and animals. Her research involves empathy, relationships with non-humans, ecosystem construction, and seeing through the eyes of machines. She has created installations that amplify the sounds of living worms, indoor ecosystems powered by a rocking chair, an interactive museum for live insects, and an augmented reality tour of real nature. Her works have been exhibited widely, at venues such as the Te Papa Museum in New Zealand, the Trondheim Electronic Arts Centre in Norway, the Peabody Essex Museum in Salem, MA, and the public parks in New York City. Youngs has earned an Individual Artist Grant from the Ohio Arts Council, has contributed writing to interdisciplinary publications such as Leonardo Journal, and the book Robots and Art, and she has lectured at venues such as the Experimental Media and Performing Arts Center (EMPAC) at Rensselaer Polytechnic Institute, in Troy, NY, the Australian Centre for the Moving Image in Melbourne, Australia and the Walker Art Center in Minneapolis, MN. She earned an MFA from the School of the Art Institute of Chicago and a BA from San Francisco State University. She is currently an Associate Professor of Art at the Ohio State University, where she collaborates on interdisciplinary projects and teaches courses in digital media, art & science, and eco art.
+                                                </p>
+                                            <p>
+                                                    艾米‧揚斯專注創作生態藝術、互動雕塑及數位媒體作品，探索科技、植物和動物之間的糾纏關係。她的研究涉及同理心、與非人類的關係、生態系統建設以及用機器的視覺看世界。她曾創作過放大活蟲的聲音裝置、由搖椅驅動的室內生態系統、活體昆蟲互動博物館以及真實大自然的擴張實境之旅。她的作品曾於新西蘭的蒂帕帕博物館、挪威的特隆赫姆電子藝術中心、馬薩諸寒州塞勒姆的皮博迪㶼塞克斯博物館和紐約市公共公園等地展出。艾米曾獲俄亥俄州藝術委員會頒發的個人藝術家奬金，並為跨學科刊物《Leonardo Journal》、書籍《機器人與藝術》等撰稿，還曾於紐約州特洛伊市倫斯勒理工學院實驗媒體與表演藝術中心 (EMPAC)、澳洲墨爾本移動影像中心和明尼蘇達州明尼阿波利斯沃克藝術中心等地舉辦講座。她擁有芝加哥藝術學院的藝術碩士學位及舊金山州立大學的文學學士學位。她目前是俄亥俄州立大學藝術副教授，主責跨學科項目的合作，並教授數位媒體、藝術與科學以及生態藝術等課程。
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="scrollto_box" data-id="ChrisDanta">
+                                        <h5 class="center_text">
+                                            Dear AI Reader: Nonhuman Perspective and Evolutionary Thinking in the Human-Machine Relation<br>●
+                                            <div class="text6 chi_text">親愛的人工智能讀者：人機關係中的非人類視角與進化思維</div>●
+                                        </h5>
+                                        <p>
+                                            One of the ways in which humans understand their relation to machines is by analogy to biological processes. We think of machines as resembling us in somehow being alive and somehow evolving over time. The American science fiction writer Philip K. Dick observed in his 1972 speech, “The Android and the Human,” that in the last decade, “our environment — and I mean our man-made world of machines, artificial constructs, computers, electronic systems, interlinking homeostatic components — all of this is in fact beginning more and more to possess what the earnest psychologists fear the primitive sees in his environment: animation” Already in the late nineteenth century, the English authors Samuel Butler and George Eliot were thinking of machines as living and evolving organisms. This presentation examines how writers like Dick, Butler and Eliot rethink what it means to be human by attributing life to their technological environment. It discusses various speculative rhetorical techniques that writers use to look at the human from the perspective not just of another living organism but also of the surroundings of the human themselves. It shows how writers biologize machines by figuring them as cryptic nonhuman organisms that can merge with and act on behalf of their physical environments. It argues that underlying the techno-anthropologies of writers like Dick, Butler and Eliot is an environmental understanding of life as the dyadic relation between the organism and its surroundings.
+                                        </p>
+                                        <p>
+                                            人類理解自己與機器的關係的其中一個方式是類比生物過程；我們認為機器某程度上與我們相似，都是有生命的，並且隨著時間的推移而不斷進化。美國科幻小說家菲利普‧迪克 (Philip K. Dick) 在1972年所發表的演講《安卓與人類》中提出，在過去十年，「我們的環境，我指的是我們的人造世界，由機器、人工建造物、計算機、電子系統、相互連接的同源組件所組成的世界 —— 事實上，所有的這一切開始令越來越多嚴肅的心理學家害怕原始人在他的環境中看到的東西：動畫。」早在十九世紀末，英國作家塞繆爾·巴特勒 (Samuel Bulter) 及喬治‧艾略特 (George Eilot) 就已經將機器視為有生命的、不斷進化的有機體。是次演說將會探討迪克、巴特勤、艾略特等作家如何通過賦予科技環境以生命來重新思考人類的含義。進而討論作家們使用的各種推測性修辭技巧，這些技巧不僅從另一種生物的角度，而且是從人類自身周圍環境的角度來審視人類。它展示了作家如何將機器生物化，將其描繪成能夠與物理環境融合並代表物理環境行動的隱秘非人類有機體，最後是闡述迪克、巴特勒及艾略特等作家在數位人類學的背後對生命環境的理解，即有機體與其周圍環境之間的二元關係。
+                                        </p>
+                                        <div class="book_artist_bio">
+                                            
+
+                                            <div class="book_section_head">
+                                                <div class="book_page_head_left text6">Speaker Bio</div>
+                                                <div class="book_page_head_right text7 chi_text">講者簡介</div>
+                                            </div>
+                                            <div class="book_profile">
+                                                <div class="book_artist_pic" style="background-image:url('images/ChrisDanta.jpg')"></div>
+                                                <div class="book_artist_name">
+                                                    <div>Chris Danta (Australia)</div>
+                                                    <div class="text7">克里斯‧丹塔 (澳洲)</div>
+                                                </div>
+                                            </div>
+                                            <div class="book_artist_desc">
+                                            <p>Chris Danta is professor of English in the newly formed School of Cybernetics at the ANU. His research operates at the intersection of literary theory, philosophy, science and theology. He is the author of Literature Suspends Death: Sacrifice and Storytelling in Kierkegaard, Kafka and Blanchot (Bloomsbury, 2011) and Animal Fables after Darwin: Literature, Speciesism, and Metaphor (Cambridge University Press, 2018). He is currently working on an Australian Research Council Future Fellowship with the title Future Fables: Literature, Evolution and Artificial Intelligence (2021-24).
+                                            </p>
+                                            <p>克里斯‧丹塔是澳洲國立大學新成立的控制論學院的英語教授。他的研究領域涉及文學理論、哲學、科學和神學。他著有《文學暫援死亡 : 克爾凱郭爾、卡夫卡和布朗肖的犧牲與故事》(Bloomsbury, 2011) 以及 《達爾文後的動物寓言 : 文學、物種主義和隱喻》(Cambridge University Press, 2018)。他目前獲得澳洲研究中心的未來奬學金並進行相關研究，主題是《未來寓言：文學、進化與人工智能》。
+                                            </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="scrollto_box" data-id="MadelineGannon">
+                                        <h5 class="center_text">
+                                            Robots Are Creatures, Not Things<br>●
+                                            <div class="text6 chi_text">機器人是生物，並非物品</div>●
+                                        </h5>
+                                        <p>
+                                            After 50 years of promises and potential, robots are beginning to leave the lab to live in the wild with us. But how should we coexist with these intelligent, autonomous machines? In this talk, Dr. Madeline Gannon blends art and technology to forge new futures for human-robot relations. She shares how she convinces robots to do things they were never intended to do: from transforming a giant industrial robot into a living, breathing mechanical creature, to taming a horde of autonomous robots to behave more like a pack of animals. Her work shows that robots can not only be useful, but meaningful additions to our everyday lives.
+                                        </p>
+                                        <p>
+                                            經過五十年的承諾與潛力，機器人開始離開實驗室，與人們一起生活在外。但是我們應該如何與這些智能、自主的機器共存呢？在是次演說中，瑪德琳‧甘農博士將藝術與科技相互結合，為人類與機器人的關係開創了新的未來。她分享了自己如何說服機器人做它們從未想過要做的事情：從將一個巨大的工業機器人改造成一個有生命、會呼吸的機械生物，到馴服一群自主機器人，讓它們的行為更像一群動物。她的工作表明，機器人不僅有用，而且可以成為我們日常生活中有意義的補充。
+                                        </p>
+                                        <div class="book_artist_bio" >
+
+                                            <div class="book_section_head">
+                                                <div class="book_page_head_left text6">Speaker Bio</div>
+                                                <div class="book_page_head_right text7 chi_text">講者簡介</div>
+                                            </div>
+                                            <div class="book_profile">
+                                                <div class="book_artist_pic" style="background-image:url('images/MadelineGannon.jpg')"></div>
+                                                <div class="book_artist_name">
+                                                    <div>Dr. Madeline Gannon (USA)</div>
+                                                    <div class="text7">瑪德琳‧甘農博士 (美國)</div>
+                                                </div>
+                                            </div>
+                                            <div class="book_artist_desc">
+                                            <p>Dr. Madeline Gannon is a multidisciplinary designer blending techniques in art, design, computer science, and robotics to forge new futures for human-robot relations. Also known
+                                                as "The Robot Whisperer", Gannon specializes in convincing robots to do things they were never intended to do: from transforming giant industrial robots into living, breathing mechanical creatures, to taming hordes of autonomous machines to behave like a pack of animals. Gannon believes that technology is a cultural medium, and tunes her work to engage with communities across science and society. Her works have been exhibited at international cultural institutions, published at academic conferences, and profiled at global media outlets, such as the BBC, the Guardian, FT, the Science Channel, WIRED, FastCompany, Dezeen, and The Verge.</p>
+                                                <p>
+                                                Dr. Gannon is a World Economic Forum Cultural Leader, a Knight Foundation Awardee, a former Robotics & AI Researcher at NVIDIA, and a former artist in residence at ETH Zurich, Autodesk Pier 9, and the Carnegie Mellon STUDIO for Creative Inquiry. She is known as one of the 'Top 10 Women in Robotics Industry' and 'World’s 50 Most Renowned Women in Robotics’
+                                                according to Analytics Insight. Gannon holds a Master of Architecture from Florida International University, and a Ph.D in Computational Design from Carnegie Mellon University.
+                                                </p>
+                                            <p>瑪德琳‧甘農博士是一位融合藝術、設計、計算機科學與機器人技術的跨學科設計師，旨力為人類與機器人的關係開創新的未來。她被稱為「機器人語者」，「說服」機器人去做一些他們不曾做過的事：從將巨型工業機器人改造成有生命、會呼吸的機械生物，並讓成群的自主機器如動物般進行集體行動。甘農博士認為科技是一種文化媒介，因此她調整其作品以連結科學與社會各界層面。她的作品在多個國際文化機構展出、於學術會議上發表並被國際媒體所廣泛報導，包括 BBC、the Guardian、金融時報、科學頻道、WIRED、FastCompany、Dezeen 以及 The Verge 等。</p>
+
+                                            <p>甘農博士擁有佛羅里達國際大學的建築碩士學位， 以及美國卡內基梅隆大學的計算機工程博士學位。她是世界經濟論壇的文化領袖、奈特基金會奬的得奬者、NVIDIA 前機器人與人工智能研究員，曾於不同機構擔任駐場藝術家，包括蘇黎世聯邦理工學院、Autodesk Pier 9 以及卡內基美隆創意工作室等。根據 Analytics Insight，她被譽為「全球機器人行業首五十名最知名女性」之一。</p>
+
+                                            <p><a href="https://atonton.com/" target="_blank">www.atonton.com</a><br>
+                                            <a href="mailto:madeline@atonaton.com" target="_blank">madeline@atonaton.com</a></p>
+
+                                                <p>Social Media 社交媒體<br>
+                                                    <a href="https://www.instagram.com/madeline.gannon/" target="_blank">Instagram</a><br>
+                                                    <a href="https://twitter.com/madelinegannon" target="_blank">Twitter</a><br>
+                                                    <a href="https://www.linkedin.com/in/madeline-gannon-b3905b32" target="_blank">LinkedIn</a><br>
+                                                    <a href="https://www.youtube.com/channel/UCbDH3kbAaYe4mX_lOVrnNtQ" target="_blank">YouTube</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="scrollto_box" data-id="Joyce">
+                                        <div class="book_artist_bio">
+                                            <div class="book_section_head mobile_show">
+                                                <div class="book_page_head_left text6">Moderator</div>
+                                                <div class="book_page_head_right text7 chi_text">主持人</div>
+                                            </div>
+                                            <div class="book_profile">
+                                                <div class="book_artist_pic" style="background-image:url('images/Joyce.jpg')"></div>
+                                                <div class="book_artist_name">
+                                                    <div>Joyce Hei-ting Wong  (Hong Kong)</div>
+                                                    <div class="text7">黃熙婷 (香港)</div>
+                                                </div>
+                                            </div>
+                                            <div class="book_artist_desc">
+                                                <h5 class="mobile_hide">
+                                                    Moderator
+                                                    <div class="text6 chi_text">主持人</div>
+                                                </h5>
+
+                                            <p>Joyce Hei-ting Wong is an independent researcher and curator of East Asian modern and contemporary art. Wong has recently curated the retrospective All the World’s a Stage: The Art of Luis Chan (2022, Hong Kong Arts Centre), and was formerly Curator at Asia Society Hong Kong Centre organising A World Within: The Art and Inspiration of Irene Chou (2019); A Story of Light: Hon Chi-fun (2019); Song of Spring: Pan Yu-Lin in Paris (2018); Painting Her Way: The Ink Art of Fang Zhaoling (2017); and Breathing Space: Contemporary Art from Hong Kong (2017). She holds a BA in Art History and English Literature from the University of Hong Kong (2015), and an MA in Contemporary Literature, Culture and Theory from King’s College London (2021). 
+                                            </p>
+
+                                                <p>黃熙婷現為獨立策展人，著重研究東亞現代及當代藝術發展與實踐。 她近期曾策劃大型回顧展《歡樂今宵：陳福善的藝術》（2022，香港藝術中心），亦曾任亞洲協會香港中心策展人，策劃「二十世紀女藝術家系列」之三《萬象之根：周綠雲繪畫藝術展》 （2019），協助策劃展覽項目《光的故事：韓志勳》（2019）、《春之歌：潘玉良在巴黎》（2018）、《道無盡：方召麐 水墨藝術展》（2017）以及《喘息空間：香港當代藝術展》（2017）等。 她在2015年畢業於香港大學文學院，主修英國文學及藝術史，後於2021年獲得英國倫敦國王學院當代文學、 文化和理論碩士學位。
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scrolltonext text7"><div class="progress" data-progress="0"></div><div class="text"></div></div>
+                </div>
+            </div>
+        </div>
+            
+        <div class="book_wrapper" data-id="ScreeningProgramme1" data-prev="ScreeningProgramme" data-next="ScreeningProgramme" >
+            <a class="book_leave_btn"></a>
+            <div class="book book_style4">
+                <div class="book_page_scroll_wrapper">
+                    <div class="book_page_scroll scroll_area">
+                        <div class="book_page_wrapper">
+                            <div class="book_page book_page_body book_project_info sticky_book_page">
+                                <h4 class="project_name">Apes as Family
+                                    <div class="text6 chi_text">
+                                        猩猩一家親
+                                    </div>
+                                </h4>
+                                <div class="book_artist_name text7">Rachel Mayeri (USA)<br/>瑞秋・梅耶里 (美國)</div>
+                                <div class="project_image_gallery">
+
+                                    <div class="swiper-container ">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide  ">
+                                                <a data-fancybox href="images/projects/project01-01.jpg" class="bg" style="background-image: url(images/projects/project01-01.jpg);"></a>
+                                            </div>
+                                            <div class="swiper-slide  ">
+                                                <a data-fancybox href="images/projects/project01-02.jpg" class="bg" style="background-image: url(images/projects/project01-02.jpg);"></a>
+                                            </div>
+                                            <div class="swiper-slide  ">
+                                                <a data-fancybox href="images/projects/project01-03.jpg" class="bg" style="background-image: url(images/projects/project01-03.jpg);"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="num"></div>
+                                </div>
+                            </div>
+                            <div class="book_page book_page_body headless_book_page">
+                                <p>Chimpanzees in captivity watch television as a form of enrichment. But no one had made a film expressly for a chimpanzee audience. Could we learn something about their mentality by what appeals to them? Primate Cinema: Apes as Family shows an original drama for chimps and the simultaneous reactions of the chimps watching it, side by side as a two-channel installation.</p>
+                                <p>I began by making and showing a variety of footage to chimps at the Edinburgh Zoo in collaboration with primatologist Sarah Jane Vick: drumming, cooking shows, cartoons, documentaries of wild chimps, people with masks on. Unsurprisingly, chimps like to watch chimps most of all. They also have a very short attention span. I wrote a screenplay features variety, spectacle, and a thrumming soundtrack, with primate dramas around sex, food, hierarchy, and territory. The story follows an adolescent female chimp who, like chimps in the wild, must leave her family home and make friends in a strange, new community. “Carla” is played by a human actor in a realistic costume, whose facial expressions were puppeted animatronically. An enculturated chimp, Carla is used to living in a house, but she meets fake chimps who try to teach her to be wild.</p>
+                                <p>The ape feature premiered in a chimp-proof monitor in the greenery of the zoo as well as in an indoor research pod, which chimps could access voluntarily. Throughout the project, we learned how chimps&#39; individual personalities and upbringings -- in labs, zoos, or in the wild -- affected their responses to television.</p>
+
+                                <p>人工飼養的黑猩猩會把看電視作為娛樂的一種，但沒有人為黑猩猩觀眾製作過電影電視。那我們是否可以從吸引黑猩猩觀眾的內容去了解牠們的心理呢？靈長類動物電影院：《猩猩一家親》以雙頻度錄像裝置形式展現，呈現為黑猩猩製作的原創戲劇以及黑猩猩觀眾觀看時的同步反應。</p>
+                                <p>一開始我與靈長類動物學家莎拉・簡・維克（Sarah Jane Vick）合作，在愛丁堡動物園為黑猩狠觀眾製作並播放各種影片，內容包括擊鼓、烹飪節目、動畫、野生黑猩猩紀錄片、戴面具的人等。如我們所料牠們最愛看同類表演，並發現牠們的注意力都很短暫。於是我寫了一個電影劇本，場面壯麗，配樂激昂，內容豐富精彩，主題圍繞著性、食物、制度以及領地。故事講述一只青春期的雌性猩猩「卡拉」，和野生猩猩一樣，她必須要離開自己的家，到一個陌生的新社區去交朋友。卡拉由一名穿著逼真服裝的人類演員所扮演，其面部表情由動畫控制。卡拉是一只受過文化薰陶的黑猩猩，她習慣了在房子裡生活，但她遇上了試圖導她轉野的假黑猩猩。</p>
+                                <p>作品於動物園的綠園地以及室內研究艙以防護電視進行首播，黑猩猩可以自由進出。在整個項目中我們了解到黑猩猩的個性以及成長經歷，無論是在實驗室、動物園還是野外，是如何影響牠們對電視的反應。</p>
+
+                                <div class="book_artist_bio">
+                                    <div class="book_section_head">
+                                        <div class="book_page_head_left text6">Artist Bio</div>
+                                        <div class="book_page_head_right text7 chi_text">藝術家簡介</div>
+                                    </div>
+                                    <div class="book_profile">
+                                        <div class="book_artist_pic" style="background-image:url('images/projects/artist-01.png')"></div>
+                                        <div class="book_artist_name text7">Rachel Mayeri (USA)<br/>瑞秋・梅耶里 (美國)</div>
+                                    </div>
+                                    <div class="book_artist_desc">
+                                        <p>Rachel Mayeri is an LA-based artist working at the intersection of art and science. Her videos, installations, and writing projects explore topics ranging from the history of special effects to the human animal. Commissioned by Arts Catalyst and receiving a major award from The Wellcome Trust, she created a film expressly for chimpanzees – Primate Cinema: Apes as Family, which subsequently showed at Sundance, Berlinale, and Ars Electronica. Currently she is at work on a project about the R/P FLIP, a Cold War research vessel built to rotate 90 degrees to study waves and sonar, as part of Getty’s Pacific Standard Time 2024: Art &amp; Science Collide. A professor at Harvey Mudd College, she teaches courses such as Animal Media Studies and Art &amp; Biology.</p>
+                                        <p>瑞秋・梅耶里是一位來自美國洛杉磯的藝術家，從事藝術與科學交互領域的工作。她的錄 像、裝置以及寫作項目探討了從特效歷史到人類動物的各種主題。受藝術組織 Arts Catalyst 的委託，並獲得 the Wellcome Trust 基金會的重要奬項，她創作了這部為黑猩猩觀眾而製作的電影；靈長類動物電影院：《猩猩一家親》。作品隨後於電影節 Sundance、 Berlinale 以及藝術節 Ars Electronica 放映。目前她正在進行一個 R/P FLIP 的項目 – 這艘冷戰時期的研究船可以旋轉90度來研究海浪和聲納，是《Getty’s Pacific Standard Time 2024: 藝術與科技碰撞》計劃的一部分。她是哈維馬德學院的教授，授課科目包括動物媒體研究、藝術與生物學等。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scrolltonext text7"><div class="progress" data-progress="0"></div><div class="text"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book_wrapper" data-id="ProgrammeSchedule" data-prev="ScreeningProgramme" data-next="Crew">
             <a class="book_leave_btn"></a>
             <div class="book book_style8">
                 <div class="book_page_scroll_wrapper">
@@ -1033,7 +1609,7 @@
                                     </div>
                                     <div class="row_content">
                                         <div class="col col6">
-                                            Project Room: Reimagines Heritage - Artists with Tools Part 2<br/>
+                                            Project Room: Reimagines Heritage - Artists with Tools <span class="one-liner">(Part 2)</span><br/>
                                             <div class="text7 chi_text">實驗N場：一切堅固的東西都煙消雲散 - 藝術家創作間開放展（下集）</div>
                                             ●<br/>
                                             22.11.2023 (Wed ㊂) - 3.12.2023 (Sun ㊐)<br/>
@@ -1043,10 +1619,10 @@
                                             ●<br/>
                                         </div>
                                         <div class="col col6">
-                                            Project Room: Reimagines Heritage - Artist’s Demo Talk<br/>
-                                            <div class="text7 chi_text">實驗N場：一切堅固的東西都煙消雲散 - 藝術家見面會</div>
+                                            Project Room: Reimagines Heritage - Artist’s Demo Talk <span class="one-liner">(Part 2)</span><br/>
+                                            <div class="text7 chi_text">實驗N場：一切堅固的東西都煙消雲散 - 藝術家見面會（下集）</div>
                                             ●<br/>
-                                            25.11.2023 (Wed ㊅)<br/>
+                                            25.11.2023 (Sat ㊅)<br/>
                                             14:00 - 16:00<br/>
                                             Form Society<br/>
                                             <div class="text7 chi_text">合舍</div>
@@ -1080,7 +1656,7 @@
                                             ●<br/>
                                             Electronic Theatre<br/>
                                             <div class="text7 chi_text">電子劇場</div>
-                                            50 min<br/>
+                                            <div class="text7">50 min</div>
                                             ●<br/>
                                             21.9.2023 (Thu ㊃) - 1.10.2023 (Sun ㊐)<br/>
                                             12:00 - 19:00<br/>
@@ -1091,25 +1667,25 @@
                                     <div class="row_content">
                                         <div class="col col12">
                                             (2)<br/>
-                                            Special Screening Programme: Microwave x Oyster Films<br/>
+                                            Special Screening Programme: <br/>Microwave x Oyster Films<br/>
                                             <div class="text7 chi_text">特備放映節目：Microwave x 牡蠣電影</div>
                                             ●<br/>
                                             Delivery Dancer’s Sphere<br/>
                                             <div class="text7 chi_text">外送舞者的世界</div>
                                             Ayoung Kim 金雅瑛<br/>
-                                            25 min<br/>
+                                            <div class="text7">25 min</div>
                                             <br/>
                                             Fly, Fly Sadness (Vole, vole tristesse)<br/>
                                             <div class="text7 chi_text">飛吧，偷走的悲傷</div>
-                                            Miryam Charles<br/>
-                                            5 min 23 sec<br/>
+                                            Miryam Charles 米爾亞姆‧查爾斯<br/>
+                                            <div class="text7">5 min 23 sec</div>
                                             <br/>
                                             Wake for a Horse<br/>
                                             <div class="text7 chi_text">為馬守靈</div>
-                                            Célia Hay<br/>
-                                            39 min<br/>
+                                            Célia Hay 塞利亞‧海<br/>
+                                            <div class="text7">39 min</div>
                                             ●<br/>
-                                            4.11.2023 (Sat ㊅) - 12.11.2023 (Sun ㊐)<br/>
+                                            4.11.2023 (Sat ㊅) - 5.11.2023 (Sun ㊐)<br/>
                                             12:00 - 20:00<br/>
                                             Hong Kong City Hall<br/>
                                             <div class="text7 chi_text">香港大會堂</div>
@@ -1123,14 +1699,20 @@
                                             <div class="text7 chi_text">奧地利 Ars Electronica 動畫節 2022 巡禮</div>
                                             ●<br/>
                                             Welcome to Planet B<br/>
-                                            <div classs="text7 chi_text">歡迎來臨 B 行星</div>
-                                            79 min<br/>
+                                            <div class="text7 chi_text">歡迎來臨 B 行星</div>
+                                            <div class="text7">79 min</div>
+                                            ●<br/>
+                                            6.11.2023 (Mon ㊀) - 8.11.2023 (Wed ㊂)<br/>
+                                            12:00 - 20:00<br/>
+                                            Hong Kong City Hall<br/>
+                                            <div class="text7 chi_text">香港大會堂</div>
+
                                             <br/>
                                             Austrian Panorama<br/>
                                             <div class="text7 chi_text">奧地利全景</div>
-                                            60 min<br/>
+                                            <div class="text7">60 min</div>
                                             ●<br/>
-                                            4.11.2023 (Sat ㊅) - 12.11.2023 (Sun ㊐)<br/>
+                                            9.11.2023 (Thu ㊃) - 10.11.2023 (Fri ㊄)<br/>
                                             12:00 - 20:00<br/>
                                             Hong Kong City Hall<br/>
                                             <div class="text7 chi_text">香港大會堂</div>
@@ -1140,28 +1722,28 @@
                                     <div class="row_content">
                                         <div class="col col12">
                                             (4)<br/>
-                                            Special Screening Programme: Genetic Salon by Bobby Yu<br/>
+                                            Special Screening Programme: <span class="one-liner">Genetic Salon by Bobby Yu</span><br/>
                                             <div class="text7 chi_text">特備放映節目：余淑培的《基因髮廊》</div>
                                             ●<br/>
                                             Genetic Salon I & II, Director Cut<br/>
                                             <div class="text7 chi_text">基因髮廊 I & II (導演版本)</div>
                                             Bobby Yu 余淑培<br/>
-                                            17 min 40 sec<br/>
-                                            2021-2022<br/>
+                                            <div class="text7">17 min 40 sec<br/>
+                                            2021-2022</div>
                                             <br/>
                                             Genetic Salon: In Search of Receptionists<br/>
                                             <div class="text7 chi_text">尋找基因髮廊接待員</div>
                                             Bobby Yu 余淑培<br/>
-                                            9 min 55 sec<br/>
-                                            2022<br/>
+                                            <div class="text7">9 min 55 sec<br/>
+                                            2022</div>
                                             <br/>
                                             Genetic Salon: Top Bet<br/>
                                             <div class="text7 chi_text">賭霸</div>
                                             Bobby Yu 余淑培<br/>
-                                            5 min 4 sec<br/>
-                                            2022<br/>
+                                            <div class="text7">5 min 4 sec<br/>
+                                            2022</div>
                                             ●<br/>
-                                            4.11.2023 (Sat ㊅) - 12.11.2023 (Sun ㊐)<br/>
+                                            11.11.2023 (Sat ㊅) - 12.11.2023 (Sun ㊐)<br/>
                                             12:00 - 20:00<br/>
                                             Hong Kong City Hall<br/>
                                             <div class="text7 chi_text">香港大會堂</div>
@@ -1171,24 +1753,24 @@
                                     <div class="row_content">
                                         <div class="col col12">
                                             (5)<br/>
-                                            Special Animation Programme by Florence Lee<br/>
+                                            Special Animation Programme: <span class="one-liner">Selected Works by Florence Lee</span><br/>
                                             <div class="text7 chi_text">特備動畫放映節目：李鈺淇作品選</div>
                                             ●<br/>
                                             Park Voyage<br/>
                                             Florence Lee 李鈺淇<br/>
-                                            3 min 13 sec<br/>
-                                            2022<br/>
+                                            <div class="text7">3 min 13 sec<br/>
+                                            2022</div>
                                             <br/>
                                             merry-go-round like a lullaby<br/>
                                             Florence Lee 李鈺淇<br/>
-                                            4 min 56 sec<br/>
-                                            2023<br/>
+                                            <div class="text7">4 min 56 sec<br/>
+                                            2023</div>
                                             <br/>
                                             You build a home in my mind<br/>
                                             <div class="text7 chi_text">心之房</div>
                                             Florence Lee 李鈺淇<br/>
-                                            5 min 13 sec<br/>
-                                            2023<br/>
+                                            <div class="text7">5 min 13 sec<br/>
+                                            2023</div>
                                             ●<br/>
                                             22.11.2023 (Wed ㊂) - 3.12.2023 (Sun ㊐)<br/>
                                             12:00 - 19:00<br/>
@@ -1241,7 +1823,7 @@
             </div>
         </div>
 
-        <div class="book_wrapper" data-id="Crew" data-prev="ProgrammeSchedule" data-next="Press">
+        <div class="book_wrapper" data-id="Crew" data-prev="ProgrammeSchedule" data-next="SponsorsAndPartners">
             <a class="book_leave_btn"></a>
             <div class="book book_style9">
                 <div class="book_page_scroll_wrapper">
@@ -1353,7 +1935,106 @@
             </div>
         </div>
 
-        <div class="book_wrapper" data-id="Press" data-prev="Crew" data-next="ContactUs">
+        <div class="book_wrapper" data-id="SponsorsAndPartners" data-prev="Crew" data-next="Press">
+            <a class="book_leave_btn"></a>
+            <div class="book book_style1 book_style1_5">
+                <div class="book_page_scroll_wrapper">
+                    <div class="book_page_scroll scroll_area">
+                        <div class="book_page_wrapper">
+                            <div class="book_page book_page_head text7">M.I.N.M.A.F<span class="boxed_2023">2023</span></div>
+                            <div class="book_page book_page_head text7">
+                                <div class="book_page_head_left">Sponsors & Partners</div>
+                                <div class="book_page_head_right">贊助機構及合作伙伴</div>
+                            </div>
+                            <div class="book_page book_page_body sticky_book_page">
+                                <h4>
+                                    Sponsors & Partners
+                                    <div class="text6 chi_text">
+                                        贊助機構及合作伙伴
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="book_page book_page_body">
+                                <div class="sponsors_row">
+                                    Programme Partners<br>
+                                    <span class="chi_text">節目伙伴</span>
+                                    <div class="sponsors_logo_row">
+                                        <div class="sponsors_logo_item" style="height: 102px"><img src="images/logo-institut-francais.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 102px"><img src="images/logo-consulat-general-de-france.png" /></div>
+                                    </div>
+                                </div>
+
+                                <div class="sponsors_row">
+                                    Supported by <br>
+                                    <span class="chi_text">資助</span>
+                                    <div class="sponsors_logo_row">
+                                        <div class="sponsors_logo_item" style="height: 60px"><img src="images/logo-hkadc.png" /></div>
+                                    </div>
+                                </div>
+
+                                <div class="sponsors_row">
+                                   Design & Web Partners <br>
+                                    <span class="chi_text">設計伙伴</span>
+                                    <div class="sponsors_logo_row">
+                                        <div class="sponsors_logo_item" style="height: 57px"><img src="images/logo-alonglongtime.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 57px"><img src="images/logo-nekogato.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 57px"><img src="images/logo-things-i-did.png" /></div>
+                                    </div>
+                                </div>
+
+                                <div class="sponsors_row">
+                                    Exhibition Design and <br/>Technical Direction <br>
+                                     <span class="chi_text">展覽設計</span>
+                                     <div class="sponsors_logo_row">
+                                         <div class="sponsors_logo_item" style="height: 57px"><img src="images/logo-surge-production.png" /></div>
+                                     </div>
+                                 </div>
+
+                                 
+
+                                <div class="sponsors_row">
+                                    Screening Partners <br>
+                                    <span class="chi_text">放映伙伴</span>
+                                    <div class="sponsors_logo_row">
+                                        <div class="sponsors_logo_item" style="height: 60px"><img src="images/logo-ars-electronica.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 60px"><img src="images/logo-oyster-films.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 60px"><img src="images/logo-form-society.png" /></div>
+                                    </div>
+                                </div>
+
+                                <div class="sponsors_row">
+                                    Education Partners <br>
+                                    <span class="chi_text">教育伙伴</span>
+                                    <div class="sponsors_logo_row">
+                                        <div class="sponsors_logo_item" style="height: 60px"><img src="images/logo-hkdi.png" /></div>
+                                    </div>
+                                </div>
+
+                                <div class="sponsors_row">
+                                    Media Partners <br>
+                                    <span class="chi_text">媒體伙伴</span>
+                                    <div class="sponsors_logo_row">
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-arts-elevator.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-happy-kongner.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-laichieagle.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-excohk.png" /></div>
+                                    </div>
+                                    <div class="sponsors_logo_row">
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-sample.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-scan-now.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-the-culturist.png" /></div>
+                                        <div class="sponsors_logo_item" style="height: 52px"><img src="images/logo-zenegeist.png" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scrolltonext text7"><div class="progress" data-progress="0"></div><div class="text"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="book_wrapper" data-id="Press" data-prev="SponsorsAndPartners" data-next="ContactUs">
             <a class="book_leave_btn"></a>
             <div class="book book_style1 book_style1_2">
                 <div class="book_page_scroll_wrapper">
@@ -1375,7 +2056,7 @@
                             <div class="book_page book_page_body">
                                 <p>
                                     For press enquiries, please contact Kobe Ko at:<br>
-                                    傳媒垂詢，請以電郵聯絡高穎琳：<br>
+                                    <div class="text7 chi_text">傳媒垂詢，請以電郵聯絡高穎琳：</div>
                                     <span class="text6">●</span><br>
                                     <a href="mailto:press@microwavefest.net">press@microwavefest.net</a><br>
                                     <span class="text6">●</span>
@@ -1384,11 +2065,11 @@
                                 <hr/>
                                 <p>
                                     SELECTED MEDIA COVERAGE<br>
-                                    精選報導<br>
+                                    <div class="text7 chi_text">精選報導</div>
                                     <span class="text6">●</span>
                                     <br>
                                     Coming soon<br>
-                                    即將推出<br>
+                                    <div class="text7 chi_text">即將推出</div>
                                     <span class="text6">●</span>
                                 </p>
                             </div>
@@ -1421,7 +2102,7 @@
                             <div class="book_page book_page_body">
                                 <p>
                                     ENQUIRY & RESERVATION<br>
-                                    查詢及預約<br>
+                                    <div class="text7 chi_text">查詢及預約</div>
                                     <span class="text6">●</span><br>
                                     <a href="mailto:info@microwavefest.net">info@microwavefest.net</a><br>
                                     <span class="text6">●</span>
@@ -1429,7 +2110,7 @@
                                 <hr/>
                                 <p>
                                     PRESS ENQUIRY<br>
-                                    媒體查詢<br>
+                                    <div class="text7 chi_text">媒體查詢</div>
                                     <span class="text6">●</span><br>
                                     <a href="mailto:press@microwavefest.net">press@microwavefest.net</a><br>
                                     <span class="text6">●</span>
@@ -1437,7 +2118,7 @@
                                 <hr/>
                                 <p>
                                     CORRESPONDENCE ADDRESS<br>
-                                    地址<br>
+                                    <div class="text7 chi_text">地址</div>
                                     <span class="text6">●</span><br>
                                     Room 1104, 11/F, Crawford House, 70 Queen's Road Central, Central, Hong Kong<br>
                                     <span class="text6">●</span>
@@ -1471,21 +2152,26 @@
                             </div>
                             <div class="book_page book_page_body">
                                 <p>
-                                    Microwave International New Media Arts Festival began in 1996 as an annual video art festival of the local video art institution Videotage. As technology progressed and became more accessible, video art slowly evolved to involve other media; thus Microwave began to embrace the wider range of new media art. As the first and only art festival in Hong Kong dedicated to new media art, Microwave has steadily grown into a well-established festival that brings cutting-edge works to provoke thought in the technological hub every year.
+                                    Microwave International New Media Arts Festival began in 1996 as an annual video art festival of the local video art institution Videotage.
                                 </p>
-                                <p>
+                                <p class="text7">
+                                    As technology progressed and became more accessible, video art slowly evolved to involve other media; thus Microwave began to embrace the wider range of new media art. As the first and only art festival in Hong Kong dedicated to new media art, Microwave has steadily grown into a well-established festival that brings cutting-edge works to provoke thought in the technological hub every year.
+                                </p>
+                                <p class="text7">
                                     In its 10th anniversary, Microwave Festival celebrated by becoming an independent organisation, completed with a re-branding by design partner Milkxhake and a strengthened curatorial and working team. Microwave then continues the hard work to inspire Hong Kong and the rest of the world with pioneering media artworks selected to suit themes relevant to the society today, while also avidly supporting the exchange and dialogue between artists, professionals and the general public.
                                 </p>
-                                <p>
+                                <p class="text7">
                                     We envision that through the Microwave network, Hong Kong artists will be introduced to international institutions and curators, working as a platform and gateway for them to develop their art and skills. Apart from the grand annual festival, Microwave also endeavours to nurture a rising local new media arts community, organising various programmes such as educational workshops, seminars, forums and exhibitions.
                                 </p>
-                                <p>
-                                    微波國際新媒體藝術節始於1996年，前身是本地錄像藝術機構錄映太奇的年度錄像藝術節。錄像藝術隨著科技的進步變得更普及，逐步發展並融入媒體科技之中，因此，微波開始策劃更多的可能性，擁抱更廣泛的媒體藝術。作為香港第一個也是唯一一個專注於新媒體藝術的藝術節，藝術節已經穩步發展成為一個以科技為主軸、為觀眾帶來前瞻性作品的年度媒體藝術項目。
+                                <p class="chi_text">
+                                    微波國際新媒體藝術節始於1996年，前身是本地錄像藝術機構錄映太奇的年度錄像藝術節。
                                 </p>
-                                <p>
+                                <p class="text7 chi_text">錄像藝術隨著科技的進步變得更普及，逐步發展並融入媒體科技之中，因此，微波開始策劃更多的可能性，擁抱更廣泛的媒體藝術。作為香港第一個也是唯一一個專注於新媒體藝術的藝術節，藝術節已經穩步發展成為一個以科技為主軸、為觀眾帶來前瞻性作品的年度媒體藝術項目。
+                                </p>
+                                <p class="text7 chi_text">
                                     在藝術節十週年之際，我們正式成為一個獨立機構，故此特地邀請了設計合作夥伴Milkxhake重塑品牌，亦致力令策展團隊更加穩健。藝術節將繼續努力，以卓越的媒體藝術作品與項目啟發觀眾，緊扣並回應與當今社會相關的主題，同時微波也熱衷於支持藝術家、專業人士和公眾之間的交流和對話。
                                 </p>
-                                <p>
+                                <p class="text7 chi_text">
                                     我們冀望香港藝術家能通過藝術節，被更多國際機構和策展人看見，成為他們發展藝術和技能的平台和途徑。除了每年的藝術節之外，微波還致力培養本地嶄露頭角的新媒體藝術社群，組織及舉辦教育工作坊、研討會、論壇和展覽等公共項目。
                                 </p>
                             </div>
@@ -1538,6 +2224,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="scrolltonext text7"><div class="progress" data-progress="0"></div><div class="text"></div></div>
                 </div>
             </div>
         </div>

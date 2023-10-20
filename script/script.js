@@ -47,6 +47,13 @@ function loading_finish(){
 
 function init_event(){
 
+	$(".scrollto_btn").click(function(){
+		var mytarget = $(this).attr("data-target");
+		var mytop = $("[data-id='"+mytarget+"']").position().top+$(this).parents(".book_page_scroll").scrollTop()-70;
+		$(this).parents(".book_page_scroll").animate({scrollTop:mytop}, 500, 'swing', function() { 
+		 });
+		return false;
+	})
 
 	$(".dropdown_btn").click(function(){
 			
@@ -65,6 +72,16 @@ function init_event(){
 	$(".main_ex_text").click(function(){
 		var mytarget = $(this).attr("data-target");
 		var $mytarget = $("[data-id='"+mytarget+"']");
+		do_pushstate("?id="+mytarget);
+		$mytarget.stop().fadeIn().addClass("show");
+		$(window).resize();
+		$mytarget.find(".scroll_area").scrollTop(0);
+		setbookposition();
+	})
+
+	$(".sp_item").click(function(){
+		var mytarget = $(this).attr("data-target");
+		var $mytarget = $("[data-id='"+mytarget+"']");
 		$mytarget.stop().fadeIn().addClass("show");
 		$(window).resize();
 		$mytarget.find(".scroll_area").scrollTop(0);
@@ -80,8 +97,14 @@ function init_event(){
 				$p.removeClass("noscroll");
 			}).removeClass("show")
 		}else{
-			var $mynexttarget = $("[data-id='"+mynexttarget+"']");
-			$mynexttarget.stop().fadeIn().addClass("show");
+			console.log( !$(this).hasClass("reversed") )
+			if ( !$(this).hasClass("reversed") ) {
+				var $mynexttarget = $("[data-id='"+mynexttarget+"']");
+				$mynexttarget.stop().fadeIn().addClass("show");
+			} else {
+				var $myprevtarget = $("[data-id='"+myprevtarget+"']");
+				$myprevtarget.stop().fadeIn().addClass("show");
+			}
 		}
 		$(window).resize();
 		$mynexttarget.find(".scroll_area").scrollTop(0);
@@ -91,7 +114,9 @@ function init_event(){
 	$(".book_leave_btn").click(function(){
 		var $mytarget = $(this).parents(".book_wrapper");
 		$mytarget.stop().fadeOut().removeClass("show");
-		setbookposition()
+		var myprevtarget = $(this).parents(".book_wrapper").attr("data-prev");
+		do_pushstate("?id="+myprevtarget);
+		setbookposition();
 	})
 	
 
@@ -159,12 +184,12 @@ function do_pushstate(link){
 
 function setbookposition(){
 	if($(".mobile_show").is(":hidden")){
-		const rELength = $(".book_wrapper:visible").length;
-		$(".book_wrapper:visible").each(function(i){
-			$(this).find(".book").attr("data-bottom", 0 + (rELength - i) * 50)
+		const rELength = $(".book_wrapper:visible").not(".book_style0").length;
+		$(".book_wrapper:visible").not(".book_style0").each(function(i){
+			$(this).find(".book").attr("data-bottom", 0 + (rELength - i - 1) * 50)
 		})
 
-		$(".book_wrapper:visible .book").each(function(){
+		$(".book_wrapper:visible .book").not(".book_style0").each(function(){
 			var mybottom = $(this).attr("data-bottom");
 			$(this).css({
 				"bottom": mybottom+"px",
@@ -216,7 +241,53 @@ var scrolltimer;
 
 function init_function(){
 
-	
+	class TouchObject {
+	// let touchObject = () => {
+		initX = 0
+		initY = 0
+		update = ( newX, newY) => {
+			this.curX = newX
+			this.curY = newY
+			this.diffX = this.curX - this.initX
+			this.diffY = this.curY - this.initY
+			if (Math.abs(this.diffX) > 10 || Math.abs(this.diffY) > 10) {
+				if (Math.abs(this.diffX) > Math.abs(this.diffY)) {
+					this.dir = this.diffX > 0 ? "right" : "left";
+				} else {
+					this.dir = this.diffY > 0 ? "down" : "up";
+				}
+			}
+			this.initX = this.curX
+			this.initY = this.curY
+			this.distance = (this.dir == "right" || this.dir == "left") ? this.diffX : this.diffY;
+			return this.getDistance()
+		}
+		getDistance = () => {
+			// alert(this.distance)
+			return {
+				x: this.diffX,
+				y: this.diffY,
+				direction: this.dir,
+				distance: this.distance
+			}
+		}
+	}
+
+	const touchObject = new TouchObject();
+
+	const touchStartHandler = ( e ) => {
+		touchObject.initX = e.changedTouches[0].pageX
+		touchObject.initY = e.changedTouches[0].pageY
+		// touchObject.getDistance();
+		// alert(touchObject.initX + ", " + touchObject.initY);
+	}
+
+	const touchEndHandler = ( e ) => {
+
+	}
+
+	document.addEventListener("touchstart", touchStartHandler)
+	document.addEventListener("touchsend", touchEndHandler)
 
 	$(".project_image_gallery").each(function(i){
 		var swiper = new Swiper($(this).find(".swiper-container"), {
@@ -295,9 +366,9 @@ function init_function(){
 		// Add a wheel event listener to the scrollable container
 		// $(this)[0].addEventListener('wheel', (event) => {
 
-		var mc = new Hammer($(this)[0]);
+		// var mc = new Hammer($(this)[0]);
 
-		
+		/*
 		mc.on("panup pandown", function(event) {
 
 
@@ -375,22 +446,33 @@ function init_function(){
 			}
 			
 		});
+		*/
 
-
-		["wheel"].forEach( (eventType) => $(this)[0].addEventListener(eventType, (event) => {
+		["wheel", "touchmove"].forEach( (eventType) => $(this)[0].addEventListener(eventType, (event) => {
 			if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 || $this.find(">*").height() - $this.height() < 30) && (event.deltaY == undefined || event.deltaY > 0) ) {
 				clearTimeout(scrolltimer);
 				$p.addClass("reach-end")
 				if(mynexttarget){
 					$p.find(".scrolltonext").addClass("show")
+					$p.find(".scrolltonext").removeClass("reversed")
 					var progress = parseInt($p.find(".progress").attr("data-progress"));
-					progress+=event.deltaY/5;
+					if (event.type == "touchmove") {
+						touchObject.update(event.touches[0].pageX, event.touches[0].pageY);
+						progress += -touchObject.distance;
+					} else {
+						progress+=event.deltaY/5;
+					}
 					$p.find(".progress").attr("data-progress",progress)
-
+					// $p.find(".progress").stop().css("width",progress+"px")
+					$p.find(".progress").stop().animate({"width":progress+"px"}, 100)
 
 					scrolltimer = setTimeout(function(){
 						$p.find(".scrolltonext").removeClass("show")
 						$p.find(".scrolltonext").addClass("okgonext")
+
+						$p.find(".progress").attr("data-progress", 0)
+						// $p.find(".progress").css("width","0px")
+						$p.find(".progress").stop().animate({width: "0px"}, 500);
 					},300)
 					
 					if(parseInt($p.find(".scrolltonext .progress").attr("data-progress"))>=parseInt($p.find(".scrolltonext").width())){
@@ -438,16 +520,60 @@ function init_function(){
 				}
 			}
 			if (($this.scrollTop() <=0) && (event.deltaY == undefined || event.deltaY < 0)) {
+				clearTimeout(scrolltimer);
 				$p.addClass("reach-start")
 				if(myprevtarget){
-					do_pushstate("?id="+myprevtarget);
-					$p.addClass("noscroll").stop().fadeOut(function(){
-						$p.removeClass("noscroll");
-						setbookposition();
-					}).removeClass("show")
-					$myprevtarget.stop().fadeIn().addClass("show");
-					$(window).resize();
-					updateScroll();
+					$p.find(".scrolltonext").addClass("show").addClass("reversed");
+					var progress = parseInt($p.find(".progress").attr("data-progress"));
+					if (event.type == "touchmove") {
+						touchObject.update(event.touches[0].pageX, event.touches[0].pageY);
+						progress += touchObject.distance;
+					} else {
+						// console.log(event.deltaY/5)
+						progress+=-event.deltaY/5;
+					}
+					$p.find(".progress").attr("data-progress",progress)
+					// $p.find(".progress").css("width",progress+"px")
+					$p.find(".progress").stop().animate({"width":progress+"px"}, 100)
+
+
+					scrolltimer = setTimeout(function(){
+						$p.find(".scrolltonext").removeClass("show")
+						$p.find(".scrolltonext").addClass("okgonext")
+
+						$p.find(".progress").attr("data-progress", 0)
+						$p.find(".progress").stop().animate({width: "0px"}, 500);
+					},300)
+
+					if(parseInt($p.find(".scrolltonext .progress").attr("data-progress"))>=parseInt($p.find(".scrolltonext").width())){
+						$p.find(".scrolltonext").addClass("ok")
+					
+						// $mynexttarget.stop().fadeIn(function(){
+						// 	if(mynexttarget!==myprevtarget){
+						// 		$p.find(".scrolltonext").removeClass("show")
+						// 		$p.find(".progress").attr("data-progress",0)
+						// 		$p.find(".progress").css("width","0px")
+						// 		$p.find(".scrolltonext").removeClass("ok")
+						// 		$p.find(".scrolltonext").removeClass("okgonext")
+						// 		setbookposition();
+						// 	}
+						// }).addClass("show");
+						$(window).resize();
+
+						do_pushstate("?id="+myprevtarget);
+						$p.addClass("noscroll").stop().fadeOut(function(){
+							$p.removeClass("noscroll");
+							$p.find(".scrolltonext").removeClass("show")
+							$p.find(".progress").attr("data-progress",0)
+							$p.find(".progress").css("width","0px")
+							$p.find(".scrolltonext").removeClass("ok")
+							$p.find(".scrolltonext").removeClass("okgonext")
+							setbookposition();
+						}).removeClass("show")
+						$myprevtarget.stop().fadeIn().addClass("show");
+						$(window).resize();
+						updateScroll();
+					}
 				}
 			}
 		})
@@ -462,6 +588,10 @@ function init_function(){
 	var id = getQueryParams('id');
 	if(id=="HumanityTest"){
 		$(".test_humanity_btn").click();
+	}else if($(".main_ex_text[data-target='"+id+"']").length){
+		var myprevtarget = $(".book_wrapper[data-id='"+id+"']").attr("data-prev");
+		$(".dropdown_content a[data-target='"+myprevtarget+"']").click();
+		$(".main_ex_text[data-target='"+id+"']").click();
 	}else if($(".book_wrapper[data-id='"+id+"']").length){
 		$(".dropdown_content a[data-target='"+id+"']").click();
 	}
@@ -481,6 +611,40 @@ function dosize(){
 	}
 	$(".book_project_info").each(function(){
 		$(this).height($(this).parents(".book_page_scroll_wrapper").outerHeight()-100);
+	})
+
+	$(".book_style5 .sticky_book_page").each(function(){
+		// console.log(window.innerWidth)
+		if (window.innerWidth > 1023) {
+			$(this).height($(this).parents(".book_page_scroll_wrapper").outerHeight()-150);
+		} else {
+			$(this).height("");
+		}
+	})
+	$(".book_style5 .book_page_head_bg_img").each(function(){
+		if (window.innerWidth > 1023) {
+			$(this).height($(this).parents(".book_page_scroll_wrapper").outerHeight());
+		} else {
+			$(this).height("");
+		}
+	})
+
+	$(".book_style2 .sticky_book_page").each(function(){
+		// console.log(window.innerWidth)
+		if (window.innerWidth > 1023) {
+			$(this).height($(this).parents(".book_page_scroll_wrapper").outerHeight()-120);
+		} else {
+			$(this).height("");
+		}
+	})
+
+	$(".book_style7 .row_content").each(function(){
+		// console.log(window.innerWidth)
+		if (window.innerWidth > 1023) {
+			$(this).height($(this).parents(".book_page_scroll_wrapper").outerHeight()-132-25);
+		} else {
+			$(this).height("");
+		}
 	})
 	
 	for ( var i = 0; i < swiperArr.length; i++ ) { 
