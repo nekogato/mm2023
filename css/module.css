@@ -1196,7 +1196,7 @@ body{
 
 .book_style2 .book_page_scroll_wrapper {
 	width: 100%;
-	padding-bottom: 55%;
+	padding-bottom: 50%;
 	position: relative;
 	background-color: #000;
 	border-radius: 15px;
@@ -1885,6 +1885,59 @@ body{
 	opacity: 0.75;
 } */
 
+.book_style4_2 .bottom_left_image {
+	width: 50%;
+    aspect-ratio: 242/161;
+    /* padding-bottom: 22%; */
+    background-size: cover;
+    background-position: center;
+}
+
+.page_head_logo {
+	width: 50%;
+	max-width: 200px;
+}
+
+.book_style4_2 .row_content {
+	width: 100%;
+	padding-left: 0;
+	justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top: 1px solid;
+    padding-top: 20px;
+}
+
+.book_style4_2 .row_content:first-child {
+    border-top: none;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+.book_style4_2 .row_content:nth-child(2) {
+	margin-top: 10px;
+}
+
+.book_style4_2 .row_content_title {
+	width: 100%;
+	text-align: center;
+}
+
+.book_style4_2 .book_project_info {
+	flex-wrap: nowrap;
+}
+
+.book_style4_2 .project_name {
+	margin-bottom: 10px;
+}
+
+.book_style4_2 hr {
+	border-top:1px solid #000;
+}
+
+.book_style4_2 .book_artist_bio:first-child .book_section_head {
+	padding-top: 0;
+}
+
 .book_style8{
 	position: absolute;
 	width: 70%;
@@ -2344,14 +2397,27 @@ a:hover .boxed_registration {
 		border-top: 1px solid #000;
 	}
 
+	.book_artist_bio:first-child {
+		margin-top: 0;
+		/* padding-top: 25px; */
+		border-top: none;
+	}
+
 	.book_profile {
 		display: flex;
 		flex-basis: 100%;
 	}
 	.book_section_head {
+		display: block;
 		position: absolute;
 		left: 0%;
+		flex-basis: 67%;
+		align-self: self-start;
+		margin-top: 25px;
 		margin-left: calc((100% - 50px) * 0.33 + 25px);
+		padding: 0 0 10px 25px;
+		border: none;
+		box-sizing: border-box;
 	}
 	.book_page_head_right {
 		margin-left: 0;
@@ -2375,16 +2441,6 @@ a:hover .boxed_registration {
 	.book_artist_desc {
 		flex-basis: 100%;
     	padding-left: 0;
-	}
-
-	.book_section_head {
-		display: block;
-		flex-basis: 67%;
-		align-self: self-start;
-		padding: 0 0 10px 25px;
-		border: none;
-		box-sizing: border-box;
-		margin-top: 25px;
 	}
 
 	.book_style4 .book_page_body.headless_book_page {
@@ -2423,7 +2479,7 @@ a:hover .boxed_registration {
 		padding-left: 0;
 		flex-direction: column;
 	}
-	.book_style7 .col6, .book_style8 .col6 {
+	.book_style4_2 .col6, .book_style7 .col6, .book_style8 .col6 {
 		width: 100%;
 		flex-basis: 100%;
 		padding-left: 0;
@@ -2449,12 +2505,19 @@ a:hover .boxed_registration {
 		padding-left: 0px;
 	}
 
-	.book_style8 .col6:first-child {
+	.book_style4_2 .col6:first-child, .book_style8 .col6:first-child {
 		border-top: none;
 		padding-top: 0;
 	}
-	.book_style8 .col6:last-child {
+	.book_style4_2 .col6:last-child, .book_style8 .col6:last-child {
 		padding-bottom: 0;
+	}
+
+	.book_style4_2 .book_project_info {
+		border-top: 1px solid;
+	}
+	.book_style4_2 .book_page_wrapper:first-child .book_project_info {
+		border-top: none;
 	}
 
 	.sticky_book_page {
