@@ -1698,6 +1698,8 @@ body{
 
 .subhead-p {
 	margin-bottom: -15px;
+	border-top: 1px solid;
+	padding-top: 10px;
 }
 
 .book_style5 {
