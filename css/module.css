@@ -1311,16 +1311,46 @@ body{
    }
 
 .book_style2_2 .line_header{ 
-	margin-top: 30px;
+	padding-top: 30px;
 	border-bottom:1px solid #000;
 	display: flex;
+	align-items: center;
     justify-content: space-between;
 	padding-bottom: 5px;
+	position: sticky;
+	top: 60px;
+	align-self: flex-start;
+	background-color: #ff0000;
 }
 
 .book_style2_2 .image_box_wrapper{
-	margin-top: 30px;
+	margin-top: 30px; 
+	padding-top: 30px;
+	border-top:1px solid #000;
 }
+
+.book_style2_2 .book_artist_bio:first-child {
+	margin-top: 0px;
+	border-top: none
+}
+
+.book_style2_2 .book_artist_bio:first-child .book_section_head {
+	margin-top: 0px;
+}
+
+
+.book_style2_2 .book_artist_bio:first-child .book_profile {
+	margin-top: 0px;
+}
+
+.book_style2_2 .book_artist_bio:first-child .book_artist_desc {
+    margin-top: 0px;
+}
+
+.book_style2_2 .book_section_head.mobile_show{
+	display: none;
+}
+
 
 .image_box_wrapper .row{
 	display: flex;
@@ -1342,6 +1372,37 @@ body{
 .book_style2_2 .image_box_wrapper .text{
 	margin-top: 10px;
 }
+
+.book_style2_2 .scrollto_btn{
+	cursor: pointer;
+}
+
+.book_style2_2 .scrollto_btn:hover .bg{
+	opacity: 0.5;
+}
+
+.book_style2_2 .scrollto_box_wrapper{
+	margin-top: 30px;
+	border-top:1px solid #000
+}
+
+.book_style2_2 .scrollto_box + .scrollto_box{
+	margin-top: 30px;
+	border-top:1px solid #000
+}
+
+.book_style2_2 .scrollto_box{
+	padding-top: 30px;
+}
+
+.book_style2_2 .scrollto_box .center_text{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.book_style2_2 .book_section_head {
+	border-bottom: 1px solid #000;
+  }
 
 .main_book_page_body{
 	text-align: center;
@@ -2418,6 +2479,9 @@ a:hover .boxed_registration {
 		padding: 0 0 10px 25px;
 		border: none;
 		box-sizing: border-box;
+	}
+	.book_style2_2 .book_section_head.mobile_show{
+		display: flex;
 	}
 	.book_page_head_right {
 		margin-left: 0;
