@@ -36,7 +36,12 @@ var addElement2 = function ( myid,groupid,group, src, x, y, z,cubeTexture, rough
                 // only replace texture if a texture map exist
                 child.material.color.setHex( 0xef5a24 );
                 child.material.transparent=true;
-                child.material.opacity=1;
+                if($.cookie('played')){
+                    child.visible = false;
+                    child.material.opacity=0;
+                }else{
+                    child.material.opacity=1;
+                }
                 if (child.material.map){
                     child.material.map = "";
                 //replace the map with another THREE texture
@@ -81,7 +86,11 @@ var addElement = function ( myid,groupid,group, src, x, y, z,cubeTexture, roughn
             if ( child.isMesh ) {
                 // only replace texture if a texture map exist
                 child.material.transparent=true;
-                child.material.opacity=0;
+                if($.cookie('played')){
+                    child.material.opacity=1;
+                }else{
+                    child.material.opacity=0;
+                }
                 if (child.material.map){
                 //replace the map with another THREE texture
                 child.material.envMap = cubeTexture;
@@ -353,7 +362,13 @@ function init() {
         $("body").removeClass("silver_bg")
         
         $(".chat_answer_wrapper").addClass("restartchat")
-        $(".chat_question").append('<div class="chat_question_item chat_question_item_system"><div  class="text5 start_typing">請按Start Again重新開始</div></div>')
+        if(currentlang=="en"){
+            $(".chat_question").append('<div class="chat_question_item chat_question_item_system"><div  class="text5 start_typing">Press "Start Again" to restart.</div></div>')
+        }else{
+            $(".chat_question").append('<div class="chat_question_item chat_question_item_system"><div  class="text5 start_typing">請按Start Again重新開始</div></div>')
+        }
+        
+
         $(".start_typing:last").scrambler({
             effect: "typing",
             final_text: $(".start_typing:last").text(),

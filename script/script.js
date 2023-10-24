@@ -8,8 +8,8 @@ function fbs_click(width, height) {
     //Allow for title and status bars.
     topPosition = (window.screen.height / 2) - ((height / 2) + 50);
     var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
-    u=location.href;
-    t=document.title;
+    var u=$(".share_result_btn").attr("data-href");
+    var t=$(".share_result_btn").attr("data-title");
     window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer', windowFeatures);
     return false;
 }

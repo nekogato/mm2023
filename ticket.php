@@ -1,13 +1,31 @@
 <?php
+
     // Retrieve the file name from the URL query parameter
-    $fileName = 'data/'.$_GET['id'].'.txt';
+    $fileName = 'data2/'.$_GET['id'].'.txt';
     
     if (isset($fileName) && file_exists($fileName)) {
         // Read the data from the specified file
         $fileContent = file_get_contents($fileName);
         
         // Parse the data from the file content
-        list($data_identity_guess, $data_identity_reason, $data_psychological_types_guess, $data_psychological_types_animal, $data_psychological_types_reason, $url) = explode("\n", $fileContent);
+        list($data_human_percentage, $data_human_percentage_reason, $data_robot_percentage, $data_robot_percentage_reason, $data_alien_percentage, $data_alien_percentage_reason,$data_story, $url) = explode("\n", $fileContent);
+        
+        $identity;
+        
+        if ($data_human_percentage > $data_alien_percentage && $data_human_percentage > $data_robot_percentage){
+            $identity = "human";
+            $identity_reason = $data_human_percentage_reason;
+            $bg = "silver_bg";
+        }elseif ($data_alien_percentage > $data_robot_percentage){
+            $identity = "animal";
+            $identity_reason = $data_alien_percentage_reason;
+            $bg = "orange_bg";
+        }else{
+            $identity = "robot";
+            $identity_reason = $data_robot_percentage_reason;
+            $bg = "black_bg";
+        };
+
     }
 ?>
 
@@ -16,33 +34,40 @@
 <html>
 <head>
     
-    <title>You are: <?php echo $data_identity_guess; ?></title>
+    <title>You are: <?php echo $identity; ?>  ::: MICROWAVE INTERNATIONAL NEW MEDIA ARTS FESTIVAL 2023 :::</title>
     <meta property="og:url"            content="<?php echo $url; ?>" />
     <meta property="og:type"               content="article" />
-    <meta property="og:title"              content="You are: <?php echo $data_identity_guess; ?>" />
-    <meta property="og:description"        content="<?php echo $data_identity_reason; ?>" />
+    <meta property="og:title"              content="You are: <?php echo $identity; ?>  ::: MICROWAVE INTERNATIONAL NEW MEDIA ARTS FESTIVAL 2023 :::" />
+    <meta property="og:description"        content="<?php echo $identity_reason; ?>" />
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image" content="http://www.microwavefest.net/festival2023/images/share_<?php echo $identity ; ?>.png">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script/lib/jquery-1.11.1.min.js"></script>
     <script src="script/lib/gsap.min.js"></script>
     <script src="script/lib/perfect-scrollbar.js"></script>
+    <script src="script/lib/jquery.animateNumber.min.js"></script>
     <link href="script/lib/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
     <link href="script/lib/fancybox/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
     <script src="script/lib/fancybox/jquery.fancybox.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="fonts/stylesheet.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link rel="stylesheet" type="text/css" href="css/module.css" />
 
-</head>
-<body class="body_test_humanity_result_done"body_test_humanity_result_done>
+    <script src="script/script.js"></script>
 
-    <div class="chat_result_wrapper">
-        <div class="bg "></div>
-        <div class="chat_result_inwrapper">
+</head>
+<body class="body_test_humanity loading_message body_test_humanity_result_done body_played_test <?php echo $bg;?> single_reult_body">
+
+    <div class="chat_result_wrapper offset_p">
+        <div class="chat_result_inwrapper offset_child scrollin scrollin1">
             <div class="chat_result">
                 <div class="chat_result_top_bg"></div>
                 <div class="chat_result_content">
-                    <img src="images/share_logo.png" class="chat_result_logo">
+                    <div class="chat_result_logo"></div>
+                    <div class="ticket_top_text"></div>
                     <div class="chat_result_content_scroll_wrapper">
                         <div class="chat_result_content_scroll ">
                             <div class="chat_result_box_wrapper">
@@ -51,47 +76,62 @@
                                 
                                 if (isset($fileName) && file_exists($fileName)) {
                                     ?>
+                                    <div class="chat_result_box chat_result_box2" id="chat_result_box_id">
+                                        <div class="chat_result_box_scroll ">
+                                            <div class="chat_result_box_content">
+                                                <div class="top top2 text7 ">
+                                                    You are 你是 →
+                                                    <div class="top_icon">
+                                                        <div class="chat_result_identity_icon chat_result_identity_icon_<?php echo $identity ?> offset_child show"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="bottom ">
+                                                    <div class="score_icon_item_wrapper">
+                                                        <div class="score_icon_item">
+                                                            <div class="score_icon_item_top offset_child scrollin scrollin1">
+                                                                <div class="score_icon chat_result_identity_icon_human"></div>
+                                                                <div class="score_percentage human_percentage text2" data-text="<?php echo $data_human_percentage ?>">00%</div>
+                                                            </div>
+                                                            <div class="score_percentage_bar offset_child scrollin scrollin1">
+                                                                <div class="human_score_percentage_bar " data-width="<?php echo $data_human_percentage ?>" style="width: 0%;"><div class="line"></div></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="score_icon_item">
+                                                            <div class="score_icon_item_top offset_child scrollin scrollin1">
+                                                                <div class="score_icon chat_result_identity_icon_robot"></div>
+                                                                <div class="score_percentage robot_percentage text2" data-text="<?php echo $data_robot_percentage ?>">00%</div>
+                                                            </div>
+                                                            <div class="score_percentage_bar offset_child scrollin scrollin1">
+                                                                <div class="robot_score_percentage_bar " data-width="<?php echo $data_robot_percentage ?>" style="width: 0%;"><div class="line"></div></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="score_icon_item">
+                                                            <div class="score_icon_item_top offset_child scrollin scrollin1">
+                                                                <div class="score_icon chat_result_identity_icon_animal"></div>
+                                                                <div class="score_percentage alien_percentage text2" data-text="<?php echo $data_alien_percentage ?>">00%</div>
+                                                            </div>
+                                                            <div class="score_percentage_bar offset_child scrollin scrollin1">
+                                                                <div class="alien_score_percentage_bar " data-width="<?php echo $data_alien_percentage ?>" style="width: 0%;"><div class="line"></div></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="chat_result_box chat_result_box2">
+                                        <div class="chat_result_box_scroll scroll_area">
+                                            <div class="chat_result_box_content">
+                                                <div class="top top2 text7 ">
+                                                    Your story 你經歷了 →
+                                                </div>
+                                                <div class="bottom story story_box offset_child scrollin scrollin1">
+                                                    <?php echo $data_story ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                    <div class="chat_result_box">
-                                        <div class="chat_result_box_scroll scroll_area">
-                                            <div class="chat_result_box_content">
-                                                <div class="top text7">Result 人/鬼檢測結果 →</div>
-                                                <div class="middle chat_result_identity_icon chat_result_identity_icon_human"></div>
-                                                <div class="bottom identity_guess text4">
-                                                    <?php echo $data_identity_guess; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="icon_cover_wrapper">
-                                            <div class="icon_cover icon_cover1" style="background-image: url(images/icon_human.png);"></div>
-                                        </div>
-                                    </div>
-                                    <div class="chat_result_box">
-                                        <div class="chat_result_box_scroll scroll_area">
-                                            <div class="chat_result_box_content">
-                                                <div class="top text7">Analysis 分析 →</div>
-                                                <div class="bottom identity_reason"><?php echo $data_identity_reason; ?></div>
-                                            </div>
-                                        </div>
-                                        <div class="icon_cover_wrapper">
-                                            <div class="icon_cover icon_cover2" style="background-image: url(images/icon_ghost.png);"></div>
-                                        </div>
-                                    </div>
-                                    <div class="chat_result_box">
-                                        <div class="chat_result_box_scroll scroll_area">
-                                            <div class="chat_result_box_content">
-                                                <div class="top">
-                                                    <div class="text7">Animal Type 獸類型 →</div>
-                                                    <div class="psychological_types_guess"><?php echo $data_psychological_types_guess; ?></div>
-                                                    <div class="psychological_types_animal"><?php echo $data_psychological_types_animal; ?></div>
-                                                </div>
-                                                <div class="bottom psychological_types_reason"><?php echo $data_psychological_types_reason; ?></div>
-                                            </div>
-                                        </div>
-                                        <div class="icon_cover_wrapper">
-                                            <div class="icon_cover icon_cover3" style="background-image: url(images/icon_animal.png);"></div>
-                                        </div>
-                                    </div>
 
 
                                 <?php } else { ?>
@@ -106,10 +146,60 @@
                 <div class="chat_result_bottom_bg"></div>
             </div>
         </div>
-        <a class="share_result_btn"  href="<?php echo $url; ?>">
-            <div>Share your result →</div>
+        <a class="chat_top_btn_wrapper" href="index2.html">
+            <div class="chat_top_logo text5 " href="index2.html">N.H Intelligence</div>
         </a>
     </div>
+    
+    <div class="share_bottom_btn_wrapper">
+        <a href="http://www.facebook.com/share.php?u=<?php echo $url; ?>" data-href="<?php echo $url; ?>"  data-title="You are: <?php echo $identity; ?>  ::: MICROWAVE INTERNATIONAL NEW MEDIA ARTS FESTIVAL 2023 :::" onClick="return fbs_click(400, 300)" target="_blank" title="Share your result" class="share_result_btn"><div>Share your result →</div></a>
+        <a class="share_restart_btn leave_chat_result_btn"  href="index.html?id=HumanityTest">
+            <div>Check your own identity →</div>
+        </a>
+    </div>
+    <!-- <script>
+        $(window).load(function(){
+            $(".scroll_area").each(function () {
+                var $this = $(this);
 
+
+                var ps  = new PerfectScrollbar($(this)[0],{
+                    suppressScrollX:true,
+                    scrollYMarginOffset:20
+                });
+
+                
+            });
+
+
+            $("#chat_result_box_id").mouseenter(function(){
+                $(this).find(".score_icon_item").each(function(){
+                    var $this = $(this);
+                    $this.find(".score_percentage").text("0%")
+                    $this.find(".score_percentage").animateNumber(
+                    {
+                        number: $this.find(".score_percentage").attr("data-text"),
+                        numberStep: function(now, tween) {
+                            var floored_number = Math.floor(now),
+                                target = $(tween.elem);
+                            if(parseInt(floored_number)<10){floored_number="0"+floored_number;}
+                            target.text(floored_number + '%');
+                        }
+                    },
+                    {
+                        easing: 'swing',
+                        duration: 1200
+                    }
+                    );
+                    $this.find(".score_percentage_bar > div").addClass("noanimation");
+                    $this.find(".score_percentage_bar > div").width("0%");
+                    setTimeout(function(){
+                        $this.find(".score_percentage_bar > div").removeClass("noanimation");
+                        $this.find(".score_percentage_bar > div").width($this.find(".score_percentage_bar > div").attr("data-width"));
+                    },0)
+                })
+            })
+        })
+    </script> -->
 </body>
 </html>

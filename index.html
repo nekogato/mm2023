@@ -13,13 +13,17 @@
     <script src="script/lib/swiper/js/swiper.min.js"></script>
     <script src="script/lib/gsap.min.js"></script>
     <script src="script/lib/jquery.scrambler.js"></script>
-    <!-- <script src="script/lib/hammer.min.js"></script> -->
+    <script src="script/lib/hammer.min.js"></script>
     <script src="script/lib/perfect-scrollbar.js"></script>
     <script src="script/lib/jquery.history.js"></script>
+    <script src="script/lib/jquery.cookie.js"></script>
+    <script src="script/lib/jquery.text-effects.js"></script>
+    <script src="script/lib/jquery.animateNumber.min.js"></script>
     <link href="script/lib/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
     <link href="script/lib/fancybox/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
     <script src="script/lib/fancybox/jquery.fancybox.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="fonts/stylesheet.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link rel="stylesheet" type="text/css" href="css/module.css" />
 
@@ -44,7 +48,6 @@
 
       gtag('config', 'UA-148167215-1');
     </script>
-
 </head>
 <body>
     <div id="blocker"></div>
@@ -116,20 +119,21 @@
     </div>
 
     <div class="home_status"></div>
-    <div class="overlay"></div>
+    <div class="over_btn_wrapper_bg"></div>
     <div class="over_btn_wrapper ">
+        <div class="over_btn_head text7">M.I.N.M.A.F <span class="over_btn_year">2023</span></div>
         <div class="over_btn user_guide_btn">
-            <div>
-                <div>User Guide</div>
-                <div>展覽說明</div>
-                <div class="text3">↑</div>
+            <div class="bg"></div>
+            <div class="text_wrapper">
+                <div class="text6">User Guide</div>
+                <div class="text7">展覽說明</div>
             </div>
         </div>
         <div class="over_btn test_humanity_btn">
-            <div>
-                <div class="text3">↓</div>
-                <div>Test Your Humanity</div>
-                <div>人鬼獸測試</div>
+            <div class="bg"></div>
+            <div class="text_wrapper">
+                <div class="text6">Test Your Humanity</div>
+                <div class="text7">人鬼獸測試</div>
             </div>
         </div>
     </div>
@@ -139,7 +143,8 @@
             <div class="chat_question_inwrapper">
                 <div class="chat_question">
                     <div class="chat_question_item chat_question_item_system">
-                        <div class="text5">接下來我們將會進行一個測試，以檢測你的身份，預備好請按「START」。</div>
+                        <div class="text5 start_typing">接下來我們的故事創作機器將會和你一起進行一個「互動故事遊戲」來檢測你的「人/鬼/獸」成份，過程中作為主人公的你將需要作出大約5次選擇（實際數量將由機器判斷），準備好後，請按「START」開始互動故事遊戲。<br>
+                        Our story creation machine will engage in an "interactive story game" with you to assess your "human/ghost/animal" attributes. During this process, as the protagonist, you will need to make approximately 5 choices (the actual number will be determined by the machine). When you're ready, please press "START" to begin the interactive story game.</div>
                     </div>
 
                     <!-- <div class="chat_question_item chat_question_item_left">
@@ -155,6 +160,8 @@
             </div>
         </div>
         <div class="chat_answer_wrapper notstartfirstchat">
+            <div class="chat_answer_remark text7">Please input your answer here<br>請在此輸入您的答案</div>
+            <div class="chat_answer_remark_right text7"><a href="#" class="lang_btn lang_btn_en">ENGLISH</a> <a href="#" class="lang_btn lang_btn_tc active">中文</a></div>
             <div class="chat_answer">
                 <div class="chat_answer_input_wrapper">
                     <input type="text" placeholder="" class="chat_answer_input" id="message"/>
@@ -162,11 +169,10 @@
                 <div class="chat_answer_submit chat_answer_submit_btn"></div>
             </div>
         </div>
-        <div class="top_arrow_btn leave_chat_btn text3">↑</div>
     </div>
 
     <div class="chat_result_loading">
-        <div>loading</div>
+        <div></div>
     </div>
 
     <div class="chat_result_wrapper">
@@ -175,48 +181,65 @@
             <div class="chat_result">
                 <div class="chat_result_top_bg"></div>
                 <div class="chat_result_content">
-                    <img src="images/share_logo.png" class="chat_result_logo">
+                    <div class="chat_result_logo"></div>
+                    <div class="ticket_top_text"></div>
+                    
                     <div class="chat_result_content_scroll_wrapper">
                         <div class="chat_result_content_scroll ">
-                            <div class="chat_result_box_wrapper">
-                                <div class="chat_result_box">
+                            <div class="chat_result_box_wrapper ">
+                                <div class="chat_result_box chat_result_box2" id="chat_result_box_id">
                                     <div class="chat_result_box_scroll scroll_area">
                                         <div class="chat_result_box_content">
-                                            <div class="top text7">Result 檢測結果 →</div>
-                                            <div class="middle chat_result_identity_icon chat_result_identity_icon_human"></div>
-                                            <div class="bottom identity_guess text4">
-                                                人類
+                                            <div class="top top2 text7">
+                                                You are 你是 →
+                                                <div class="top_icon">
+                                                    <div class="chat_result_identity_icon chat_result_identity_icon_human"></div>
+                                                </div>
+                                            </div>
+                                            <div class="bottom ">
+                                                <div class="score_icon_item_wrapper">
+                                                    <div class="score_icon_item">
+                                                        <div class="score_icon_item_top">
+                                                            <div class="score_icon chat_result_identity_icon_human"></div>
+                                                            <div class="score_percentage human_percentage text2" data-text="0%">00%</div>
+                                                        </div>
+                                                        <div class="score_percentage_bar">
+                                                            <div class="human_score_percentage_bar" data-width="0%" style="width: 0%;"><div class="line"></div></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="score_icon_item">
+                                                        <div class="score_icon_item_top">
+                                                            <div class="score_icon chat_result_identity_icon_robot"></div>
+                                                            <div class="score_percentage robot_percentage text2" data-text="0%">00%</div>
+                                                        </div>
+                                                        <div class="score_percentage_bar">
+                                                            <div class="robot_score_percentage_bar" data-width="0%" style="width: 0%;"><div class="line"></div></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="score_icon_item">
+                                                        <div class="score_icon_item_top">
+                                                            <div class="score_icon chat_result_identity_icon_animal"></div>
+                                                            <div class="score_percentage alien_percentage text2" data-text="0%">00%</div>
+                                                        </div>
+                                                        <div class="score_percentage_bar">
+                                                            <div class="alien_score_percentage_bar" data-width="0%" style="width: 0%;"><div class="line"></div></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="icon_cover_wrapper">
-                                        <div class="icon_cover icon_cover1" style="background-image: url(images/icon_human.png);"></div>
-                                    </div>
                                 </div>
-                                <div class="chat_result_box">
+                                <div class="chat_result_box chat_result_box2">
                                     <div class="chat_result_box_scroll scroll_area">
                                         <div class="chat_result_box_content">
-                                            <div class="top text7">Analysis 分析 →</div>
-                                            <div class="bottom identity_reason"></div>
-                                        </div>
-                                    </div>
-                                    <div class="icon_cover_wrapper">
-                                        <div class="icon_cover icon_cover2" style="background-image: url(images/icon_ghost.png);"></div>
-                                    </div>
-                                </div>
-                                <div class="chat_result_box">
-                                    <div class="chat_result_box_scroll scroll_area">
-                                        <div class="chat_result_box_content">
-                                            <div class="top">
-                                                <div class="text7">Animal Type 獸類型 →</div>
-                                                <div class="psychological_types_guess"></div>
-                                                <div class="psychological_types_animal"></div>
+                                            <div class="top top2 text7">
+                                                Your story 你經歷了 →
                                             </div>
-                                            <div class="bottom psychological_types_reason"></div>
+                                            <div class="bottom story story_box">
+                                                
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="icon_cover_wrapper">
-                                        <div class="icon_cover icon_cover3" style="background-image: url(images/icon_animal.png);"></div>
                                     </div>
                                 </div>
                             </div>
@@ -226,10 +249,19 @@
                 <div class="chat_result_bottom_bg"></div>
             </div>
         </div>
-        <a class="share_result_btn"  href="#">
-            <div>Share your result →</div>
+        <!-- <div class="top_arrow_btn leave_chat_result_btn text3">↑</div> -->
+    </div>
+
+    <div class="chat_top_btn_wrapper">
+        <div class="chat_top_logo text5 mobile_hide">N.H Intelligence</div>
+        <div class="top_arrow_btn leave_chat_btn text5">← BACK</div>
+    </div>
+
+    <div class="share_bottom_btn_wrapper">
+        <a href="" onClick="return fbs_click(400, 300)" target="_blank" title="Share your result" class="share_result_btn"><div>Share your result →</div></a>
+        <a class="share_restart_btn leave_chat_result_btn"  href="#">
+            <div>Restart →</div>
         </a>
-        <div class="top_arrow_btn leave_chat_result_btn text3">↑</div>
     </div>
 
     <div class="blur_bg"></div>
@@ -3441,16 +3473,19 @@
     </div>
     <form id="submitForm" method="POST" style="display:none">
         <!-- Your form fields here -->
-        <input type="text" name="data_identity_guess" id="data_identity_guess" >
-        <input type="text" name="data_identity_reason" id="data_identity_reason" >
-        <input type="text" name="data_psychological_types_guess" id="data_psychological_types_guess" >
-        <input type="text" name="data_psychological_types_animal" id="data_psychological_types_animal" >
-        <input type="text" name="data_psychological_types_reason" id="data_psychological_types_reason" >
-        <input type="submit" value="Submit">
+        <input type="text" name="data_human_percentage" id="data_human_percentage" >
+        <input type="text" name="data_human_percentage_reason" id="data_human_percentage_reason" >
+        <input type="text" name="data_robot_percentage" id="data_robot_percentage" >
+        <input type="text" name="data_robot_percentage_reason" id="data_robot_percentage_reason" >
+        <input type="text" name="data_alien_percentage" id="data_alien_percentage" >
+        <input type="text" name="data_alien_percentage_reason" id="data_alien_percentage_reason" >
+        <input type="text" name="data_story" id="data_story" >
+        <input type="submit" value="Submit" maxlength="20">
     </form>
+
 
     <div class="mobile_show"></div>
     <script src="script/index.js"></script>
-    <script src="script/chat.js"></script>
+    <script src="script/chat2.js"></script>
 </body>
 </html>
