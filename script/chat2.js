@@ -185,6 +185,10 @@ function checkChat(){
     if($("body").hasClass("body_played_test") && !$(".chat_answer_wrapper").hasClass("restartchat")){
         $("body").removeClass("body_test_humanity_result_start_chat")
         $("body").addClass("body_test_humanity_result_done")
+        setTimeout(function(){
+            $(".score_icon_item").mouseenter();
+            $(".chat_result_identity_icon").addClass("show")
+        },1500)
     }else{
 
 
@@ -204,7 +208,7 @@ function checkChat(){
 
 
 
-        $(".chat_question_wrapper").stop().animate({scrollTop:$(".chat_question_inwrapper").outerHeight()-$(".chat_question_wrapper").height()}, 500, 'swing', function() { 
+        $(".chat_question_wrapper").stop().animate({scrollTop:$(".chat_question_inwrapper").outerHeight()-$(".chat_question_wrapper").height()+50}, 500, 'swing', function() { 
         });
         
         rndInt = Math.floor(Math.random() * 3)+1 ;
@@ -308,7 +312,7 @@ async function loadmessage(){
 
         $(".chat_question").append('<div class="chat_question_item chat_question_item_left loading_text"><div class="text5"></div></div>')
         
-        $(".chat_question_wrapper").stop().animate({scrollTop:$(".chat_question_inwrapper").outerHeight()-$(".chat_question_wrapper").height()}, 500, 'swing', function() { 
+        $(".chat_question_wrapper").stop().animate({scrollTop:$(".chat_question_inwrapper").outerHeight()-$(".chat_question_wrapper").height()+50}, 500, 'swing', function() { 
         });
     }
 
@@ -553,7 +557,7 @@ async function loadmessage(){
                                         $(".chat_question_item_left:last")[0].innerHTML += text.charAt(i);
 
                                         if(myheight !== $(".chat_question_item_left:last").height()){
-                                            $(".chat_question_wrapper").stop().animate({scrollTop:$(".chat_question_inwrapper").outerHeight()-$(".chat_question_wrapper").height()}, 500, 'swing', function() { 
+                                            $(".chat_question_wrapper").stop().animate({scrollTop:$(".chat_question_inwrapper").outerHeight()-$(".chat_question_wrapper").height()+50}, 500, 'swing', function() { 
                                              });
                                             myheight = $(".chat_question_item_left:last").height();
                                         }
@@ -584,7 +588,7 @@ async function loadmessage(){
         }else{
             $(".chat_question").append('<div class="chat_question_item chat_question_item_left"><div class="text5 endtext">請按"See Result"查看及分享結果。</div></div>')
         }
-        $(".chat_question_wrapper").stop().animate({scrollTop:$(".chat_question_inwrapper").outerHeight()-$(".chat_question_wrapper").height()}, 500, 'swing', function() { 
+        $(".chat_question_wrapper").stop().animate({scrollTop:$(".chat_question_inwrapper").outerHeight()-$(".chat_question_wrapper").height()+50}, 500, 'swing', function() { 
         });
         $(".chat_answer_wrapper").addClass("stopTyping");
         $(".chat_question_item_left:last > .endtext").scrambler({
