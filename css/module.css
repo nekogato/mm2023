@@ -405,7 +405,7 @@ body{
 	color:#9fa1a4;
 	background-color: rgba(0, 0, 0, 0.5);
 	border:1px solid #9fa1a4;
-	filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+	/* filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5)); */
 	overflow: hidden;
 }
 
@@ -448,6 +448,7 @@ body{
 	flex-grow: 1;
 	position: relative;
 	z-index: 1;
+    overflow: hidden;
 }
 
 .over_btn .bg{
@@ -459,7 +460,7 @@ body{
 	width: 100%;
 	height: 100%;
 	transform: scale(0);
-	background-color: rgba(0, 0, 0, 0.9);
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 .over_btn:hover .bg{
@@ -730,6 +731,8 @@ body{
 	border-top:1px solid #9fa1a4;
 	border-bottom: 1px solid #9fa1a4;
 	width: 100%;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
 }
 
 .chat_result_loading div::before{
@@ -761,7 +764,7 @@ body{
     transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0s; 
 	position: fixed;
 	left: 0px;
-	top:100%;
+	top:120%;
 	width: 100%;
 	height: 0%;
 	margin: auto;
@@ -800,8 +803,11 @@ body{
 .chat_result{
 	margin: auto;
 	padding-bottom: 40%;
-	filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
 	position: relative;
+	filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+}
+
+.body_test_humanity_result_done .chat_result{
 }
 
 .chat_result_story{
@@ -1400,8 +1406,8 @@ body{
 	height: 100%;
 	margin: auto;
 	z-index: 11;
-	-webkit-backdrop-filter: blur(10px);
-	backdrop-filter: blur(10px);
+	/* -webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px); */
 }
 
 .body_user_guide .blur_bg{
@@ -1456,7 +1462,7 @@ body{
 	pointer-events: none;
 	overflow: hidden;
 	z-index: 3;
-	filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.5));
+	/* filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.5)); */
 }
 
 .scrolltonext.show, .scrolltoprev.show{
@@ -1550,10 +1556,12 @@ body{
 
 .book{
 	pointer-events: none;
+	filter: none !important;
 }
 
 .book .book_page_scroll_wrapper{
 	pointer-events: auto;
+	border:1px solid #fff;
 }
 
 .book .book_page_scroll_wrapper::after{
