@@ -174,10 +174,34 @@ function init_event(){
 
 		if(mytarget == "Home"){
 			$("body").removeClass("body_user_guide")
+			if(objArr.length>0){
+				for ( var i = 0; i < objArr.length; i++ ) { 
+					objArr[i].visible = true;
+				}
+			}
+			if(objArr2.length>0){
+				for ( var i = 0; i < objArr2.length; i++ ) { 
+					if($.cookie('played')){
+	
+					}else{
+						objArr2[i].visible = true;
+					}
+				}
+			}
 			$("body").removeClass("body_test_humanity")
 		}else{
 
 			$("body").addClass("body_user_guide")
+			if(objArr.length>0){
+				for ( var i = 0; i < objArr.length; i++ ) { 
+					objArr[i].visible = false;
+				}
+			}
+			if(objArr2.length>0){
+				for ( var i = 0; i < objArr2.length; i++ ) { 
+					objArr2[i].visible = false;
+				}
+			}
 			$("body").removeClass("body_test_humanity")
 
 			$mytarget.stop().fadeIn().addClass("show");;

@@ -36,12 +36,18 @@ var addElement2 = function ( myid,groupid,group, src, x, y, z,cubeTexture, rough
                 // only replace texture if a texture map exist
                 child.material.color.setHex( 0xef5a24 );
                 child.material.transparent=true;
+                if($("body").hasClass("body_user_guide")){
+                    child.visible=false;
+                }else{
+                    child.visible=true;
+                }
                 if($.cookie('played')){
                     child.visible = false;
                     child.material.opacity=0;
                 }else{
                     child.material.opacity=1;
                 }
+
                 if (child.material.map){
                     child.material.map = "";
                 //replace the map with another THREE texture
@@ -86,10 +92,16 @@ var addElement = function ( myid,groupid,group, src, x, y, z,cubeTexture, roughn
             if ( child.isMesh ) {
                 // only replace texture if a texture map exist
                 child.material.transparent=true;
+                
                 if($.cookie('played')){
                     child.material.opacity=1;
                 }else{
                     child.material.opacity=0;
+                }
+                if(!$("body").hasClass("body_user_guide")){
+                    child.visible=true;
+                }else{
+                    child.visible=false;
                 }
                 if (child.material.map){
                 //replace the map with another THREE texture
@@ -331,6 +343,20 @@ function init() {
         });
 
         $("body").addClass("body_test_humanity")
+        if(objArr.length>0){
+            for ( var i = 0; i < objArr.length; i++ ) { 
+                objArr[i].visible = true;
+            }
+        }
+        if(objArr2.length>0){
+            for ( var i = 0; i < objArr2.length; i++ ) { 
+                if($.cookie('played')){
+
+                }else{
+                    objArr2[i].visible = true;
+                }
+            }
+        }
         do_pushstate("?id=HumanityTest");
     });
 
@@ -338,6 +364,16 @@ function init() {
         var myid = $(".book_wrapper:visible:last").attr("data-id")
         do_pushstate("?id="+myid);
         $("body").addClass("body_user_guide")
+        if(objArr.length>0){
+            for ( var i = 0; i < objArr.length; i++ ) { 
+                objArr[i].visible = false;
+            }
+        }
+        if(objArr2.length>0){
+            for ( var i = 0; i < objArr2.length; i++ ) { 
+                objArr2[i].visible = false;
+            }
+        }
     });
 
     
@@ -381,6 +417,20 @@ function init() {
 
     $(".leave_user_guide_btn").on( "click", function() {
         $("body").removeClass("body_user_guide")
+        if(objArr.length>0){
+            for ( var i = 0; i < objArr.length; i++ ) { 
+                objArr[i].visible = true;
+            }
+        }
+        if(objArr2.length>0){
+            for ( var i = 0; i < objArr2.length; i++ ) { 
+                if($.cookie('played')){
+
+                }else{
+                    objArr2[i].visible = true;
+                }
+            }
+        }
         do_pushstate("?id=Home");
     });
 
@@ -596,143 +646,144 @@ function doletter3animation(){
 
 function animate() {
     
-    camera.position.y += ( - mouseY/10 - camera.position.y ) * .05;
+    if(!$("body").hasClass("body_user_guide")){
+        camera.position.y += ( - mouseY/10 - camera.position.y ) * .05;
 
-    if(allArr.length){
-        if(breakmodel){
-            for ( var i = 0; i < allArr.length; i++ ) { 
-                allArr[i].position.x += (  randomObjArr[i].x - allArr[i].position.x ) * .05;
-                allArr[i].position.y += (  randomObjArr[i].y - allArr[i].position.y ) * .05;
-                allArr[i].position.z += (  randomObjArr[i].z - allArr[i].position.z ) * .05;
-            }
-        }else{
-            for ( var i = 0; i < allArr.length; i++ ) { 
-                allArr[i].position.x += (  randomObjArr[i].original_x - allArr[i].position.x ) * .05;
-                allArr[i].position.y += (  randomObjArr[i].original_y - allArr[i].position.y ) * .05;
-                allArr[i].position.z += (  randomObjArr[i].original_z - allArr[i].position.z ) * .05;
+        if(allArr.length){
+            if(breakmodel){
+                for ( var i = 0; i < allArr.length; i++ ) { 
+                    allArr[i].position.x += (  randomObjArr[i].x - allArr[i].position.x ) * .05;
+                    allArr[i].position.y += (  randomObjArr[i].y - allArr[i].position.y ) * .05;
+                    allArr[i].position.z += (  randomObjArr[i].z - allArr[i].position.z ) * .05;
+                }
+            }else{
+                for ( var i = 0; i < allArr.length; i++ ) { 
+                    allArr[i].position.x += (  randomObjArr[i].original_x - allArr[i].position.x ) * .05;
+                    allArr[i].position.y += (  randomObjArr[i].original_y - allArr[i].position.y ) * .05;
+                    allArr[i].position.z += (  randomObjArr[i].original_z - allArr[i].position.z ) * .05;
+                }
             }
         }
-    }
 
 
-    //camera.lookAt( scene.position );
+        //camera.lookAt( scene.position );
 
-    if($(".mobile_show:last").is(":hidden")){
-		// desktop
-        if($("body").hasClass("body_test_humanity") || $("body").hasClass("body_user_guide")){
-            letter1.position.y += ( 0 - letter1.position.y ) * .05;
-            letter2.position.y += ( 0 - letter2.position.y ) * .05;
-            letter3.position.y += ( 0 - letter3.position.y ) * .05;
+        if($(".mobile_show:last").is(":hidden")){
+            // desktop
+            if($("body").hasClass("body_test_humanity") || $("body").hasClass("body_user_guide")){
+                letter1.position.y += ( 0 - letter1.position.y ) * .05;
+                letter2.position.y += ( 0 - letter2.position.y ) * .05;
+                letter3.position.y += ( 0 - letter3.position.y ) * .05;
 
+            }else{
+                letter1.position.y += ( -1 - letter1.position.y ) * .05;
+                letter2.position.y += ( -1 - letter2.position.y ) * .05;
+                letter3.position.y += ( -1 - letter3.position.y ) * .05;
+            }
+            
+
+
+            if($("body").hasClass("body_test_humanity_result_loading")){
+                letter1.rotation.y +=0.02;
+                letter1.rotation.y %= Math.PI*2;
+                letter2.rotation.y +=0.02;
+                letter2.rotation.y %= Math.PI*2;
+                letter3.rotation.y +=0.02;
+                letter3.rotation.y %= Math.PI*2;
+            }else{
+                letter1.rotation.y += ( 0 * Math.PI * (30 / 360) - letter1.rotation.y ) * .05;
+                letter2.rotation.y += ( 0 * Math.PI * (30 / 360) - letter2.rotation.y ) * .05;
+                letter3.rotation.y += ( 0 * Math.PI * (30 / 360) - letter3.rotation.y ) * .05;
+            }
+
+            if($("body").hasClass("body_test_humanity_result_start_chat")){
+                if(rndInt==1){
+                    letter1.position.x += ( 0 - letter1.position.x ) * .05;
+                    letter2.position.x += ( 20 - letter2.position.x ) * .05;
+                    letter3.position.x += ( 26 - letter3.position.x ) * .05;
+                }
+                if(rndInt==2){
+                    letter1.position.x += ( -20 - letter1.position.x ) * .05;
+                    letter2.position.x += ( 0 - letter2.position.x ) * .05;
+                    letter3.position.x += ( 20 - letter3.position.x ) * .05;
+                }
+                if(rndInt==3){
+                    letter1.position.x += ( -26 - letter1.position.x ) * .05;
+                    letter2.position.x += ( -20 - letter2.position.x ) * .05;
+                    letter3.position.x += ( 0 - letter3.position.x ) * .05;
+                }
+                
+                letter1.rotation.x += ( Math.PI * (rndRotate / 360) - letter1.rotation.x ) * .05;
+                letter2.rotation.x += ( Math.PI * (rndRotate / 360) - letter2.rotation.x ) * .05;
+                letter3.rotation.x += ( Math.PI * (rndRotate / 360) - letter3.rotation.x ) * .05;
+
+                letter1.scale.x += ( rndScale - letter1.scale.x ) * .05;
+                letter1.scale.y += ( rndScale - letter1.scale.y ) * .05;
+                letter2.scale.x += ( rndScale - letter2.scale.x ) * .05;
+                letter2.scale.y += ( rndScale - letter2.scale.y ) * .05;
+                letter3.scale.x += ( rndScale - letter3.scale.x ) * .05;
+                letter3.scale.y += ( rndScale - letter3.scale.y ) * .05;
+
+            }else{
+                letter1.position.x += ( -6 - letter1.position.x ) * .05;
+                letter2.position.x += ( 0 - letter2.position.x ) * .05;
+                letter3.position.x += ( 6 - letter3.position.x ) * .05;
+
+                letter1.scale.x += ( 1 - letter1.scale.x ) * .05;
+                letter1.scale.y += ( 1 - letter1.scale.y ) * .05;
+                letter2.scale.x += ( 1 - letter2.scale.x ) * .05;
+                letter2.scale.y += ( 1 - letter2.scale.y ) * .05;
+                letter3.scale.x += ( 1 - letter3.scale.x ) * .05;
+                letter3.scale.y += ( 1 - letter3.scale.y ) * .05;
+            }
         }else{
-            letter1.position.y += ( -1 - letter1.position.y ) * .05;
-            letter2.position.y += ( -1 - letter2.position.y ) * .05;
-            letter3.position.y += ( -1 - letter3.position.y ) * .05;
-        }
-        
-
-
-        if($("body").hasClass("body_test_humanity_result_loading")){
+            //mobile
             letter1.rotation.y +=0.02;
             letter1.rotation.y %= Math.PI*2;
             letter2.rotation.y +=0.02;
             letter2.rotation.y %= Math.PI*2;
             letter3.rotation.y +=0.02;
             letter3.rotation.y %= Math.PI*2;
-        }else{
-            letter1.rotation.y += ( 0 * Math.PI * (30 / 360) - letter1.rotation.y ) * .05;
-            letter2.rotation.y += ( 0 * Math.PI * (30 / 360) - letter2.rotation.y ) * .05;
-            letter3.rotation.y += ( 0 * Math.PI * (30 / 360) - letter3.rotation.y ) * .05;
-        }
 
-        if($("body").hasClass("body_test_humanity_result_start_chat")){
-            if(rndInt==1){
-                letter1.position.x += ( 0 - letter1.position.x ) * .05;
-                letter2.position.x += ( 20 - letter2.position.x ) * .05;
-                letter3.position.x += ( 26 - letter3.position.x ) * .05;
-            }
-            if(rndInt==2){
-                letter1.position.x += ( -20 - letter1.position.x ) * .05;
-                letter2.position.x += ( 0 - letter2.position.x ) * .05;
-                letter3.position.x += ( 20 - letter3.position.x ) * .05;
-            }
-            if(rndInt==3){
-                letter1.position.x += ( -26 - letter1.position.x ) * .05;
-                letter2.position.x += ( -20 - letter2.position.x ) * .05;
-                letter3.position.x += ( 0 - letter3.position.x ) * .05;
-            }
-            
-            letter1.rotation.x += ( Math.PI * (rndRotate / 360) - letter1.rotation.x ) * .05;
-            letter2.rotation.x += ( Math.PI * (rndRotate / 360) - letter2.rotation.x ) * .05;
-            letter3.rotation.x += ( Math.PI * (rndRotate / 360) - letter3.rotation.x ) * .05;
-
-            letter1.scale.x += ( rndScale - letter1.scale.x ) * .05;
-            letter1.scale.y += ( rndScale - letter1.scale.y ) * .05;
-            letter2.scale.x += ( rndScale - letter2.scale.x ) * .05;
-            letter2.scale.y += ( rndScale - letter2.scale.y ) * .05;
-            letter3.scale.x += ( rndScale - letter3.scale.x ) * .05;
-            letter3.scale.y += ( rndScale - letter3.scale.y ) * .05;
-
-        }else{
-            letter1.position.x += ( -6 - letter1.position.x ) * .05;
+            letter1.position.x += ( 0 - letter1.position.x ) * .05;
+            letter1.position.y += ( 4.1 - letter1.position.y ) * .05;
             letter2.position.x += ( 0 - letter2.position.x ) * .05;
-            letter3.position.x += ( 6 - letter3.position.x ) * .05;
+            letter2.position.y += ( 0 - letter2.position.y ) * .05;
+            letter3.position.x += ( 0 - letter3.position.x ) * .05;
+            letter3.position.y += ( -4.2 - letter3.position.y ) * .05;
 
-            letter1.scale.x += ( 1 - letter1.scale.x ) * .05;
-            letter1.scale.y += ( 1 - letter1.scale.y ) * .05;
-            letter2.scale.x += ( 1 - letter2.scale.x ) * .05;
-            letter2.scale.y += ( 1 - letter2.scale.y ) * .05;
-            letter3.scale.x += ( 1 - letter3.scale.x ) * .05;
-            letter3.scale.y += ( 1 - letter3.scale.y ) * .05;
+            letter1.scale.x += ( 0.8 - letter1.scale.x ) * .05;
+            letter1.scale.y += ( 0.8 - letter1.scale.y ) * .05;
+            letter2.scale.x += ( 0.8 - letter2.scale.x ) * .05;
+            letter2.scale.y += ( 0.8 - letter2.scale.y ) * .05;
+            letter3.scale.x += ( 0.8 - letter3.scale.x ) * .05;
+            letter3.scale.y += ( 0.8 - letter3.scale.y ) * .05;
+
         }
-	}else{
-		//mobile
-        letter1.rotation.y +=0.02;
-        letter1.rotation.y %= Math.PI*2;
-        letter2.rotation.y +=0.02;
-        letter2.rotation.y %= Math.PI*2;
-        letter3.rotation.y +=0.02;
-        letter3.rotation.y %= Math.PI*2;
+        
 
-        letter1.position.x += ( 0 - letter1.position.x ) * .05;
-        letter1.position.y += ( 4.1 - letter1.position.y ) * .05;
-        letter2.position.x += ( 0 - letter2.position.x ) * .05;
-        letter2.position.y += ( 0 - letter2.position.y ) * .05;
-        letter3.position.x += ( 0 - letter3.position.x ) * .05;
-        letter3.position.y += ( -4.2 - letter3.position.y ) * .05;
-
-        letter1.scale.x += ( 0.8 - letter1.scale.x ) * .05;
-        letter1.scale.y += ( 0.8 - letter1.scale.y ) * .05;
-        letter2.scale.x += ( 0.8 - letter2.scale.x ) * .05;
-        letter2.scale.y += ( 0.8 - letter2.scale.y ) * .05;
-        letter3.scale.x += ( 0.8 - letter3.scale.x ) * .05;
-        letter3.scale.y += ( 0.8 - letter3.scale.y ) * .05;
-
-	}
-    
-
-    $(".scrolltonext").each(function(){
-        var $p_scroll = $(this).parents(".book_page_scroll_wrapper").find(".book_page_scroll");
-        var mywidth = parseInt($(this).find(".progress").width());
-        var progress = parseInt($(this).find(".progress").attr("data-progress"));
-        if($(this).hasClass("show")){
-            mywidth += ( progress - mywidth ) * .05;
-            $(this).find(".progress").css("width",mywidth+"px")
-        }else{
-            if(!$(this).hasClass("ok")){
-                if(mywidth>1){
-                    mywidth -=2;
-                    $(this).find(".progress").css("width",mywidth+"px")
-                    $(this).find(".progress").attr("data-progress",mywidth)
-                }else{
-                    $(this).find(".progress").css("width","0px")
-                    $(this).find(".progress").attr("data-progress",0)
+        $(".scrolltonext").each(function(){
+            var $p_scroll = $(this).parents(".book_page_scroll_wrapper").find(".book_page_scroll");
+            var mywidth = parseInt($(this).find(".progress").width());
+            var progress = parseInt($(this).find(".progress").attr("data-progress"));
+            if($(this).hasClass("show")){
+                mywidth += ( progress - mywidth ) * .05;
+                $(this).find(".progress").css("width",mywidth+"px")
+            }else{
+                if(!$(this).hasClass("ok")){
+                    if(mywidth>1){
+                        mywidth -=2;
+                        $(this).find(".progress").css("width",mywidth+"px")
+                        $(this).find(".progress").attr("data-progress",mywidth)
+                    }else{
+                        $(this).find(".progress").css("width","0px")
+                        $(this).find(".progress").attr("data-progress",0)
+                    }
                 }
             }
-        }
-    })
-    
-
+        })
+        
+    }
 	requestAnimationFrame( animate );
 	controls.update();
 	renderer.render( scene, camera );
