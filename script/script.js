@@ -190,7 +190,9 @@ function init_event(){
 			$(".book_wrapper").each(function(){
 				if($(this).index()<myindex){
 					if($(this).attr("data-prev") !== $(this).attr("data-next")){
-						$(this).stop().fadeIn().addClass("show");
+						$(this).stop().fadeIn(function(){
+							setbookposition();
+						}).addClass("show");
 						$(window).resize();
 						$(this).find(".scroll_area").scrollTop($(this).find(".scroll_area > *").outerHeight());
 						// $(this).parents(".book_wrapper").addClass('reach-end');
@@ -198,7 +200,9 @@ function init_event(){
 				}
 
 				if($(this).index()>myindex){
-					$(this).stop().fadeOut().removeClass("show");
+					$(this).stop().fadeOut(function(){
+						setbookposition();
+					}).removeClass("show");
 					// $(this).parents(".book_wrapper").removeClass('reach-end');
 				}
 			})
@@ -249,10 +253,9 @@ function updateScroll(){
 		scrollArr[i].update();
 	}
 
-
-	if($(".mobile_show").is(":hidden")){
+	if($("body > .mobile_show").is(":hidden")){
 		// desktop
-
+		
 		$(".book_wrapper.show .book").each(function(){
 			$(this).css({
 				"top":"0px"
@@ -505,7 +508,14 @@ function init_function(){
 		*/
 
 		["wheel", "touchmove"].forEach( (eventType) => $(this)[0].addEventListener(eventType, (event) => {
-			if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 || $this.find(">*").height() - $this.height() < 30) && (event.deltaY == undefined || event.deltaY > 0) ) {
+			let tHeight = 0;
+			$this.find(">*").each((index, item) => {
+				if( index < $this.find(">*").length - 2) {
+					tHeight += $(item).height();
+				}
+			});
+			if(($this.scrollTop() + $this.height() >= tHeight -5 || tHeight - $this.height() < 30) && (event.deltaY == undefined || event.deltaY > 0) ) {
+			// if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 || $this.find(">*").height() - $this.height() < 30) && (event.deltaY == undefined || event.deltaY > 0) ) {
 				clearTimeout(scrolltimer);
 				$p.addClass("reach-end")
 				if(mynexttarget){

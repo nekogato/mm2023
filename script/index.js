@@ -347,6 +347,10 @@ function init() {
         $(".chat_result_identity_icon").removeClass("show")
         $(".chat_answer_wrapper").removeClass("endchat")
         $(".chat_answer_wrapper").removeClass("forceendchat")
+
+        $("body").removeClass("orange_bg")
+        $("body").removeClass("black_bg")
+        $("body").removeClass("silver_bg")
         
         $(".chat_answer_wrapper").addClass("restartchat")
         $(".chat_question").append('<div class="chat_question_item chat_question_item_system"><div  class="text5 start_typing">請按Start Again重新開始</div></div>')
@@ -598,7 +602,7 @@ function animate() {
 
     //camera.lookAt( scene.position );
 
-    if($(".mobile_show").is(":hidden")){
+    if($(".mobile_show:last").is(":hidden")){
 		// desktop
         if($("body").hasClass("body_test_humanity") || $("body").hasClass("body_user_guide")){
             letter1.position.y += ( 0 - letter1.position.y ) * .05;

@@ -64,8 +64,8 @@
             <div class="chat_result">
                 <div class="chat_result_top_bg"></div>
                 <div class="chat_result_content">
-                    <img src="images/share_logo.png" class="chat_result_logo ">
-                    <img src="images/ticket_top_text.png" class="ticket_top_text ">
+                    <div class="chat_result_logo"></div>
+                    <div class="ticket_top_text"></div>
                     <div class="chat_result_content_scroll_wrapper">
                         <div class="chat_result_content_scroll ">
                             <div class="chat_result_box_wrapper">

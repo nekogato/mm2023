@@ -1,4 +1,7 @@
-var API_KEY;
+const API_KEY = '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';
+var rndInt;
+var rndRotate = 0;
+var rndScale = 2;
 
 function loadresult(){
     $("body").addClass("body_test_humanity_result_loading")
@@ -94,7 +97,6 @@ function extractTextWithinBraces(str) {
 const form = document.getElementById('chat-form');
 const mytextInput = document.getElementById('mytext');
 const responseTextarea = document.getElementById('response');
-
 
 var obj = {};
 

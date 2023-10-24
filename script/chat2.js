@@ -1,7 +1,7 @@
 var API_KEY;
 var rndInt;
 var rndRotate = 0;
-var rndScale = 2;
+var rndScale = 1.5;
 function removeFirstKeyValuePair(obj) {
     // Convert the object into an array of key-value pairs
     const entries = Object.entries(obj);
@@ -179,7 +179,7 @@ function checkChat(){
         
         rndInt = Math.floor(Math.random() * 3)+1 ;
         rndRotate = Math.floor(Math.random() * 120)-60 ;
-        rndScale = (Math.random())+2 ;
+        rndScale = (Math.random())+1.2 ;
         $("body").addClass("body_test_humanity_result_start_chat");
 
         loadmessage();
@@ -237,7 +237,7 @@ async function loadmessage(){
     $(".chat_answer_wrapper").addClass("stopTyping");
     var showforceend = false;
 
-    if (messagesArr.length >=5) {
+    if (messagesArr.length >=limit) {
         showforceend = true;
     }
 
@@ -250,8 +250,8 @@ async function loadmessage(){
         $(".chat_answer_wrapper").removeClass("restartchat")
         $(".chat_answer_wrapper").addClass("startchat")
         message="開始";
-    }else if($(".chat_answer_wrapper").hasClass("endchat") || $(".chat_answer_wrapper").hasClass("forceendchat")){
-        message = "請重複一次分數和並為你給我的三個身份的分數分別給予簡短(不少於20字)的理由";
+    }else if($(".chat_answer_wrapper").hasClass("endchat")){
+        message = "請重複顯示一次分數和理由";
     }else{
         message = $('#message').val();
     };
@@ -294,8 +294,8 @@ async function loadmessage(){
 
     }
 
-    if(showforceend){
-        message = "我的答案是"+message+"。同時「強制遊戲完結」請根據我之前給的答案創作出故事的結尾並估計我的身份(必須給出結果，可以只是估計，不用準確)，提供分數以表示我在人，鬼和獸三個身份中的可能性(例：人:70%，鬼:10%，獸:20%)並提供理由。"
+    if(showforceend && !$(".chat_answer_wrapper").hasClass("endchat")){
+        message = "我的答案是"+message+"，然後「強制遊戲完結」，請根據我之前給的答案創作出故事結尾並估計我的身份(必須給出結果，可以只是估計，不用準確)，提供分數以表示我在人，鬼和獸三個身份中的可能性(例：人:70%，鬼:10%，獸:20%)並提供簡短理由(不多於20字)。"
     }
     messagesArr.push({ role: "user", content: message });
     console.log(messagesArr)
@@ -386,22 +386,25 @@ async function loadmessage(){
                 $(".top_icon .chat_result_identity_icon").addClass("chat_result_identity_icon_human"); 
                 $(".top_icon .chat_result_identity_icon").removeClass("chat_result_identity_icon_robot"); 
                 $(".top_icon .chat_result_identity_icon").removeClass("chat_result_identity_icon_animal"); 
+                $("body").addClass("silver_bg")
             }else if(z>x && z>y){ 
                 //z
                 $(".top_icon .chat_result_identity_icon").removeClass("chat_result_identity_icon_human"); 
                 $(".top_icon .chat_result_identity_icon").addClass("chat_result_identity_icon_robot"); 
                 $(".top_icon .chat_result_identity_icon").removeClass("chat_result_identity_icon_animal"); 
+                $("body").addClass("black_bg")
             }else {
                 //y
                 $(".top_icon .chat_result_identity_icon").removeClass("chat_result_identity_icon_human"); 
                 $(".top_icon .chat_result_identity_icon").removeClass("chat_result_identity_icon_robot"); 
                 $(".top_icon .chat_result_identity_icon").addClass("chat_result_identity_icon_animal"); 
+                $("body").addClass("orange_bg")
             }
 
             var finalMessagesArr = Array.from(messagesArr);
             console.log("1",finalMessagesArr)
             finalMessagesArr.splice(0, 2); // Remove 1 element starting from index 0
-            finalMessagesArr.splice(-2); // Remove the last two elements
+            finalMessagesArr.splice(-1); // Remove the last two elements
             // removeFirstKeyValuePair(finalMessagesArr)
             // removeFirstKeyValuePair(finalMessagesArr)
             // removeLastKeyValuePair(finalMessagesArr)
