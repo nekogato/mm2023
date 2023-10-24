@@ -2313,6 +2313,12 @@ body{
 	background: #fff;
   }
 
+.project_image_gallery .caption {
+	margin-top: 5px;
+    font-size: calc(12px);
+    line-height: 1.2em;
+}
+
 .book_project_info .book_artist_name {
 	text-align: right;
     /* width: 100%;
@@ -2322,6 +2328,8 @@ body{
 
 .subhead-p {
 	margin-bottom: -15px;
+	border-top: 1px solid;
+	padding-top: 10px;
 }
 
 .book_style5 {
@@ -2548,6 +2556,7 @@ body{
 	padding-left: 0;
     width: 100%;
 	align-items: flex-end;
+	margin-bottom: 30px;
 }
 .book_style7 .row_content > .col6:first-child {
     padding-right: 10px;
@@ -3200,7 +3209,7 @@ a:hover .boxed_registration {
 	}
 	.book_style7 .row_content {
 		flex-direction: row;
-		padding-bottom: 50px;
+		padding-bottom: 20px;
 	}
 	/* .book_style7 .row_content > .col6:first-child {
 		padding-right: 0px;
@@ -3565,7 +3574,12 @@ a:hover .boxed_registration {
 
 	.book_style7 .row_content {
 		flex-direction: column;
+		padding-left: 0;
 		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+	.book_style7 .row_content > div {
+		padding-left: 0px;
 	}
 
 	.book_style7 .col6 {

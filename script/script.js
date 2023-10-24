@@ -232,17 +232,19 @@ function do_pushstate(link){
 }
 
 function setbookposition(){
-	if($(".mobile_show").is(":hidden")){
+	if($("body > .mobile_show").is(":hidden")){
 		const rELength = $(".book_wrapper:visible").not(".book_style0").length;
 		$(".book_wrapper:visible").not(".book_style0").each(function(i){
-			$(this).find(".book").attr("data-bottom", 0 + (rELength - i - 1) * 50)
+			$(this).find(".book").attr("data-bottom", 0 + Math.min(5,(rELength - i - 1)) * 50)
 		})
 
-		$(".book_wrapper:visible .book").not(".book_style0").each(function(){
+		$(".book_wrapper:visible .book").not(".book_style0").each(function(i){
 			var mybottom = $(this).attr("data-bottom");
 			$(this).css({
 				"bottom": mybottom+"px",
-				// "right": mybottom+"px"
+				// "right": mybottom+"px",
+				"opacity": (rELength - i) > 6 ? "0" : "1",
+				"display": (rELength - i) > 7 ? "none" : "",
 			})
 		})
 	}
@@ -266,20 +268,27 @@ function updateScroll(){
 		
 	}else{
 		//mobile
-		$(".book_wrapper.show .book").each(function(){
-			$(this).css({
-				"bottom":"20px"
-			})
-		})
+		// $(".book_wrapper.show .book").each(function(){
+		// 	$(this).css({
+		// 		"bottom":"20px"
+		// 	})
+		// })
 
+		const showLength = $(".book_wrapper.show").length;
 		$(".book_wrapper.show").each(function(i){
-			$(this).find(".book").attr("data-top",70+i*30)
+			if (showLength < 5) {
+				$(this).find(".book").attr("data-top",70+i*30)
+			} else {
+				$(this).find(".book").attr("data-top", 70 + Math.max(0, 5 - (showLength - i)) * 30)
+			}
 		})
 
-		$(".book_wrapper.show .book").each(function(){
+		$(".book_wrapper.show .book").each(function(i){
 			var mytop = $(this).attr("data-top");
 			$(this).css({
-				"top":mytop+"px"
+				"bottom": "20px",
+				"top": mytop + "px",
+				"display": (showLength - i) > 6 ? "none" : ""
 			})
 		})
 	}
@@ -421,91 +430,6 @@ function init_function(){
 
 		$(this)[0].addEventListener('ps-scroll-y', function(e){
 		});
-
-		// Add a wheel event listener to the scrollable container
-		// $(this)[0].addEventListener('wheel', (event) => {
-
-		// var mc = new Hammer($(this)[0]);
-
-		/*
-		mc.on("panup pandown", function(event) {
-
-
-			if(($this.scrollTop() + $this.height() >= $this.find(">*").height() -5 || $this.find(">*").height() - $this.height() < 30) && (event.type == "panup") ) {
-				clearTimeout(scrolltimer);
-				$p.addClass("reach-end")
-				if(mynexttarget){
-					$p.find(".scrolltonext").addClass("show")
-					var progress = parseInt($p.find(".progress").attr("data-progress"));
-					progress+=event.distance/20;
-					console.log(event.distance/20)
-					$p.find(".progress").attr("data-progress",progress)
-
-					scrolltimer = setTimeout(function(){
-						$p.find(".scrolltonext").removeClass("show")
-						$p.find(".scrolltonext").addClass("okgonext")
-					},300)
-					
-					if(parseInt($p.find(".scrolltonext .progress").attr("data-progress"))>=parseInt($p.find(".scrolltonext").width())){
-						$p.find(".scrolltonext").addClass("ok")
-					
-						$mynexttarget.stop().fadeIn(function(){
-							if(mynexttarget!==myprevtarget){
-								$p.find(".scrolltonext").removeClass("show")
-								$p.find(".progress").attr("data-progress",0)
-								$p.find(".progress").css("width","0px")
-								$p.find(".scrolltonext").removeClass("ok")
-								$p.find(".scrolltonext").removeClass("okgonext")
-								setbookposition();
-							}
-						}).addClass("show");
-						$(window).resize();
-						do_pushstate("?id="+mynexttarget);
-						if(mynexttarget==myprevtarget){
-							$p.addClass("noscroll").stop().fadeOut(function(){
-								$p.removeClass("noscroll");
-								$p.find(".scrolltonext").removeClass("show")
-								$p.find(".progress").attr("data-progress",0)
-								$p.find(".progress").css("width","0px")
-								$p.find(".scrolltonext").removeClass("ok")
-								$p.find(".scrolltonext").removeClass("okgonext")
-								setbookposition();
-							}).removeClass("show")
-						}else{
-							$mynexttarget.find(".scroll_area").scrollTop(0);
-							updateScroll();
-						}
-					}
-					
-					// $mynexttarget.stop().fadeIn().addClass("show");
-					// $(window).resize();
-					// do_pushstate("?id="+mynexttarget);
-					// if(mynexttarget==myprevtarget){
-					// 	$p.addClass("noscroll").stop().fadeOut(function(){
-					// 		$p.removeClass("noscroll");
-					// 	}).removeClass("show")
-					// }else{
-					// 	$mynexttarget.find(".scroll_area").scrollTop(0);
-					// 	updateScroll();
-					// }
-				}
-			}
-			if (($this.scrollTop() <=0) && (event.type == "pandown")) {
-				$p.addClass("reach-start")
-				if(myprevtarget){
-					do_pushstate("?id="+myprevtarget);
-					$p.addClass("noscroll").stop().fadeOut(function(){
-						$p.removeClass("noscroll");
-						setbookposition();
-					}).removeClass("show")
-					$myprevtarget.stop().fadeIn().addClass("show");
-					$(window).resize();
-					updateScroll();
-				}
-			}
-			
-		});
-		*/
 
 		["wheel", "touchmove"].forEach( (eventType) => $(this)[0].addEventListener(eventType, (event) => {
 			let tHeight = 0;
