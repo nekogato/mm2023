@@ -590,13 +590,13 @@ body{
 
 .chat_answer_remark{
 	color:#9fa1a4;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 	float: left;
 }
 
 .chat_answer_remark_right{
 	float: right;
-	margin-bottom: 5px;
+	margin-top: 5px;
 }
 
 .startchat .chat_answer_remark_right{
@@ -3399,10 +3399,14 @@ a:hover .boxed_registration {
 
 	.chat_answer_wrapper {
 		position: absolute;
-		left: 20px;
-		bottom: 20px;
-		right: 20px;
+		left: 0px;
+		bottom: 0px;
+		right: 0px;
 		margin: auto;
+		padding: 20px;
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
+		padding-top: 15px;
 	  }
 
 	  .chat_answer {
@@ -3441,7 +3445,7 @@ a:hover .boxed_registration {
 		margin: auto;    
 		text-align: left;
 		mix-blend-mode: normal;
-		color: #fff;
+		color: #9fa1a4;
 		border-top:1px solid #9fa1a4;
 		-webkit-backdrop-filter: blur(10px);
 		backdrop-filter: blur(10px);
@@ -3497,7 +3501,8 @@ a:hover .boxed_registration {
 
 	  .chat_question_wrapper {
 		top: 100px;
-		bottom: 70px;
+		bottom: 108px;
+		border-bottom: 1px solid #9fa1a4;
 	  }
 
 	.chat_question{
