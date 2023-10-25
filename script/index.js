@@ -47,6 +47,9 @@ var addElement2 = function ( myid,groupid,group, src, x, y, z,cubeTexture, rough
                 }else{
                     child.material.opacity=1;
                 }
+                if($(".chat_answer_wrapper").hasClass("startchat") || $(".chat_answer_wrapper").hasClass("restartchat")){
+                    objArr2[i].visible = false;
+                }
 
                 if (child.material.map){
                     child.material.map = "";
@@ -355,7 +358,9 @@ function init() {
                 if($.cookie('played')){
 
                 }else{
-                    objArr2[i].visible = true;
+                    if(!$(".chat_answer_wrapper").hasClass("startchat") && !$(".chat_answer_wrapper").hasClass("restartchat")){
+                        objArr2[i].visible = true;
+                    }
                 }
             }
         }
@@ -429,7 +434,9 @@ function init() {
                 if($.cookie('played')){
 
                 }else{
-                    objArr2[i].visible = true;
+                    if(!$(".chat_answer_wrapper").hasClass("startchat") && !$(".chat_answer_wrapper").hasClass("restartchat")){
+                        objArr2[i].visible = true;
+                    }
                 }
             }
         }
