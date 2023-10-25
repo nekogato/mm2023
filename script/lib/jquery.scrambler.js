@@ -26,6 +26,7 @@
             total_iterations : 0,
             interval : -1,
             onFinish: null,
+            onStep: null,
         }
 
         plugin.init = function() {
@@ -33,6 +34,7 @@
             var el = $element;
             var str = plugin.settings.final_text;
             var onFinish = plugin.settings.onFinish;
+            var onStep = plugin.settings.onStep;
 
             if (plugin.settings.effect == "charbychar" || plugin.settings.effect == "typing"){
               var pos_limit = 0;                                             // randomize text from this position to the end
@@ -53,7 +55,9 @@
                     internal_char_reveal_counter = 0;
                     pos_limit++;
                   }
-                  
+                  if(isFunction( onStep )){
+                    onStep.call(this);
+                  }
                   // end and stop interval
                   if ( plugin.settings.total_iterations >= plugin.settings.duration ) {
                       clearInterval(plugin.settings.interval);

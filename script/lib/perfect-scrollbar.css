@@ -112,6 +112,7 @@
   margin: auto;
   /* please don't change 'position' */
   position: absolute;
+  min-height: 10px;
 }
 
 .ps__rail-x:hover > .ps__thumb-x,

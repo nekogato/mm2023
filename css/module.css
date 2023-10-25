@@ -1566,6 +1566,10 @@ body{
 	border:1px solid #000;
 }
 
+.dropdown .book .book_page_scroll_wrapper{
+	border:none;
+}
+
 .book .book_page_scroll_wrapper::after{
 	pointer-events: none;
 }

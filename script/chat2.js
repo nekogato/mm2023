@@ -264,7 +264,7 @@ const responseTextarea = document.getElementById('response');
 
 var obj = {};
 var messagesArr=[];
-var myheight;
+var myheight = 0;
 //var limit = 9;
 var limit = 9;
 async function loadmessage(){

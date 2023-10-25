@@ -9,6 +9,7 @@ var hoverLetter = "";
 var activeLetter = "";
 var startletter1_animation, startletter2_animation, startletter3_animation;
 var changecolor = false;
+var myheight2;
 const GLTFLoader = new THREE.GLTFLoader();
 const dracoLoader = new THREE.DRACOLoader();
 dracoLoader.setDecoderPath( 'script/lib/draco/' );
@@ -335,7 +336,10 @@ function init() {
 
     $(".test_humanity_btn").on( "click", function() {
         if(!$("body").hasClass("body_played_test")){
-            $(".chat_answer_wrapper").addClass("stopTyping");
+            if(!$(".chat_answer_wrapper").hasClass("startchat") && !$(".chat_answer_wrapper").hasClass("restartchat")){
+                $(".chat_answer_wrapper").addClass("stopTyping");
+            }
+            updateScroll();
             if(!$(".chat_answer_wrapper").hasClass("startchat") && !$(".chat_answer_wrapper").hasClass("restartchat")){
                 $(".start_typing:last").scrambler({
                     effect: "typing",
@@ -344,7 +348,16 @@ function init() {
                     reveal: 10,
                     onFinish: function(){
                         $(".chat_answer_wrapper").removeClass("stopTyping");
+                        updateScroll();
+                    },
+                    onStep: function(){
+                        if(myheight2 !== $(".chat_question_item_system:last").height()){
+                            $(".chat_question_wrapper").stop().animate({scrollTop:$(".chat_question_inwrapper").outerHeight()-$(".chat_question_wrapper").height()+50}, 500, 'swing', function() { 
+                            });
+                            myheight2 = $(".chat_question_item_system:last").height();
+                        }
                     }
+                    
                 });
             }
         }
