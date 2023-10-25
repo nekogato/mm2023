@@ -336,15 +336,17 @@ function init() {
     $(".test_humanity_btn").on( "click", function() {
         if(!$("body").hasClass("body_played_test")){
             $(".chat_answer_wrapper").addClass("stopTyping");
-            $(".start_typing:last").scrambler({
-                effect: "typing",
-                final_text: $(".start_typing:last").text(),
-                speed: 10,
-                reveal: 10,
-                onFinish: function(){
-                    $(".chat_answer_wrapper").removeClass("stopTyping");
-                }
-            });
+            if(!$(".chat_answer_wrapper").hasClass("startchat") && !$(".chat_answer_wrapper").hasClass("restartchat")){
+                $(".start_typing:last").scrambler({
+                    effect: "typing",
+                    final_text: $(".start_typing:last").text(),
+                    speed: 10,
+                    reveal: 10,
+                    onFinish: function(){
+                        $(".chat_answer_wrapper").removeClass("stopTyping");
+                    }
+                });
+            }
         }
 
         $("body").addClass("body_test_humanity")
