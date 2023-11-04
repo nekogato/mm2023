@@ -2029,6 +2029,10 @@ body{
 	align-items: end;
 }
 
+.book_style2_2 .left_bottom_text .row .col {
+	margin-top: auto;
+}
+
 .book_style2_2 hr{
    border-top:1px solid #000;
    }
